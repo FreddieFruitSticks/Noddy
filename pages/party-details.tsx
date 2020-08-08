@@ -9,7 +9,8 @@ export const getStaticProps = async (context) => {
 
 function HomePage({posts}) {
     return (
-        <Home/>    
+            <Home/>
+            
     )
 }
 

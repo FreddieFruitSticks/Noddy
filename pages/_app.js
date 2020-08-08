@@ -1,10 +1,11 @@
 import '../styles/styles.css'
-import ApolloClient from 'apollo-boost';
+import PublicLayout from "../src/shared/layout"
 
 export default function Noddy({ Component, pageProps }) {
-    const client = new ApolloClient({
-      uri: 'https://graphql.example.com'
-    });
-
-  return <Component {...pageProps} />
+  return (
+    <PublicLayout>
+      <Component {...pageProps} />
+    </PublicLayout>
+  
+  )
 }

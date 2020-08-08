@@ -1,7 +1,6 @@
 import React from "react"
 
 const Posts = ({ data }) => {
-  console.log(data)
   return (
     <div>
       {data?.map(post => {
