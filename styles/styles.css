@@ -5,3 +5,12 @@
 @tailwind components;
 
 @tailwind utilities;
+
+@font-face {
+    font-family: 'BalooTamma2';
+    src: local('BalooTamma2'), url(../src/fonts/BalooTamma2-Medium.ttf) format('truetype');
+  }
+  
+html{
+    font-family: BalooTamma2
+}
