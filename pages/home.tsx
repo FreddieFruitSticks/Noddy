@@ -1,5 +1,8 @@
+import React, { useContext } from 'react'
 import Home from "../src/lib/home"
 import { fetchPosts } from "../src/services"
+import {GlobalStateContext, Context } from "../src/context/context-provider"
+import { connect } from "../src/context/connector"
 
 export const getStaticProps = async (context) => {
     return {
@@ -7,10 +10,13 @@ export const getStaticProps = async (context) => {
     }
   }
 
-function HomePage({posts}) {
+const HomePage = ({state, dispatch}: Context) => {
     return (
-        <Home/>    
-    )
+            <div>
+                {state.count}
+                <Home/>    
+            </div>
+        )
 }
 
-export default HomePage
+export default connect(HomePage)
