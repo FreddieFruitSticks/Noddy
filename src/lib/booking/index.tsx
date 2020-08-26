@@ -2,14 +2,34 @@ import React, { useState, useEffect, useRef } from 'react'
 import { useForm } from 'react-hook-form';
 import FormInput from '../../shared/form-input';
 import { emailValidator, cellNumberValidator, numberValidator } from '../../shared/validators';
+import { Context } from '@apollo/client';
+import { partyAction } from '../../context/actions';
 
-const BookingView = ({}) => {
+const BookingView = ({state, dispatch}: Context) => {
     const [numberOfChildren, setNumberOfChildren] = useState([1])
     
-    const { trigger, register, getValues, errors } = useForm();
+    const {handleSubmit, trigger, register, getValues, errors } = useForm({
+        mode: 'onSubmit',
+        reValidateMode: 'onChange',
+        defaultValues: {
+            adults: "1",
+            cell: "0825052552",
+            email: "freddieodonnell@gmail.com",
+            email2: "freddieodonnell@gmail.com",
+            name: "Freddie",
+            kids:[{name: "Jonny"}]
+        },
+        resolver: undefined,
+        context: undefined,
+        criteriaMode: "firstError",
+        shouldFocusError: true,
+        shouldUnregister: true,
+      });
+      
     const onSubmit = values => {
         trigger()
-        console.log(values)
+        const {email2, ...formVals} = values
+        dispatch(partyAction(formVals))
     }
     
     const addChild = ({}) => {
@@ -24,7 +44,7 @@ const BookingView = ({}) => {
         <div className="font-semi underline">
             Guardian Details
         </div>  
-        <form className="mt-5 w-4/12 xs:w-11/12 sm:w-10/12 md:w-7/12 lg:w-5/12">
+        <form onSubmit={handleSubmit(onSubmit)} className="mt-5 w-4/12 xs:w-11/12 sm:w-10/12 md:w-7/12 lg:w-5/12">
             <FormInput
                 name="name"
                 placeholder="Full name"
@@ -91,18 +111,22 @@ const BookingView = ({}) => {
                                 child {childNumber}
                             </div>
                             <FormInput
-                                name={`kidName${childNumber}`}
+                                name={`kids[${childNumber-1}].name`}
                                 placeholder="First and Last Name"
                                 errors={errors}
                                 formValidator={register({
                                     required: "Required",
                                 })}
-                            />            
+                            />
+                            <div className="text-xs text-red">
+                                {errors?.kids && errors?.kids[childNumber-1] && errors?.kids[childNumber-1]?.name?.message}
+                            </div>
+                                     
                             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                                 age
                             </label>
                             <div className="relative">
-                                <select className="block appearance-none w-full border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                                <select ref={register} name={`kids[${childNumber-1}].olderThanThree`} className="block appearance-none w-full border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
                                     <option value={1}>{`greater than 3 years`}</option>
                                     <option value={0}>{`less than 3 years`}</option>
                                 </select>
@@ -113,7 +137,9 @@ const BookingView = ({}) => {
                             <div className="text-xs">
                                 *children under the age of 3 are free
                             </div>
-                            <input 
+                            <input
+                                ref={register}
+                                name={`kids[${childNumber-1}].hasGift`}
                                 type="checkbox" 
                                 className="mt-2 form-checkbox"
                             />
@@ -128,13 +154,13 @@ const BookingView = ({}) => {
             })}
 
             
-        </form>
             <div className="w-full flex items-center justify-start ">
                 <button className="w-3/12 sm:w-5/12 min-w-md max-w-md bg-orange mt-5 text-white py-3 px-2 font-bold rounded"  onClick={addChild}>Add Child</button>
             </div>
             <div className="w-full flex items-center justify-center min-xl:justify-start">
-                <button className="w-6/12 max-w-xs bg-blue-500 mt-5 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded" type="button" onClick={onSubmit}>Submit</button>            
+                <button className="w-6/12 max-w-xs bg-blue-500 mt-5 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded" type="submit">Submit</button>            
             </div>
+        </form>
         </div>
     )
 }

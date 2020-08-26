@@ -1,5 +1,7 @@
 import React from 'react'
 import BookingView from '../src/lib/booking'
+import { connect } from '../src/context/connector'
+import { Context } from '../src/context/context-provider'
 
 export const getStaticProps = async (context) => {
     return {
@@ -7,12 +9,12 @@ export const getStaticProps = async (context) => {
     }
   }
   
-const Booking = ({}) => {
+const Booking = (props: Context) => {
     return (
         <div>
-            <BookingView/>
+            <BookingView {...props}/> 
         </div>
     )
 }
 
-export default Booking
+export default connect(Booking)
