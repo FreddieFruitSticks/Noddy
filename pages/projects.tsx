@@ -7,10 +7,12 @@ export const getStaticProps = async (context) => {
     }
   }
 
-function HomePage({posts}) {
+function ProjectsPage({posts}) {
     return (
-        <Home/>   
+        <div>
+            Projects
+        </div> 
     )
 }
 
-export default HomePage
+export default ProjectsPage

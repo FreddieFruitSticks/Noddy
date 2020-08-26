@@ -12,9 +12,11 @@ export const GlobalStateContext = React.createContext<any>({
 
 const NoddyStateProvider = ({children}) => {
     const [state, dispatch] = useReducer(reducer, initialState)
+    console.log("-------------state after-----------------")
+    console.log(state)
     
     return (
-        <GlobalStateContext.Provider value={{...state, dispatch}}>
+        <GlobalStateContext.Provider value={{state, dispatch}}>
             {children}
         </GlobalStateContext.Provider>
     )

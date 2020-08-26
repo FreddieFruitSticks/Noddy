@@ -5,8 +5,9 @@ export const connect = (Page) => {
     return (props) => (
         <GlobalStateContext.Consumer>
             {value => {
+                const {state, dispatch} = value
                 return (
-                    <Page {...props} state={value}/>
+                    <Page {...props} state={state} dispatch={dispatch}/>
                 )
             }}
         </GlobalStateContext.Consumer>

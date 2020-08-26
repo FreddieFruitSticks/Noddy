@@ -1,13 +1,13 @@
 import React from "react"
 import BookingCalender from "./components/booking-calender"
-import { IHome } from "../../../pages"
+import { IHomePage } from "../../../pages"
 
-const Home = ({events} : IHome) => {
+const Home = ({state, dispatch, events} : IHomePage) => {
     return (
         <div className="ml-5">
             {events.map(event => {
                 return (
-                    <BookingCalender key={event.id} event={event}/>                    
+                    <BookingCalender dispatch={dispatch} key={event.id} event={event}/>                    
                 )
             })}
         </div>

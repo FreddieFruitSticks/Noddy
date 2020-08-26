@@ -1,7 +1,7 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import Home from "../src/lib/home"
-import { fetchPosts, fetchEvents } from "../src/services"
-import {GlobalStateContext, Context } from "../src/context/context-provider"
+import { fetchEvents } from "../src/services"
+import {Context } from "../src/context/context-provider"
 import { connect } from "../src/context/connector"
 
 export interface IEvent{
@@ -41,11 +41,11 @@ export interface IHome {
     events?: IEvent[];
 }
   
-interface IHomePage extends Context, IHome{}
+export interface IHomePage extends Context, IHome{}
 
 const HomePage = (props: IHomePage) => {
     return (
-            <Home events={props.events}/>    
+            <Home {...props}/>    
         )
 }
 
