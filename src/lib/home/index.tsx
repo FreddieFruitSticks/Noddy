@@ -1,12 +1,15 @@
 import React from "react"
 import BookingCalender from "./components/booking-calender"
+import { IHome } from "../../../pages"
 
-const Home = ({}) => {
+const Home = ({events} : IHome) => {
     return (
         <div className="ml-5">
-            <BookingCalender/>
-            <BookingCalender/>
-            <BookingCalender/>
+            {events.map(event => {
+                return (
+                    <BookingCalender key={event.id} event={event}/>                    
+                )
+            })}
         </div>
     )
 }

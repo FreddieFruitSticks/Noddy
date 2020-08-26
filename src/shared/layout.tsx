@@ -29,7 +29,7 @@ const PublicLayout =  ({children}) => {
                         <div className="hidden min-sm:block min-sm:ml-6">
                         <div className="flex">
                             <Link href="/home" as="/home"> 
-                                <a className={`px-3 py-2 rounded-md text-sm font-medium leading-5 ${router.pathname === '/home' ? "text-white bg-gray-900" : "text-gray-300 hover:text-white hover:bg-gray-700"}  focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out`}>
+                                <a className={`px-3 py-2 rounded-md text-sm font-medium leading-5 ${router.pathname === '/' ? "text-white bg-gray-900" : "text-gray-300 hover:text-white hover:bg-gray-700"}  focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out`}>
                                     Home
                                 </a>
                             </Link>

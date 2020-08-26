@@ -3,7 +3,6 @@ import { useForm } from 'react-hook-form';
 import FormInput from '../../shared/form-input';
 import { emailValidator, cellNumberValidator, numberValidator } from '../../shared/validators';
 
-
 const BookingView = ({}) => {
     const [numberOfChildren, setNumberOfChildren] = useState([1])
     
@@ -86,46 +85,44 @@ const BookingView = ({}) => {
             </div>          
             {numberOfChildren.map(childNumber => {
                 return (
-                    <div>
-
-                    <div className=" mt-3" key={childNumber}>
-                        <div className="text-orange">
-                            child {childNumber}
-                        </div>
-                        <FormInput
-                            name={`kidName${childNumber}`}
-                            placeholder="First and Last Name"
-                            errors={errors}
-                            formValidator={register({
-                                required: "Required",
-                            })}
-                        />            
-                        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                            age
-                        </label>
-                        <div className="relative">
-                            <select className="block appearance-none w-full border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-                                <option value={1}>{`greater than 3 years`}</option>
-                                <option value={0}>{`less than 3 years`}</option>
-                            </select>
-                            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                            <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                    <div key={childNumber}>
+                        <div className=" mt-3" key={childNumber}>
+                            <div className="text-orange">
+                                child {childNumber}
                             </div>
+                            <FormInput
+                                name={`kidName${childNumber}`}
+                                placeholder="First and Last Name"
+                                errors={errors}
+                                formValidator={register({
+                                    required: "Required",
+                                })}
+                            />            
+                            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                                age
+                            </label>
+                            <div className="relative">
+                                <select className="block appearance-none w-full border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                                    <option value={1}>{`greater than 3 years`}</option>
+                                    <option value={0}>{`less than 3 years`}</option>
+                                </select>
+                                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                                </div>
+                            </div>
+                            <div className="text-xs">
+                                *children under the age of 3 are free
+                            </div>
+                            <input 
+                                type="checkbox" 
+                                className="mt-2 form-checkbox"
+                            />
+                            <span className="ml-2">I am bringing a gift for him/her</span>
                         </div>
-                        <div className="text-xs">
-                            *children under the age of 3 are free
-                        </div>
-                        <input 
-                            type="checkbox" 
-                            className="mt-2 form-checkbox"
-                        />
-                        <span className="ml-2">I am bringing a gift for him/her</span>
-                    </div>
 
-                    {
-                    childNumber !== numberOfChildren.length &&
-                    <div className="border-b-4 border-orange mt-3"/>
-                    }
+                        {childNumber !== numberOfChildren.length &&
+                            <div className="border-b-4 border-orange mt-3"/>
+                        }
                     </div>
                 )
             })}

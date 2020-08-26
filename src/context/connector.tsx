@@ -2,11 +2,11 @@ import React from 'react'
 import {GlobalStateContext} from './context-provider'
 
 export const connect = (Page) => {
-    return ({}) => (
+    return (props) => (
         <GlobalStateContext.Consumer>
             {value => {
                 return (
-                    <Page state={value}/>
+                    <Page {...props} state={value}/>
                 )
             }}
         </GlobalStateContext.Consumer>
