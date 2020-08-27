@@ -28,7 +28,7 @@ const PublicLayout =  ({children}) => {
                         </div>
                         <div className="hidden min-sm:block min-sm:ml-6">
                         <div className="flex">
-                            <Link href="/home" as="/home"> 
+                            <Link href="/" as="/"> 
                                 <a className={`px-3 py-2 rounded-md text-sm font-medium leading-5 ${router.pathname === '/' ? "text-white bg-gray-900" : "text-gray-300 hover:text-white hover:bg-gray-700"}  focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out`}>
                                     Home
                                 </a>
@@ -43,7 +43,7 @@ const PublicLayout =  ({children}) => {
                                     Party Details
                                 </a>
                             </Link>
-                            <Link href="blog">
+                            <Link href="/blog" as="/blog">
                                 <a className={`ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 ${router.pathname === '/blog' ? "text-white bg-gray-900" : "text-gray-300 hover:text-white hover:bg-gray-700"} focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out`}>
                                     Blog
                                 </a>
@@ -56,8 +56,8 @@ const PublicLayout =  ({children}) => {
 
                 <div className={`${!menuOpen && "hidden min-sm:hidden"}`}>
                     <div className="px-2 pt-2 pb-3">
-                        <Link href="/home" as="/home"> 
-                            <a className={`block px-3 py-2 rounded-md text-sm font-medium leading-5 ${router.pathname === '/home' ? "text-white bg-gray-900" : "text-gray-300 hover:text-white hover:bg-gray-700"}  focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out`}>
+                        <Link href="/" as="/"> 
+                            <a className={`block px-3 py-2 rounded-md text-sm font-medium leading-5 ${router.pathname === '/' ? "text-white bg-gray-900" : "text-gray-300 hover:text-white hover:bg-gray-700"}  focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out`}>
                                 Home
                             </a>
                         </Link>
@@ -71,7 +71,7 @@ const PublicLayout =  ({children}) => {
                                 Party Details
                             </a>
                         </Link>
-                        <Link href="/blog">
+                        <Link href="/blog" as="/blog">
                             <a className={`block px-3 py-2 rounded-md text-sm font-medium leading-5 ${router.pathname === '/blog' ? "text-white bg-gray-900" : "text-gray-300 hover:text-white hover:bg-gray-700"} focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out`}>
                                 Blog
                             </a>

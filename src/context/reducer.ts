@@ -2,8 +2,19 @@ import React from 'react'
 import { ActionType, IAction } from './actions';
 
 export interface IWorkingPartyForm{
-    eventId: number;
-    date: Date;
+    eventId?: number;
+    date?: Date;
+    name?: string;
+    email?: string;
+    cell?: string;
+    adults?: number;
+    kids?: IKids[]
+}
+
+interface IKids{
+    name: string;
+    olderThanThree: string;
+    hasGift: boolean;
 }
 
 export interface InitialState {
@@ -11,7 +22,6 @@ export interface InitialState {
 } 
 
 export const initialState = {
-    count: 0,
     partyForm: null
 }
 
@@ -26,6 +36,7 @@ const reducer : (a: InitialState, b: IAction<any>) => InitialState = (state, act
             return {
                 ...state,
                 partyForm:{
+                    ...state.partyForm,
                     ...action.payload
                 }
             }
