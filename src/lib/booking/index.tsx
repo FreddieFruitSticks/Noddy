@@ -4,10 +4,11 @@ import FormInput from '../../shared/form-input';
 import { emailValidator, cellNumberValidator, numberValidator } from '../../shared/validators';
 import { Context } from '@apollo/client';
 import { partyAction } from '../../context/actions';
-import Router from 'next/router';
+import { useRouter } from 'next/router';
 
 const BookingView = ({state, dispatch}: Context) => {
     const [numberOfChildren, setNumberOfChildren] = useState([1])
+    const router = useRouter()
     
     const {handleSubmit, trigger, register, getValues, errors } = useForm({
         mode: 'onSubmit',
@@ -31,7 +32,7 @@ const BookingView = ({state, dispatch}: Context) => {
         trigger()
         const {email2, ...formVals} = values
         dispatch(partyAction(formVals))
-        Router.push("/booking-review")
+        router.push("/booking-review")
     }
     
     const addChild = ({}) => {
@@ -128,9 +129,14 @@ const BookingView = ({state, dispatch}: Context) => {
                                 age
                             </label>
                             <div className="relative">
-                                <select ref={register} name={`kids[${childNumber-1}].olderThanThree`} className="block appearance-none w-full border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-                                    <option value={1}>{`3 years or older`}</option>
-                                    <option value={0}>{`younger than 3 years`}</option>
+                                <select ref={register} name={`kids[${childNumber-1}].age`} className="block appearance-none w-full border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                                    <option value={0}>{`0`}</option>
+                                    <option value={1}>{`1`}</option>
+                                    <option value={2}>{`2`}</option>
+                                    <option value={3}>{`3`}</option>
+                                    <option value={4}>{`4`}</option>
+                                    <option value={5}>{`5`}</option>
+                                    <option value={6}>{`older than 6`}</option>
                                 </select>
                                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                                 <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>

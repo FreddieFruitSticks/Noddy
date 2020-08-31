@@ -28,6 +28,10 @@ const BookingReview = ({state, dispatch} : Context) => {
         price = price + 75*state?.partyForm?.adults
     }
     
+    const merchantId = "10003395"
+    const merchantUrl = "https://sandbox.payfast.co.za/eng/process"
+     
+    
     return (
         <div className="ml-10 xs:ml-1 sm:ml-5">
             <div className="font-semi underline mb-2">
@@ -47,11 +51,11 @@ const BookingReview = ({state, dispatch} : Context) => {
                 Children Details
             </div> 
             {state?.partyForm?.kids.map((kid, index) => {
-                if (kid.olderThanThree === "1"){
-                    price = price + 75
+                if (kid.age >= 3){
+                    price += 75
                 }
                     return (
-                        <div>  
+                        <div key={kid.name+index}>  
                             <div className="text-orange mt-2 underline">
                                 Child {index+1}  
                             </div>
@@ -69,6 +73,17 @@ const BookingReview = ({state, dispatch} : Context) => {
             <div className="mt-5 text-lg">
                 Total Price: R {price}
             </div>
+            <a 
+                href={`${merchantUrl}?cmd=_paynow&receiver=${merchantId}&item_name=Buy+Tickets&amount=${price}.00&return_url=http%3A%2F%2F127.0.0.1%3A3000%2Fpayment-success&cancel_url=http%3A%2F%2F127.0.0.1%3A3000%2Fpayment-failed`}>
+                    <img 
+                        src="https://www.payfast.co.za/images/buttons/light-small-paynow.png"
+                        width="165"
+                        height="36"
+                        alt="Pay"
+                        title="Pay Now with PayFast"
+                        />
+                </a>
+
         </div>
     )
 }

@@ -11,8 +11,8 @@ export interface IEvent{
 }
 
 interface IWPEvent{
-    databaseId: number;
-    eventFields: {
+    id: number;
+    acf: {
         numberoftickets: number;
         date: Date;
     }
@@ -21,9 +21,9 @@ interface IWPEvent{
 const mapper = (wpEvents: IWPEvent[]) : IEvent[] => {
     return wpEvents.map(wpEvent => {
         return {
-            id: wpEvent?.databaseId,
-            numberOfTickets: wpEvent?.eventFields?.numberoftickets,
-            date: wpEvent?.eventFields?.date
+            id: wpEvent?.id,
+            numberOfTickets: wpEvent?.acf?.numberoftickets,
+            date: wpEvent?.acf?.date
         }
     }) 
 }
@@ -32,7 +32,7 @@ export const getServerSideProps = async (context) => {
     const events = await fetchEvents()
     return {
         props:{
-            events: mapper(events?.data?.events?.nodes)
+            events: mapper(events)
         }
     }
 }

@@ -13,7 +13,7 @@ export interface IWorkingPartyForm{
 
 interface IKids{
     name: string;
-    olderThanThree: string;
+    age: number;
     hasGift: boolean;
 }
 

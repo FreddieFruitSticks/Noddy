@@ -4,7 +4,7 @@ const Posts = ({ data }) => {
   return (
     <div>
       {data?.map(post => {
-        return <div>{post.id}</div>
+        return <div>{post.title.rendered}</div>
       })}
     </div>
     )

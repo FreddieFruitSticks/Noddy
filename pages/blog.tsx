@@ -7,7 +7,7 @@ export const getStaticProps = async (context) => {
         if (fetchedPost){
             return {
                 props: {
-                    posts: fetchedPost?.data?.posts?.nodes
+                    posts: fetchedPost
                 },
             }
         }
