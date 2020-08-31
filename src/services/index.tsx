@@ -1,11 +1,3 @@
-import { ApolloClient, InMemoryCache } from '@apollo/client';
-import { gql } from '@apollo/client';
-
-const client = new ApolloClient({
-  uri: 'http://noddy.m4v.co.za/graphql',
-  cache: new InMemoryCache()
-});
-
 export const fetchPosts : any = async () => {
   const response = await fetch("http://noddy.m4v.co.za/wp-json/wp/v2/posts");
   if (response.ok){
