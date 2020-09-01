@@ -2,9 +2,9 @@ import React, { useState, useEffect, useRef } from 'react'
 import { useForm } from 'react-hook-form';
 import FormInput from '../../shared/form-input';
 import { emailValidator, cellNumberValidator, numberValidator } from '../../shared/validators';
-import { Context } from '@apollo/client';
 import { partyAction } from '../../context/actions';
 import { useRouter } from 'next/router';
+import { Context } from '../../context/context-provider';
 
 const BookingView = ({state, dispatch}: Context) => {
     const [numberOfChildren, setNumberOfChildren] = useState([1])
