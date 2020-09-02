@@ -36,7 +36,7 @@ function create_party_api( WP_REST_Request $request ) {
     
     $a = create_party_db($parameters);
     
-    $response = new WP_REST_Response( count($parameters['kids']) );
+    $response = new WP_REST_Response($parameters);
     
     $response->set_status( 200 );
     
