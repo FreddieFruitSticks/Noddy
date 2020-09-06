@@ -16,7 +16,7 @@ export const fetchEvents : any = async () => {
   throw new Error("fetch events returns "+response.status)
 }
 
-export const createParty : any = async (data: Party) => {
+export const createParty : (a :any) => Promise<number> = async (data: Party) : Promise<number> => {
   const response = await fetch("http://noddy.m4v.co.za/wp-json/party-api/v1/party", {
     method: 'POST',
     mode: 'cors',

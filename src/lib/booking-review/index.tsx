@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Context } from '../../context/context-provider'
 import { createParty } from '../../services'
 
@@ -24,16 +24,21 @@ const mapChildKeyValues = (quantity) => {
 }
 
 const BookingReview = ({state, dispatch} : Context) => {
+    const [isDisabled, setDisabled] = useState(false)
+    
     let price = 0
     if (state?.partyForm?.adults){
         price = price + 75*state?.partyForm?.adults
     }
     
-    const redirect = () => {
+    const redirect = async () => {
+        setDisabled(true)
         if (typeof window !== "undefined"){
             try {
-                const response = createParty(state.partyForm)
-                window.location.replace(`${merchantUrl}?cmd=_paynow&receiver=${merchantId}&item_name=Buy+Tickets&amount=${price}.00&return_url=http%3A%2F%2F127.0.0.1%3A3000%2Fpayment-success&cancel_url=http%3A%2F%2F127.0.0.1%3A3000%2Fpayment-failed`);
+                const response = await createParty(state.partyForm)
+                const partyId = response
+                setDisabled(false)
+                window.location.replace(`${merchantUrl}?cmd=_paynow&receiver=${merchantId}&item_name=Buy+Tickets&amount=${price}.00&return_url=http%3A%2F%2F127.0.0.1%3A3000%2Fpayment-success%3FpartyId=${partyId}&cancel_url=http%3A%2F%2F127.0.0.1%3A3000%2Fpayment-failed`);
             }catch(err){
                 console.log(err)
             }
@@ -74,7 +79,7 @@ const BookingReview = ({state, dispatch} : Context) => {
                                 
                                 return (
                                         <div key={key}>
-                                            {mapChildKeyValues(key)}: {mapChildKeyValues(kid[key])}
+                                            {mapChildKeyValues(key)}: {key === 'age' ? kid[key] : mapChildKeyValues(kid[key])}
                                         </div>
                                     )
                             })}
@@ -84,16 +89,18 @@ const BookingReview = ({state, dispatch} : Context) => {
             <div className="mt-5 text-lg">
                 Total Price: R {price}
             </div>
-            <a 
-                onClick={redirect}>
-                    <img 
-                        src="https://www.payfast.co.za/images/buttons/light-small-paynow.png"
-                        width="165"
-                        height="36"
-                        alt="Pay"
-                        title="Pay Now with PayFast"
-                        />
-                </a>
+            <button
+                onClick={redirect}
+                disabled={isDisabled}
+            >
+                <img 
+                    src="https://www.payfast.co.za/images/buttons/light-small-paynow.png"
+                    width="165"
+                    height="36"
+                    alt="Pay"
+                    title="Pay Now with PayFast"
+                />
+            </button>
 
         </div>
     )

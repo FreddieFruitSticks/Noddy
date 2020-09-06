@@ -1,4 +1,6 @@
-export const getStaticProps = async (context) => {
+import React from 'react'
+
+export const getServerSideProps = async ({query}) => {
     return {
         props:{}
     }
@@ -6,10 +8,9 @@ export const getStaticProps = async (context) => {
 
 function PaymentSuccess() {
     return (
-            <div>
-                Payment Success
-            </div>
-            
+        <div>
+            Payment Success
+        </div> 
     )
 }
 
