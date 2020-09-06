@@ -1,5 +1,6 @@
 import React from 'react'
 import { Context } from '../../context/context-provider'
+import { createParty } from '../../services'
 
 const mapChildKeyValues = (quantity) => {
     switch (quantity){
@@ -28,9 +29,19 @@ const BookingReview = ({state, dispatch} : Context) => {
         price = price + 75*state?.partyForm?.adults
     }
     
+    const redirect = () => {
+        if (typeof window !== "undefined"){
+            try {
+                const response = createParty(state.partyForm)
+                window.location.replace(`${merchantUrl}?cmd=_paynow&receiver=${merchantId}&item_name=Buy+Tickets&amount=${price}.00&return_url=http%3A%2F%2F127.0.0.1%3A3000%2Fpayment-success&cancel_url=http%3A%2F%2F127.0.0.1%3A3000%2Fpayment-failed`);
+            }catch(err){
+                console.log(err)
+            }
+        }
+    }
+    
     const merchantId = "10003395"
     const merchantUrl = "https://sandbox.payfast.co.za/eng/process"
-     
     
     return (
         <div className="ml-10 xs:ml-1 sm:ml-5">
@@ -74,7 +85,7 @@ const BookingReview = ({state, dispatch} : Context) => {
                 Total Price: R {price}
             </div>
             <a 
-                href={`${merchantUrl}?cmd=_paynow&receiver=${merchantId}&item_name=Buy+Tickets&amount=${price}.00&return_url=http%3A%2F%2F127.0.0.1%3A3000%2Fpayment-success&cancel_url=http%3A%2F%2F127.0.0.1%3A3000%2Fpayment-failed`}>
+                onClick={redirect}>
                     <img 
                         src="https://www.payfast.co.za/images/buttons/light-small-paynow.png"
                         width="165"

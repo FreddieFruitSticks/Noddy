@@ -7,6 +7,9 @@
  * Author: Freddie O'Donnell
  * Author URI: http://www.noddy.co.za
  */
+require_once(ABSPATH . 'wp-config.php'); 
+require_once(ABSPATH . 'wp-includes/wp-db.php'); 
+require_once(ABSPATH . 'wp-admin/includes/taxonomy.php'); 
 
 add_action( 'the_content', 'my_thank_you_text' );
 
@@ -32,20 +35,38 @@ function event_api_return_data( WP_REST_Request $request ) {
 }
 
 function create_party_api( WP_REST_Request $request ) {    
-    $parameters = $request->get_json_params();
+  
+  $parameters = $request->get_json_params();
+  if ( empty( $parameters ) ) {
+    return new WP_Error( 'no_parameters', 'Invalid body', array( 'status' => 400 ) );
+  }
+  
+    $newDate = date("l, F j, Y", strtotime($parameters['date']));
     
-    $a = create_party_db($parameters);
+    $catId = 1;
     
-    $response = new WP_REST_Response($parameters);
+    if (!category_exists($newDate)){
+      $catId = wp_insert_category( array(
+        'cat_ID' => 0,
+        'taxonomy' => 'category',
+        'cat_name' => $newDate,
+        'category_description' => 'event date the party is booked for',
+        'category_nicename' => sanitize_title($newDate),
+        'category_parent' => 0
+      ), true );
+    }else {
+      $term = get_term_by('name', $newDate, 'category');
+      $catId=$term->term_id;
+    }
+    
+    $a = create_party_db($parameters, $catId);
+    
+    $response = new WP_REST_Response($a);
     
     $response->set_status( 200 );
     
-    if ( empty( $parameters ) ) {
-        return new WP_Error( 'no_parameters', 'Invalid body', array( 'status' => 400 ) );
-    }
-    
     return $response;
-}
+  }
 
 add_action( 'rest_api_init', function () {
     register_rest_route( 'event-api/v1', '/event', array(
@@ -126,7 +147,7 @@ add_action( 'rest_api_init', function () {
     return $event_id;
   };
   
-  function create_party_db($parameters) {
+  function create_party_db($parameters, $catId) {
     global $wpdb;
     
     $event_id = wp_insert_post( array(
@@ -135,6 +156,7 @@ add_action( 'rest_api_init', function () {
         'post_status'   => 'draft',
         'comment_status'   => 'closed',
         'ping_status'   => 'closed',
+        'post_category' => array($catId)
       ) );
       
       $field_name = $wpdb->get_var( $wpdb->prepare( "SELECT post_name FROM $wpdb->posts WHERE post_excerpt = %s", 'party_name'));

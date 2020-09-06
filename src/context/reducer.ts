@@ -1,7 +1,7 @@
 import React from 'react'
 import { ActionType, IAction } from './actions';
 
-export interface IWorkingPartyForm{
+export interface Party{
     eventId?: number;
     date?: Date;
     name?: string;
@@ -18,7 +18,7 @@ interface IKids{
 }
 
 export interface InitialState {
-    partyForm: IWorkingPartyForm
+    partyForm: Party
 } 
 
 export const initialState = {

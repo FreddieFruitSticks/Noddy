@@ -1,4 +1,4 @@
-import { IWorkingPartyForm } from "./reducer"
+import { Party } from "./reducer"
 
 export enum ActionType {
     PARTY_FORM="PARTY_FORM"
@@ -9,7 +9,7 @@ export interface IAction<T> {
     payload: T
 }
 
-export const partyAction = (payload: IWorkingPartyForm) : IAction<IWorkingPartyForm> => {
+export const partyAction = (payload: Party) : IAction<Party> => {
     return {
         type: ActionType.PARTY_FORM,
         payload: payload
