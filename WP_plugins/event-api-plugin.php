@@ -17,11 +17,10 @@ function my_thank_you_text ( $content ) {
     return $content .= '<p>Thank you for reading!</p>';
 }
 
-function event_api_return_data( WP_REST_Request $request ) {    
+function confirm_party_payment_api( WP_REST_Request $request ) {    
     $parameters = $request->get_json_params();
- 
     
-    $a = create_event_db();
+    $a = confirm_party_payment_db($parameters);
     
     $response = new WP_REST_Response( $a );
     
@@ -69,13 +68,11 @@ function create_party_api( WP_REST_Request $request ) {
   }
 
 add_action( 'rest_api_init', function () {
-    register_rest_route( 'event-api/v1', '/event', array(
-      'methods' => 'POST',
-      'callback' => 'event_api_return_data',
+    register_rest_route( 'party-api/v1', '/party', array(
+      'methods' => 'PUT',
+      'callback' => 'confirm_party_payment_api',
       'permission_callback' => function () {
-        $user = wp_get_current_user();
-        $allowed_roles = array('editor', 'administrator', 'author');
-        return array_intersect($allowed_roles, $user->roles );
+        return current_user_can( 'edit_posts' );
       }
     ) );
   } );
@@ -92,65 +89,24 @@ add_action( 'rest_api_init', function () {
     ) );
   } );
   
-  
-  function create_event_db() {
+  function confirm_party_payment_db($parameters){
     global $wpdb;
     
-    $event_id = wp_insert_post( array(
-        'post_title'    => 'test_event_4',
-        'post_type'  => 'event',
-        'post_status'   => 'publish',
-        'comment_status'   => 'closed',
-        'ping_status'   => 'closed',
-      ) );
-      
-      $field_id1 = $wpdb->get_var( $wpdb->prepare( "SELECT post_name FROM $wpdb->posts WHERE post_excerpt = %s", 'date'));
-      $field_id2 = $wpdb->get_var( $wpdb->prepare( "SELECT post_name FROM $wpdb->posts WHERE post_excerpt = %s", 'numberoftickets'));
-      
-      $wpdb->insert(
-        $wpdb->postmeta,
-        array(
-            'post_id' => $event_id,
-            'meta_key' => 'date',
-            'meta_value' => 20201126
-        ),
-        array('%d','%s','%d'));      
-        
-        $wpdb->insert(
-        $wpdb->postmeta,
-        array(
-            'post_id' => $event_id,
-            'meta_key' => '_date',
-            'meta_value' => $field_id1
-        ),
-        array('%d','%s','%s'));        
-        
-        
-        $wpdb->insert(
-        $wpdb->postmeta,
-        array(
-            'post_id' => $event_id,
-            'meta_key' => 'numberoftickets',
-            'meta_value' => 200
-        ),
-        array('%d','%s','%d'));        
-        
-        $wpdb->insert(
-        $wpdb->postmeta,
-        array(
-            'post_id' => $event_id,
-            'meta_key' => '_numberoftickets',
-            'meta_value' => $field_id2
-        ),
-        array('%d','%s','%s'));
-        
-    return $event_id;
-  };
+    return $wpdb->update(
+      $wpdb->postmeta,
+      array(
+          'meta_value' => true
+      ),
+      array(
+        'meta_key' => 'payment_confirmed',
+        'post_id' => $parameters['partyId']        
+      ));   
+  }
   
   function create_party_db($parameters, $catId) {
     global $wpdb;
     
-    $event_id = wp_insert_post( array(
+    $party_id = wp_insert_post( array(
         'post_title'    => $parameters['name'],
         'post_type'  => 'party',
         'post_status'   => 'draft',
@@ -165,16 +121,35 @@ add_action( 'rest_api_init', function () {
       $field_email = $wpdb->get_var( $wpdb->prepare( "SELECT post_name FROM $wpdb->posts WHERE post_excerpt = %s", 'email'));
       $field_eventid = $wpdb->get_var( $wpdb->prepare( "SELECT post_name FROM $wpdb->posts WHERE post_excerpt = %s", 'eventid'));
       $field_cell = $wpdb->get_var( $wpdb->prepare( "SELECT post_name FROM $wpdb->posts WHERE post_excerpt = %s", 'cell_number'));
+      $field_confirmed = $wpdb->get_var( $wpdb->prepare( "SELECT post_name FROM $wpdb->posts WHERE post_excerpt = %s", 'payment_confirmed'));
       
       $field_children = $wpdb->get_var( $wpdb->prepare( "SELECT post_name FROM $wpdb->posts WHERE post_excerpt = %s", 'children'));
       $field_children_age = $wpdb->get_var( $wpdb->prepare( "SELECT post_name FROM $wpdb->posts WHERE post_excerpt = %s", 'child_age'));
       $field_children_name = $wpdb->get_var( $wpdb->prepare( "SELECT post_name FROM $wpdb->posts WHERE post_excerpt = %s", 'child_name'));
       $field_children_has_gift = $wpdb->get_var( $wpdb->prepare( "SELECT post_name FROM $wpdb->posts WHERE post_excerpt = %s", 'has_gift'));
-            
+    
     $wpdb->insert(
       $wpdb->postmeta,
       array(
-          'post_id' => $event_id,
+          'post_id' => $party_id,
+          'meta_key' => 'payment_confirmed',
+          'meta_value' => false
+      ),
+      array('%d','%s','%s'));      
+        
+    $wpdb->insert(
+      $wpdb->postmeta,
+      array(
+          'post_id' => $party_id,
+          'meta_key' => '_payment_confirmed',
+          'meta_value' => $field_confirmed
+      ),
+      array('%d','%s','%s'));        
+        
+    $wpdb->insert(
+      $wpdb->postmeta,
+      array(
+          'post_id' => $party_id,
           'meta_key' => 'party_name',
           'meta_value' => $parameters['name']
       ),
@@ -183,7 +158,7 @@ add_action( 'rest_api_init', function () {
     $wpdb->insert(
       $wpdb->postmeta,
       array(
-          'post_id' => $event_id,
+          'post_id' => $party_id,
           'meta_key' => '_party_name',
           'meta_value' => $field_name
       ),
@@ -193,7 +168,7 @@ add_action( 'rest_api_init', function () {
     $wpdb->insert(
       $wpdb->postmeta,
       array(
-          'post_id' => $event_id,
+          'post_id' => $party_id,
           'meta_key' => 'number_of_adults',
           'meta_value' => $parameters['adults']
       ),
@@ -202,7 +177,7 @@ add_action( 'rest_api_init', function () {
     $wpdb->insert(
       $wpdb->postmeta,
       array(
-          'post_id' => $event_id,
+          'post_id' => $party_id,
           'meta_key' => '_number_of_adults',
           'meta_value' => $field_adults
       ),
@@ -211,7 +186,7 @@ add_action( 'rest_api_init', function () {
     $wpdb->insert(
       $wpdb->postmeta,
       array(
-          'post_id' => $event_id,
+          'post_id' => $party_id,
           'meta_key' => 'event_date',
           'meta_value' => str_replace('-','',$parameters['date'])
       ),
@@ -220,7 +195,7 @@ add_action( 'rest_api_init', function () {
     $wpdb->insert(
       $wpdb->postmeta,
       array(
-          'post_id' => $event_id,
+          'post_id' => $party_id,
           'meta_key' => '_event_date',
           'meta_value' => $field_date
       ),
@@ -229,7 +204,7 @@ add_action( 'rest_api_init', function () {
     $wpdb->insert(
       $wpdb->postmeta,
       array(
-          'post_id' => $event_id,
+          'post_id' => $party_id,
           'meta_key' => 'email',
           'meta_value' => $parameters['email']
       ),
@@ -238,7 +213,7 @@ add_action( 'rest_api_init', function () {
     $wpdb->insert(
       $wpdb->postmeta,
       array(
-          'post_id' => $event_id,
+          'post_id' => $party_id,
           'meta_key' => '_email',
           'meta_value' => $field_email
       ),
@@ -247,7 +222,7 @@ add_action( 'rest_api_init', function () {
     $wpdb->insert(
       $wpdb->postmeta,
       array(
-          'post_id' => $event_id,
+          'post_id' => $party_id,
           'meta_key' => 'eventid',
           'meta_value' => $parameters['eventId']
       ),
@@ -256,7 +231,7 @@ add_action( 'rest_api_init', function () {
     $wpdb->insert(
       $wpdb->postmeta,
       array(
-          'post_id' => $event_id,
+          'post_id' => $party_id,
           'meta_key' => '_eventid',
           'meta_value' => $field_eventid
       ),
@@ -265,7 +240,7 @@ add_action( 'rest_api_init', function () {
     $wpdb->insert(
       $wpdb->postmeta,
       array(
-          'post_id' => $event_id,
+          'post_id' => $party_id,
           'meta_key' => 'cell_number',
           'meta_value' => $parameters['cell']
       ),
@@ -274,7 +249,7 @@ add_action( 'rest_api_init', function () {
     $wpdb->insert(
       $wpdb->postmeta,
       array(
-          'post_id' => $event_id,
+          'post_id' => $party_id,
           'meta_key' => '_cell_number',
           'meta_value' => $field_cell
       ),
@@ -283,7 +258,7 @@ add_action( 'rest_api_init', function () {
     $wpdb->insert(
       $wpdb->postmeta,
       array(
-          'post_id' => $event_id,
+          'post_id' => $party_id,
           'meta_key' => 'children',
           'meta_value' => count($parameters['kids'])
       ),
@@ -292,7 +267,7 @@ add_action( 'rest_api_init', function () {
     $wpdb->insert(
       $wpdb->postmeta,
       array(
-          'post_id' => $event_id,
+          'post_id' => $party_id,
           'meta_key' => '_children',
           'meta_value' => $field_children
       ),
@@ -304,7 +279,7 @@ add_action( 'rest_api_init', function () {
       $wpdb->insert(
         $wpdb->postmeta,
         array(
-            'post_id' => $event_id,
+            'post_id' => $party_id,
             'meta_key' => "children_{$count}_has_gift",
             'meta_value' => $parameters['kids'][$count]['hasGift']
         ),
@@ -313,7 +288,7 @@ add_action( 'rest_api_init', function () {
       $wpdb->insert(
         $wpdb->postmeta,
         array(
-            'post_id' => $event_id,
+            'post_id' => $party_id,
             'meta_key' => "_children_{$count}_has_gift",
             'meta_value' => $field_children_has_gift
         ),
@@ -322,7 +297,7 @@ add_action( 'rest_api_init', function () {
       $wpdb->insert(
         $wpdb->postmeta,
         array(
-            'post_id' => $event_id,
+            'post_id' => $party_id,
             'meta_key' => "children_{$count}_child_name",
             'meta_value' => $parameters['kids'][$count]['name']
         ),
@@ -331,7 +306,7 @@ add_action( 'rest_api_init', function () {
       $wpdb->insert(
         $wpdb->postmeta,
         array(
-            'post_id' => $event_id,
+            'post_id' => $party_id,
             'meta_key' => "_children_{$count}_child_name",
             'meta_value' => $field_children_name
         ),
@@ -340,7 +315,7 @@ add_action( 'rest_api_init', function () {
         $wpdb->insert(
           $wpdb->postmeta,
           array(
-              'post_id' => $event_id,
+              'post_id' => $party_id,
               'meta_key' => "children_{$count}_child_age",
               'meta_value' => $parameters['kids'][$count]['age']
           ),
@@ -349,14 +324,14 @@ add_action( 'rest_api_init', function () {
         $wpdb->insert(
           $wpdb->postmeta,
           array(
-              'post_id' => $event_id,
+              'post_id' => $party_id,
               'meta_key' => "_children_{$count}_child_age",
               'meta_value' => $field_children_age
           ),
           array('%d','%s','%s'));  
     }
     
-    return $event_id;
+    return $party_id;
   };
   
   add_filter( 'acf/rest_api/item_permissions/edit', function( $permission ) {

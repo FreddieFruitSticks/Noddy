@@ -34,3 +34,24 @@ export const createParty : (a :any) => Promise<number> = async (data: Party) : P
   
   throw new Error("create party returns "+response.status)
 }
+
+export const confirmPayment : (a :any) => Promise<number> = async (data: {partyId: number}) : Promise<number> => {
+  console.log('!!!!!!!!!!!!!!!!!!')
+  console.log(data)
+  const response = await fetch("http://noddy.m4v.co.za/wp-json/party-api/v1/party", {
+    method: 'PUT',
+    mode: 'cors',
+    credentials: 'same-origin',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    referrerPolicy: 'no-referrer',
+    body: JSON.stringify(data) 
+  })
+  
+  if (response.ok){
+    return await response.json()
+  }
+  
+  throw new Error("confirm party payment "+response.status)
+}
