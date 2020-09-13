@@ -2,8 +2,7 @@ import React from 'react'
 import { confirmPayment } from '../src/services'
 
 export const getServerSideProps = async ({query}) => {
-    const response = await confirmPayment({partyId: query.partyId})
-    console.log(response)
+    const response = await confirmPayment({partyId: query.partyId, eventId: query.eventId, tickets: query.tickets})
     
     return {
         props:{}

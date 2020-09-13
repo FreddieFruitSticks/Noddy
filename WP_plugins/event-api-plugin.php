@@ -9,7 +9,7 @@
  */
 require_once(ABSPATH . 'wp-config.php'); 
 require_once(ABSPATH . 'wp-includes/wp-db.php'); 
-require_once(ABSPATH . 'wp-admin/includes/taxonomy.php'); 
+require_once(ABSPATH . 'wp-admin/includes/taxonomy.php');
 
 add_action( 'the_content', 'my_thank_you_text' );
 
@@ -21,8 +21,9 @@ function confirm_party_payment_api( WP_REST_Request $request ) {
     $parameters = $request->get_json_params();
     
     $a = confirm_party_payment_db($parameters);
+    $b = update_event_ticket_number($parameters['eventId'], $parameters['tickets']);
     
-    $response = new WP_REST_Response( $a );
+    $response = new WP_REST_Response( $b );
     
     $response->set_status( 200 );
     
@@ -68,11 +69,13 @@ function create_party_api( WP_REST_Request $request ) {
   }
 
 add_action( 'rest_api_init', function () {
-    register_rest_route( 'party-api/v1', '/party', array(
+    register_rest_route('party-api/v1', '/party', array(
       'methods' => 'PUT',
       'callback' => 'confirm_party_payment_api',
       'permission_callback' => function () {
-        return current_user_can( 'edit_posts' );
+        $user = wp_get_current_user();
+        $allowed_roles = array('editor', 'administrator', 'author');
+        return array_intersect($allowed_roles, $user->roles );
       }
     ) );
   } );
@@ -101,6 +104,26 @@ add_action( 'rest_api_init', function () {
         'meta_key' => 'payment_confirmed',
         'post_id' => $parameters['partyId']        
       ));   
+  }
+  
+  function update_event_ticket_number($event_id, $numberOfTickets){
+    global $wpdb;
+    
+    $numberOfTicketsRemaining = get_post_meta( $event_id, 'numberoftickets', true );
+    $n = (int)$numberOfTicketsRemaining;
+    $n2 = (int)$numberOfTickets;
+    
+    $wpdb->update(
+      $wpdb->postmeta,
+      array(
+          'meta_value' => ($n - $n2)
+      ),
+      array(
+        'meta_key' => 'numberoftickets',
+        'post_id' => $event_id
+      ));
+      
+      return $numberOfTickets;
   }
   
   function create_party_db($parameters, $catId) {
