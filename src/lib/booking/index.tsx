@@ -14,12 +14,7 @@ const BookingView = ({state, dispatch}: Context) => {
         mode: 'onSubmit',
         reValidateMode: 'onChange',
         defaultValues: {
-            adults: "1",
-            cell: "0825052552",
-            email: "freddieodonnell@gmail.com",
-            email2: "freddieodonnell@gmail.com",
-            name: "Freddie",
-            kids:[{name: "Jonny"}]
+            ...state.partyForm
         },
         resolver: undefined,
         context: undefined,

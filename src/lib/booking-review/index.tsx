@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Context } from '../../context/context-provider'
 import { createParty } from '../../services'
-import { stat } from 'fs'
 
 const mapChildKeyValues = (quantity) => {
     switch (quantity){
@@ -73,17 +72,18 @@ const BookingReview = ({state, dispatch} : Context) => {
                     price += 75
                 }
                     return (
-                        <div key={kid.name+index}>  
+                        <div key={kid.name+index}>
                             <div className="text-orange mt-2 underline">
-                                Child {index+1}  
+                                {kid.name}
                             </div>
                             {Object.keys(kid).map(key => {
-                                
-                                return (
-                                        <div key={key}>
-                                            {mapChildKeyValues(key)}: {key === 'age' ? kid[key] : mapChildKeyValues(kid[key])}
-                                        </div>
-                                    )
+                                if (key != 'name'){
+                                    return (
+                                            <div key={key}>
+                                                {mapChildKeyValues(key)}: {key === 'age' ? kid[key] : mapChildKeyValues(kid[key])}
+                                            </div>
+                                        )
+                                }
                             })}
                     </div>
                 )})
