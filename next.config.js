@@ -7,5 +7,7 @@ module.exports = withFonts({
   },
   env: {
     PAYMENT_URL: process.env.PAYMENT_URL,
+    MERCHANT_URL: process.env.MERCHANT_URL,
+    MERCHANT_ID: process.env.MERCHANT_ID,
   },
 }); 
