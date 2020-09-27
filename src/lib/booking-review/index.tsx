@@ -42,8 +42,6 @@ const BookingReview = ({state, dispatch} : Context) => {
                 const partyId = response
                 const numberOfTicket = +state?.partyForm?.adults + +state?.partyForm?.kids?.length
                 setDisabled(false)
-                console.log(merchantUrl)
-                console.log(merchantId)
                 window.location.replace(`${merchantUrl}?cmd=_paynow&receiver=${merchantId}&item_name=Buy+Tickets&amount=${price}.00&return_url=${process.env.PAYMENT_URL}%2Fpayment-success%3FpartyId=${partyId}%26eventId=${state.partyForm.eventId}%26tickets=${numberOfTicket}&cancel_url=http%3A%2F%2F127.0.0.1%3A3000%2Fpayment-failed`);
             }catch(err){
                 console.log(err)

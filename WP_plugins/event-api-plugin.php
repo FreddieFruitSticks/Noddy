@@ -73,9 +73,7 @@ add_action( 'rest_api_init', function () {
       'methods' => 'PUT',
       'callback' => 'confirm_party_payment_api',
       'permission_callback' => function () {
-        $user = wp_get_current_user();
-        $allowed_roles = array('editor', 'administrator', 'author');
-        return array_intersect($allowed_roles, $user->roles );
+        return current_user_can("edit_posts");
       }
     ) );
   } );
@@ -85,9 +83,7 @@ add_action( 'rest_api_init', function () {
       'methods' => 'POST',
       'callback' => 'create_party_api',
       'permission_callback' => function () {
-        $user = wp_get_current_user();
-        $allowed_roles = array('editor', 'administrator', 'author');
-        return array_intersect($allowed_roles, $user->roles );
+        return true;
       }
     ) );
   } );
