@@ -1,3 +1,5 @@
+import '../styles/styles.css'
+
 export const getStaticProps = async (context) => {
     return {
         props:{}

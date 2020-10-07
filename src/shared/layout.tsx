@@ -10,7 +10,7 @@ const PublicLayout =  ({children}) => {
         <div className="m-1 h-full bg-background">
             <nav className="bg-gray-800 mb-5">
                 <div className="max-w-7xl mx-auto px-2 min-sm:px-6 min-lg:px-8">
-                    <div className="relative flex items-center justify-between h-16">
+                    <div className="relative flex items-center justify-between h-20">
                     <div className="absolute inset-y-0 left-0 flex items-center min-sm:hidden">
                         <button className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white transition duration-150 ease-in-out" aria-label="Main menu" aria-expanded="false">
                         <svg onClick={() => setMenuOpen(!menuOpen)} className="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -23,8 +23,8 @@ const PublicLayout =  ({children}) => {
                     </div>
                     <div className="flex-1 flex items-center justify-center min-sm:items-stretch min-sm:justify-start">
                         <div className="flex-shrink-0">
-                        <img className="block min-lg:hidden h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-on-dark.svg" alt="Workflow logo"/>
-                        <img className="hidden min-lg:block h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-logo-on-dark.svg" alt="Workflow logo"/>
+                        <img className="block min-lg:hidden h-20 w-auto" src="/img/noddypartylogo.png" alt="Noddy logo"/>
+                        <img className="hidden min-lg:block h-20 w-auto" src="/img/noddypartylogo.png" alt="Noddy logo"/>
                         </div>
                         <div className="hidden min-sm:block min-sm:ml-6">
                         <div className="flex">
