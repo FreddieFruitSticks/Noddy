@@ -14,14 +14,13 @@ const emailParents = async () => {
   })
   
   if (response.ok){
-    console.log("!!!!!!!!!!!!!!!!!!!!!!!!")
     return await response.json()
   }
   
   throw new Error("confirm party payment "+response.status)
 }
 
-const LikeButton = () => {
+const SendEmails = () => {
   const [liked, setLiked] = useState(false)
   
   if (liked) {
@@ -35,4 +34,4 @@ const LikeButton = () => {
 }
 
 const domContainer = document.querySelector('#fetch_emails_button_container');
-domContainer ? ReactDOM.render(React.createElement(LikeButton), domContainer) : false;
+domContainer ? ReactDOM.render(React.createElement(SendEmails), domContainer) : false;
