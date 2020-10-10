@@ -9,7 +9,7 @@ const BookingCalender = ({event, dispatch}: {event: IEvent, dispatch: React.Disp
     const router = useRouter()
     const today = new Date()
     const eventDate = new Date(event.date)
-    const eventPassed = today > eventDate
+    const disabledBooking = today > eventDate || event.numberOfTickets <= 0
     
     const onClick = () => {
         dispatch(partyAction({date: event.date, eventId: event.id}))
@@ -18,12 +18,12 @@ const BookingCalender = ({event, dispatch}: {event: IEvent, dispatch: React.Disp
     
     return (
         <>
-            <div onClick={!eventPassed ? onClick : null} className={`${eventPassed && "opacity-75"} flex mb-2`}>
+            <div onClick={!disabledBooking ? onClick : null} className={`${disabledBooking && "opacity-75"} flex mb-2`}>
                 <div className="h-24 w-32">
                     <BookingDate date={eventDate}/>
                 </div>
                 <div className="w-1/2 bg-gray-500 h-24">
-                    <BookingButton disabled={eventPassed} numberOfTickets={event.numberOfTickets}/>
+                    <BookingButton disabled={disabledBooking} numberOfTickets={event.numberOfTickets}/>
                 </div>
             </div>
         </>

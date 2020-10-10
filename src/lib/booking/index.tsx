@@ -5,21 +5,18 @@ import { emailValidator, cellNumberValidator, numberValidator } from '../../shar
 import { partyAction } from '../../context/actions';
 import { useRouter } from 'next/router';
 import { Context } from '../../context/context-provider';
+import Recaptcha from 'react-recaptcha';
 
 const BookingView = ({state, dispatch}: Context) => {
     const [numberOfChildren, setNumberOfChildren] = useState([1])
+    const [formVerified, setFormVerified] = useState(false)
     const router = useRouter()
     
     const {handleSubmit, trigger, register, getValues, errors } = useForm({
         mode: 'onSubmit',
         reValidateMode: 'onChange',
         defaultValues: {
-            adults: "1",
-            cell: "0825052552",
-            email: "freddieodonnell@gmail.com",
-            email2: "freddieodonnell@gmail.com",
-            name: "Freddie",
-            kids:[{name: "Jonny"}]
+            ...state.partyForm
         },
         resolver: undefined,
         context: undefined,
@@ -160,13 +157,25 @@ const BookingView = ({state, dispatch}: Context) => {
                     </div>
                 )
             })}
-
+            <Recaptcha
+                sitekey="6LfAnswZAAAAAO2_TIhAUpsOCr1w96GDr7MwLjP9"
+                render="explicit"
+                verifyCallback={() => {
+                    setFormVerified(true)
+                }}
+                onloadCallback={()=>{}}
+            />
             
             <div className="w-full flex items-center justify-start ">
-                <button className="w-3/12 sm:w-5/12 min-w-md max-w-md bg-orange mt-5 text-white py-3 px-2 font-bold rounded"  onClick={addChild}>Add Child</button>
+                <button className="w-3/12 sm:w-5/12 min-w-md max-w-md bg-orange mt-5 text-white py-3 px-2 font-bold rounded" onClick={addChild}>Add Child</button>
             </div>
             <div className="w-full flex items-center justify-center min-xl:justify-start">
-                <button className="w-6/12 max-w-xs bg-blue-500 mt-5 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded" type="submit">Submit</button>            
+                <button 
+                    disabled={!formVerified} 
+                    className={`w-6/12 ${!formVerified && 'opacity-50'} max-w-xs bg-blue-500 mt-5 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded`} 
+                    type="submit">
+                        Submit
+                </button>            
             </div>
         </form>
         </div>

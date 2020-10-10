@@ -45,8 +45,8 @@ export interface IHomePage extends Context, IHome{}
 
 const HomePage = (props: IHomePage) => {
     return (
-            <Home {...props}/>    
-        )
+        <Home {...props}/> 
+    )
 }
 
 export default connect(HomePage)

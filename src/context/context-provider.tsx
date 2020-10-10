@@ -1,5 +1,6 @@
 import React, { useReducer } from 'react'
 import reducer, { InitialState, initialState } from './reducer'
+import { partyAction } from './actions'
 
 export interface Context {
     state: InitialState,
@@ -11,9 +12,17 @@ export const GlobalStateContext = React.createContext<any>({
 })
 
 const NoddyStateProvider = ({children}) => {
-    const [state, dispatch] = useReducer(reducer, initialState)
-    console.log("-------------state after-----------------")
-    console.log(state)
+    let localState = {}
+    if (typeof window !== 'undefined') {
+        const storage = window.localStorage.getItem("noddyState");
+        if (storage) {
+            localState = JSON.parse(storage);
+        }
+    }
+    
+    let [state, dispatch] = useReducer(reducer, {...initialState, ...localState})
+    // console.log("-------------state after-----------------")
+    // console.log(state)
     
     return (
         <GlobalStateContext.Provider value={{state, dispatch}}>

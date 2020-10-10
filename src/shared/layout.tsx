@@ -23,8 +23,8 @@ const PublicLayout =  ({children}) => {
                     </div>
                     <div className="flex-1 flex items-center justify-center min-sm:items-stretch min-sm:justify-start">
                         <div className="flex-shrink-0">
-                        <img className="block min-lg:hidden h-20 w-auto" src="/img/noddypartylogo2.png" alt="Noddy logo"/>
-                        <img className="hidden min-lg:block h-20 w-auto" src="/img/noddypartylogo2.png" alt="Noddy logo"/>
+                        <img className="block min-lg:hidden h-20 w-auto" src="/img/noddypartylogo.png" alt="Noddy logo"/>
+                        <img className="hidden min-lg:block h-20 w-auto" src="/img/noddypartylogo.png" alt="Noddy logo"/>
                         </div>
                         <div className="hidden min-sm:block min-sm:ml-6">
                         <div className="flex">

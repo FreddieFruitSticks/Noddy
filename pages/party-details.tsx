@@ -9,10 +9,9 @@ export const getStaticProps = async (context) => {
 
 function PartyDetails({posts}) {
     return (
-            <div>
-                Party Details
-            </div>
-            
+        <div>
+            Party Details
+        </div>
     )
 }
 

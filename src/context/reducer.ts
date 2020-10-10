@@ -1,7 +1,7 @@
 import React from 'react'
 import { ActionType, IAction } from './actions';
 
-export interface IWorkingPartyForm{
+export interface Party{
     eventId?: number;
     date?: Date;
     name?: string;
@@ -18,7 +18,7 @@ interface IKids{
 }
 
 export interface InitialState {
-    partyForm: IWorkingPartyForm
+    partyForm: Party
 } 
 
 export const initialState = {
@@ -27,19 +27,25 @@ export const initialState = {
 
 
 const reducer : (a: InitialState, b: IAction<any>) => InitialState = (state, action) => {
-    console.log("-------------state before-----------------")
-    console.log(state)
-    console.log("----------------action--------------------")
-    console.log(action)
+    // console.log("-------------state before-----------------")
+    // console.log(state)
+    // console.log("----------------action--------------------")
+    // console.log(action)
+
     switch (action.type) {
         case ActionType.PARTY_FORM:
-            return {
+            const newState = {
                 ...state,
-                partyForm:{
+                partyForm: {
                     ...state.partyForm,
                     ...action.payload
                 }
             }
+            if (typeof window !== 'undefined'){
+                window.localStorage.setItem("noddyState", JSON.stringify(newState))
+            }
+            
+            return newState
         
       default:
         return state;
