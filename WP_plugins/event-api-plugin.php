@@ -11,12 +11,6 @@ require_once(ABSPATH . 'wp-config.php');
 require_once(ABSPATH . 'wp-includes/wp-db.php'); 
 require_once(ABSPATH . 'wp-admin/includes/taxonomy.php');
 
-add_action( 'the_content', 'my_thank_you_text' );
-
-function my_thank_you_text ( $content ) {
-    return $content .= '<p>Thank you for reading!</p>';
-}
-
 function confirm_party_payment_api( WP_REST_Request $request ) {    
     $parameters = $request->get_json_params();
     

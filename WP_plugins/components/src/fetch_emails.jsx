@@ -4,17 +4,19 @@ import ReactDOM from "react-dom";
 const emailParents = async () => {
   const response = await fetch("https://noddy.m4v.co.za/wp-json/email-api/v1/email", {
     method: 'PUT',
-    mode: 'cors',
-    credentials: 'same-origin',
     headers: {
-      'Content-Type': 'application/json',
-      'Authorization': "Basic ODEyeTNhczk4ZGE3ZDg3ODEzOm16NlkgR1lEOCBVM1hrIGR2TDYgSmhteSBjcFBY"
+      // 'Content-Type': 'application/json',
+      'Authorization': "Basic RnJlZGRpZUZydWl0c3RpY2tzOjNrWjcgRzljYiBFaFdPIGRwaWIgS2hkWSBkRGJO"
     },
-    referrerPolicy: 'no-referrer',
+    credentials: 'omit'
+    // referrerPolicy: 'no-referrer',
   })
   
   if (response.ok){
-    return await response.json()
+    const newLocal = await response.json();
+    console.log("!!!!!!!!!!!!!!!!!!!")
+    console.log(newLocal)
+    return newLocal
   }
   
   throw new Error("confirm party payment "+response.status)
