@@ -14,16 +14,23 @@ require_once(ABSPATH . 'wp-admin/includes/taxonomy.php');
 function confirm_party_payment_api( WP_REST_Request $request ) {    
     $parameters = $request->get_json_params();
     
-    $a = confirm_party_payment_db($parameters);
-    $b = update_event_ticket_number($parameters['eventId'], $parameters['tickets']);
-    
-    $response = new WP_REST_Response( $b );
+    $response = new WP_REST_Response( 0 );
     
     $response->set_status( 200 );
     
     if ( empty( $parameters ) ) {
         return new WP_Error( 'no_parameters', 'Invalid body', array( 'status' => 400 ) );
     }
+    
+    $confirmed = get_post_meta( $parameters['partyId'], 'payment_confirmed', true );
+    if ($confirmed){
+      return $response;
+    }
+    
+    $a = confirm_party_payment_db($parameters);
+    $b = update_event_ticket_number($parameters['eventId'], $parameters['tickets']);
+    
+    $response = new WP_REST_Response( $b );
     
     return $response;
 }

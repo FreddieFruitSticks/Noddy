@@ -26,8 +26,7 @@ function send_smtp_email( $phpmailer ) {
 }
 
 // define the wp_mail_failed callback
-function action_wp_mail_failed($wp_error)
-{
+function action_wp_mail_failed($wp_error){
     return error_log(print_r($wp_error, true));
 }
  
@@ -92,7 +91,7 @@ function email_parents( WP_REST_Request $request ) {
     $my_column = $row->meta_value;
   }
   // trigger_error("Cannot divide by zero", E_USER_ERROR);
-  error_log("!!!!!!!!!!!!!!!!!!!!!!!!");
+  // error_log("!!!!!!!!!!!!!!!!!!!!!!!!");
   
   $sent = wp_mail( 'freddieodonnell@gmail.com', 'Test', 'Test Message', '', '' );
   $converted_res = $sent ? 'true' : 'false';
