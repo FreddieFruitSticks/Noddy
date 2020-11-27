@@ -15,3 +15,13 @@ Email parents plugin requires webpack build:
 To upload files to WP server:
 
 `sudo gcloud compute scp --recurse ../email-parents noddy-dev:/var/www/html/wordpress/wp-content/plugins/ --zone us-central1-a`
+
+
+email provider:
+https://app.sendgrid.com/settings/sender_auth
+
+Cloud service provider:
+Google compute engine (freddiescomputekingdom)
+
+stack:
+Wordpress + nextjs + reactjs + nginx
