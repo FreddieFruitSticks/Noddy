@@ -3,7 +3,7 @@ import { Party } from "../context/reducer";
 export const fetchPosts : any = async () => {
   const response = await fetch("https://noddy.m4v.co.za/wp-json/wp/v2/posts");
   if (response.ok){
-    return await response.json()
+    return response.json()
   }
   throw new Error("fetch posts returns "+response.status)
 }
@@ -11,7 +11,7 @@ export const fetchPosts : any = async () => {
 export const fetchEvents : any = async () => {
   const response = await fetch("https://noddy.m4v.co.za/wp-json/acf/v3/event");
   if (response.ok){
-    return await response.json()
+    return response.json()
   }
   throw new Error("fetch events returns "+response.status)
 }

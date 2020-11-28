@@ -23,8 +23,8 @@ const PublicLayout =  ({children}) => {
                     </div>
                     <div className="flex-1 flex items-center justify-center min-sm:items-stretch min-sm:justify-start">
                         <div className="flex-shrink-0">
-                        <img className="block min-lg:hidden h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-on-dark.svg" alt="Workflow logo"/>
-                        <img className="hidden min-lg:block h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-logo-on-dark.svg" alt="Workflow logo"/>
+                        {/* <img className="block min-lg:hidden h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-on-dark.svg" alt="Workflow logo"/> */}
+                        {/* <img className="hidden min-lg:block h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-logo-on-dark.svg" alt="Workflow logo"/> */}
                         </div>
                         <div className="hidden min-sm:block min-sm:ml-6">
                         <div className="flex">
@@ -57,22 +57,22 @@ const PublicLayout =  ({children}) => {
                 <div className={`${!menuOpen && "hidden min-sm:hidden"}`}>
                     <div className="px-2 pt-2 pb-3">
                         <Link href="/" as="/"> 
-                            <a className={`block px-3 py-2 rounded-md text-sm font-medium leading-5 ${router.pathname === '/' ? "text-white bg-gray-900" : "text-gray-300 hover:text-white hover:bg-gray-700"}  focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out`}>
+                            <a onClick={() => setMenuOpen(false)} className={`block px-3 py-2 rounded-md text-sm font-medium leading-5 ${router.pathname === '/' ? "text-white bg-gray-900" : "text-gray-300 hover:text-white hover:bg-gray-700"}  focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out`}>
                                 Home
                             </a>
                         </Link>
                         <Link href="/projects" as="/projects"> 
-                            <a className={`block px-3 py-2 rounded-md text-sm font-medium leading-5 ${router.pathname === '/projects' ? "text-white bg-gray-900" : "text-gray-300 hover:text-white hover:bg-gray-700"} focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out`}>
+                            <a onClick={() => setMenuOpen(false)} className={`block px-3 py-2 rounded-md text-sm font-medium leading-5 ${router.pathname === '/projects' ? "text-white bg-gray-900" : "text-gray-300 hover:text-white hover:bg-gray-700"} focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out`}>
                                 Projects
                             </a>
                         </Link>
                         <Link href="/party-details"> 
-                            <a className={`block px-3 py-2 rounded-md text-sm font-medium leading-5 ${router.pathname === '/party-details' ? "text-white bg-gray-900" : "text-gray-300 hover:text-white hover:bg-gray-700"} focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out`}>
+                            <a onClick={() => setMenuOpen(false)} className={`block px-3 py-2 rounded-md text-sm font-medium leading-5 ${router.pathname === '/party-details' ? "text-white bg-gray-900" : "text-gray-300 hover:text-white hover:bg-gray-700"} focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out`}>
                                 Party Details
                             </a>
                         </Link>
                         <Link href="/blog" as="/blog">
-                            <a className={`block px-3 py-2 rounded-md text-sm font-medium leading-5 ${router.pathname === '/blog' ? "text-white bg-gray-900" : "text-gray-300 hover:text-white hover:bg-gray-700"} focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out`}>
+                            <a onClick={() => setMenuOpen(false)} className={`block px-3 py-2 rounded-md text-sm font-medium leading-5 ${router.pathname === '/blog' ? "text-white bg-gray-900" : "text-gray-300 hover:text-white hover:bg-gray-700"} focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out`}>
                                 Blog
                             </a>
                         </Link>

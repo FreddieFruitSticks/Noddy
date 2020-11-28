@@ -45,7 +45,12 @@ export interface IHomePage extends Context, IHome{}
 
 const HomePage = (props: IHomePage) => {
     return (
-        <Home {...props}/> 
+        <div>
+            <div className="m-5">
+                Welcome to Noddy
+            </div>
+            <Home {...props}/> 
+        </div>
     )
 }
 

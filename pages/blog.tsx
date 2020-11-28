@@ -1,13 +1,16 @@
 import Posts from "../src/lib/posts"
 import { fetchPosts } from "../src/services"
 
-export const getStaticProps = async (context) => {
+export const getServerSideProps = async (context) => {
     try {
-        const fetchedPost = await fetchPosts()   
+        const fetchedPost = await fetchPosts()
+         
         if (fetchedPost){
             return {
                 props: {
-                    posts: fetchedPost
+                    posts: fetchedPost.filter(post => {
+                        return post.categories[0] == 16
+                    })
                 },
             }
         }

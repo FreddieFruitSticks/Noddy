@@ -167,7 +167,7 @@ const BookingView = ({state, dispatch}: Context) => {
             />
             
             <div className="w-full flex items-center justify-start ">
-                <button className="w-3/12 sm:w-5/12 min-w-md max-w-md bg-orange mt-5 text-white py-3 px-2 font-bold rounded" onClick={addChild}>Add Child</button>
+                <button className="w-3/12 sm:w-5/12 min-w-md max-w-md bg-orange mt-5 text-white py-3 px-2 font-bold rounded" onClick={addChild}>Add Another Child</button>
             </div>
             <div className="w-full flex items-center justify-center min-xl:justify-start">
                 <button 
