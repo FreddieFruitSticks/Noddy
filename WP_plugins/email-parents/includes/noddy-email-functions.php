@@ -87,17 +87,42 @@ function email_parents( WP_REST_Request $request ) {
   global $wpdb;
 
   $results=$wpdb->get_results("select distinct * from wp_postmeta where meta_key='email'");
+  $sent = false;
+  
   foreach($results  as $key => $row) {
-    $my_column = $row->meta_value;
+    $email_address = $row->meta_value;
+    $party_id = $row->post_id;
+    
+    $row2=$wpdb->get_row("select distinct * from wp_postmeta where meta_key='invitation_sent' and post_id=$party_id");
+    
+    $invitation_sent = $row2->meta_value;
+    
+    if (!$invitation_sent) {
+      $a = wp_mail( $email_address, 'Test', 'Test Message', '', '' );
+      $sent=true;
+    }
+    
+    $wpdb->update(
+      $wpdb->postmeta,
+      array(
+          'meta_value' => 1
+      ),
+      array(
+        'meta_key' => 'invitation_sent',
+        'post_id' => $party_id      
+      ));   
   }
   // trigger_error("Cannot divide by zero", E_USER_ERROR);
   // error_log("!!!!!!!!!!!!!!!!!!!!!!!!");
   
-  $sent = wp_mail( 'freddieodonnell@gmail.com', 'Test', 'Test Message', '', '' );
   $converted_res = $sent ? 'true' : 'false';
   $response = new WP_REST_Response( $converted_res . SMTP_HOST );
   
-  $response->set_status( 200 );
+  if ($sent){
+    $response->set_status( 200 );
+  }else{
+    $response->set_status( 400 );
+  }
   
   return $response;
 }

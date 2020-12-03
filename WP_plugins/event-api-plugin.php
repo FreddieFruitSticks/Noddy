@@ -142,6 +142,7 @@ add_action( 'rest_api_init', function () {
       $field_eventid = $wpdb->get_var( $wpdb->prepare( "SELECT post_name FROM $wpdb->posts WHERE post_excerpt = %s", 'eventid'));
       $field_cell = $wpdb->get_var( $wpdb->prepare( "SELECT post_name FROM $wpdb->posts WHERE post_excerpt = %s", 'cell_number'));
       $field_confirmed = $wpdb->get_var( $wpdb->prepare( "SELECT post_name FROM $wpdb->posts WHERE post_excerpt = %s", 'payment_confirmed'));
+      $field_invitation_sent = $wpdb->get_var( $wpdb->prepare( "SELECT post_name FROM $wpdb->posts WHERE post_excerpt = %s", 'invitation_sent'));
       
       $field_children = $wpdb->get_var( $wpdb->prepare( "SELECT post_name FROM $wpdb->posts WHERE post_excerpt = %s", 'children'));
       $field_children_age = $wpdb->get_var( $wpdb->prepare( "SELECT post_name FROM $wpdb->posts WHERE post_excerpt = %s", 'child_age'));
@@ -153,9 +154,9 @@ add_action( 'rest_api_init', function () {
       array(
           'post_id' => $party_id,
           'meta_key' => 'payment_confirmed',
-          'meta_value' => false
+          'meta_value' => 0
       ),
-      array('%d','%s','%s'));      
+      array('%d','%s','%d'));      
         
     $wpdb->insert(
       $wpdb->postmeta,
@@ -164,7 +165,25 @@ add_action( 'rest_api_init', function () {
           'meta_key' => '_payment_confirmed',
           'meta_value' => $field_confirmed
       ),
-      array('%d','%s','%s'));        
+      array('%d','%s','%s'));
+      
+    $wpdb->insert(
+      $wpdb->postmeta,
+      array(
+          'post_id' => $party_id,
+          'meta_key' => 'invitation_sent',
+          'meta_value' => 0
+      ),
+      array('%d','%s','%d'));      
+        
+    $wpdb->insert(
+      $wpdb->postmeta,
+      array(
+          'post_id' => $party_id,
+          'meta_key' => '_invitation_sent',
+          'meta_value' => $field_invitation_sent
+      ),
+      array('%d','%s','%s'));       
         
     $wpdb->insert(
       $wpdb->postmeta,

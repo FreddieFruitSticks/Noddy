@@ -14,24 +14,44 @@ const emailParents = async () => {
   
   if (response.ok){
     const newLocal = await response.json();
-    console.log("!!!!!!!!!!!!!!!!!!!")
-    console.log(newLocal)
-    return newLocal
+    return true
   }
   
-  throw new Error("confirm party payment "+response.status)
+  return false 
 }
 
 const SendEmails = () => {
   const [liked, setLiked] = useState(false)
+  const [responseOK, setResponseOK] = useState(false)
+  const [showMessage, setShowMessage] = useState(false)
   
   if (liked) {
     return 'You liked this.';
   }
   return (
-    <button onClick={() => emailParents() }>
-      Fetch Emails
-    </button>
+    <div>
+      <button onClick={async () => {
+        const sent = await emailParents()
+        setResponseOK(sent)
+        setShowMessage(true)
+      } }>
+        Send Invitation Emails
+      </button>
+      {
+        showMessage && responseOK ?
+        <div style={{color: 'green'}}>
+          Emails sent
+        </div>
+        :
+        (showMessage && !responseOK) ?
+        <div style={{color: 'red'}}>
+          No more emails to send
+        </div>
+        :
+        <>
+        </>
+      }
+    </div>
   )
 }
 
