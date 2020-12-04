@@ -4,7 +4,7 @@ import { IHomePage } from "../../../pages"
 
 const Home = ({state, dispatch, events} : IHomePage) => {
     return (
-        <div className="ml-5">
+        <div className="m-5">
             {events?.map(event => {
                 return (
                     <BookingCalender dispatch={dispatch} key={event.id} event={event}/>                    

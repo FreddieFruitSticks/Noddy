@@ -7,7 +7,7 @@ const PublicLayout =  ({children}) => {
     const [menuOpen, setMenuOpen] = useState(false)
 
     return (
-        <div className="m-1 h-full bg-background">
+        <div className="m-1 min-h-screen h-full bg-background2">
             <nav className="bg-gray-800 mb-5">
                 <div className="max-w-7xl mx-auto px-2 min-sm:px-6 min-lg:px-8">
                     <div className="relative flex items-center justify-between h-16">
@@ -79,7 +79,11 @@ const PublicLayout =  ({children}) => {
                     </div>
                 </div>
             </nav>
-            {children}
+            <div className="min-w-full max-w-4xl flex h-full w-full items-center justify-center">
+                <div className="p-10 h-full sm:p-0 md:p-0 lg:p-0 w-7/12 sm:w-full lg:w-10/12 shadow-md bg-background">
+                    {children}
+                </div>
+            </div>
         </div>
     )
 }

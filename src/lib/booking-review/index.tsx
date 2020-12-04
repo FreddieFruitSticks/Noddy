@@ -50,7 +50,10 @@ const BookingReview = ({state, dispatch} : Context) => {
     }
     
     return (
-        <div className="ml-10 xs:ml-1 sm:ml-5">
+        <div className="ml-5">
+            <div className="font-semi mb-10 text-2xl underline">
+                Party Summary
+            </div>
             <div className="font-semi underline mb-2">
                 Guardian Details
             </div>

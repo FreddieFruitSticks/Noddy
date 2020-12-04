@@ -1,5 +1,4 @@
 import React from 'react'
-import Link from 'next/link'
 
 const BookingButton = ({numberOfTickets, disabled} :{numberOfTickets: number, disabled: boolean}) => {
     return (

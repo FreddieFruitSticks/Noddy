@@ -22,7 +22,7 @@ const BookingCalender = ({event, dispatch}: {event: IEvent, dispatch: React.Disp
                 <div className="h-24 w-32">
                     <BookingDate date={eventDate}/>
                 </div>
-                <div className="w-1/2 bg-gray-500 h-24">
+                <div className="w-full bg-gray-500 h-24">
                     <BookingButton disabled={disabledBooking} numberOfTickets={event.numberOfTickets}/>
                 </div>
             </div>
