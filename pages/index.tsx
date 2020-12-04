@@ -60,15 +60,15 @@ const HomePage = (props: IHomePage) => {
                 <div className="shadow-xl max-w-4xl p-3 pt-3 border border-gray-200">
                     <img src="/m4verick.svg" alt="my image" />
                     <div className="mt-5">
-                        Maverick Labs operates as a fast-paced digital transformation partner. Boasting a broad range of impressive partnership deals, 
-                        their skills and services offerings have supported our developers and saved us on many costs. Round Table Peninsula 77 would like 
+                        M4verick Labs operates as a fast-paced digital transformation partner. Boasting a broad range of impressive partnerships, 
+                        their skills and service offerings have supported our developers and saved us from many costs. Round Table Peninsula 77 would like 
                         to <strong>thank</strong> Maverick Labs for their generous contributions.
                     </div>
                 </div>
                 <div className="mt-10 max-w-4xl max-w-50 shadow-2xl p-3 pt-3 border border-gray-200">
                     <img src="/techfox-logo-main.svg" alt="my image" />
                     <div className="mt-5">
-                        Techfox is an innovative online retailer that focuses on product quality and client services. 
+                        Techfox is an innovative online retailer that focuses on the highest standards of product quality and client services. 
                         Their contribution has saved us significant costs, and Round Table Peninsula 77 would like to say a 
                         big <strong>thank you</strong>.
                     </div>
