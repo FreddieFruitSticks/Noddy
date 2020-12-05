@@ -64,10 +64,23 @@ const HomePage = (props: IHomePage) => {
                     
                 }
             </div>
-            <Home {...props}/> 
+            <Home {...props}/>
+            <div className="m-5 font-semi text-2xl underline">
+                Booking System
+            </div>
+            <div className="m-5 list-disc">
+                <div className="flex flex-row"><li></li><span>Choose the day you want to join</span></div>
+                <div className="flex flex-row"><li></li><span>Fill out the form</span></div>
+                <div className="flex flex-row"><li></li><span>Children under 3 are free (we work on an honesty system)</span></div>
+                <div className="flex flex-row"><li></li><span>Indicate whether you will be supplying a gift for each child</span></div>
+                <div className="flex flex-row"><li></li><span>Continue to payment</span></div>
+                <div className="flex flex-row"><li></li><span>You will recieve an email confirmation of your booking</span></div>
+            </div>
             <div className="m-5">
-                <div className="text-xl py-5">A special thank you to our sponsors</div>
-                <div className="shadow-xl max-w-4xl p-3 pt-3 border border-gray-200">
+                <div className="text-xl py-5 underline">A special thank you to our sponsors</div>
+                <div onClick={() => {
+                    window.open("https://m4verick.com/", "_blank");
+                }} className="cursor-pointer shadow-xl max-w-4xl p-3 pt-3 border border-gray-200">
                     <img src="/m4verick.svg" alt="my image" />
                     <div className="mt-5">
                         M4verick Labs operates as a fast-paced digital transformation partner. Boasting a broad range of impressive partnerships, 
@@ -75,7 +88,9 @@ const HomePage = (props: IHomePage) => {
                         to <strong>thank</strong> Maverick Labs for their generous contributions.
                     </div>
                 </div>
-                <div className="mt-10 max-w-4xl max-w-50 shadow-2xl p-3 pt-3 border border-gray-200">
+                <div onClick={() => {
+                    window.open("https://www.techfox.co.za/", "_blank");
+                }} className="cursor-pointer mt-10 max-w-4xl max-w-50 shadow-2xl p-3 pt-3 border border-gray-200">
                     <img src="/techfox-logo-main.svg" alt="my image" />
                     <div className="mt-5">
                         Techfox is an innovative online retailer that focuses on the highest standards of product quality and client services. 

@@ -41,9 +41,13 @@ const BookingView = ({state, dispatch}: Context) => {
       
     return (
         <div className="mt-5 px-5 max-w-xl">
-            <div className="font-semi mb-10 text-2xl underline">
+            <div className="font-semi mb-3 text-2xl underline">
                 Party Details
             </div>
+            <div className="mb-5">
+                Price per ticket <strong>R{`${state?.utils?.price_per_ticket}`}</strong>
+            </div>              
+            
             <div className="font-semi underline">
                 Guardian Details
             </div>  

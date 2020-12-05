@@ -22,7 +22,7 @@ const BookingCalender = ({event, dispatch, closed}: {event: IEvent, dispatch: Re
                 <div className="h-24 w-32">
                     <BookingDate date={eventDate}/>
                 </div>
-                <div className="w-full bg-gray-500 h-24">
+                <div className={`${disabledBooking ? "cursor-not-allowed" : "cursor-pointer"} w-full bg-gray-500 h-24`}>
                     <BookingButton disabled={disabledBooking} numberOfTickets={event.numberOfTickets}/>
                 </div>
             </div>
