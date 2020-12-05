@@ -7,6 +7,9 @@ export const getStaticProps = async (context) => {
 function PartyDetails({posts}) {
     return (
         <div>
+            <div className="m-5 font-semi mb-10 text-2xl underline">
+                Noddy Party Summary
+            </div>
             <div className="m-5">Please see below for information relevant to the Noddy Children's party</div>
             <div className="m-5 list-disc">
                 <div className="flex flex-row"><li></li><span>!!!!You can bring your own food, but please note we will be selling boerie rolls as well!!!!</span></div>

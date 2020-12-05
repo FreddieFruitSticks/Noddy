@@ -5,11 +5,11 @@ import { IEvent } from '../../../../pages'
 import { useRouter } from 'next/router'
 import { partyAction } from '../../../context/actions'
 
-const BookingCalender = ({event, dispatch}: {event: IEvent, dispatch: React.Dispatch<any>}) => {
+const BookingCalender = ({event, dispatch, closed}: {event: IEvent, dispatch: React.Dispatch<any>, closed: boolean}) => {
     const router = useRouter()
     const today = new Date()
     const eventDate = new Date(event.date)
-    const disabledBooking = today > eventDate || event.numberOfTickets <= 0
+    const disabledBooking = today > eventDate || event.numberOfTickets <= 0 || closed
     
     const onClick = () => {
         dispatch(partyAction({date: event.date, eventId: event.id}))
@@ -18,7 +18,7 @@ const BookingCalender = ({event, dispatch}: {event: IEvent, dispatch: React.Disp
     
     return (
         <>
-            <div onClick={!disabledBooking ? onClick : null} className={`${disabledBooking && "opacity-75"} flex mb-2`}>
+            <div onClick={!disabledBooking ? onClick : null} className={`${disabledBooking ? "opacity-75" : ""} flex mb-2`}>
                 <div className="h-24 w-32">
                     <BookingDate date={eventDate}/>
                 </div>

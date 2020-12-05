@@ -1,6 +1,5 @@
 import React, { useReducer } from 'react'
 import reducer, { InitialState, initialState } from './reducer'
-import { partyAction } from './actions'
 
 export interface Context {
     state: InitialState,

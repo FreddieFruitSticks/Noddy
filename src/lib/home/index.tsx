@@ -7,7 +7,7 @@ const Home = ({state, dispatch, events} : IHomePage) => {
         <div className="m-5">
             {events?.map(event => {
                 return (
-                    <BookingCalender dispatch={dispatch} key={event.id} event={event}/>                    
+                    <BookingCalender closed={!state?.utils?.bookings_openclosed} dispatch={dispatch} key={event.id} event={event}/>                    
                 )
             })}
         </div>

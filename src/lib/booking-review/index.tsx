@@ -28,7 +28,7 @@ const BookingReview = ({state, dispatch} : Context) => {
     
     let price = 0
     if (state?.partyForm?.adults){
-        price = price + 75*state?.partyForm?.adults
+        price = price + +state?.utils?.price_per_ticket*state?.partyForm?.adults
     }
     
     const merchantId = process.env.MERCHANT_ID
@@ -50,7 +50,7 @@ const BookingReview = ({state, dispatch} : Context) => {
     }
     
     return (
-        <div className="ml-5">
+        <div className="ml-10">
             <div className="font-semi mb-10 text-2xl underline">
                 Party Summary
             </div>
@@ -72,22 +72,22 @@ const BookingReview = ({state, dispatch} : Context) => {
             </div> 
             {state?.partyForm?.kids.map((kid, index) => {
                 if (kid.age >= 3){
-                    price += 75
+                    price += +state?.utils?.price_per_ticket
                 }
-                    return (
-                        <div key={kid.name+index}>
-                            <div className="text-orange mt-2 underline">
-                                {kid.name}
-                            </div>
-                            {Object.keys(kid).map(key => {
-                                if (key != 'name'){
-                                    return (
-                                            <div key={key}>
-                                                {mapChildKeyValues(key)}: {key === 'age' ? kid[key] : mapChildKeyValues(kid[key])}
-                                            </div>
-                                        )
-                                }
-                            })}
+                return (
+                    <div key={kid.name+index}>
+                        <div className="text-orange mt-2 underline">
+                            {kid.name}
+                        </div>
+                        {Object.keys(kid).map(key => {
+                            if (key != 'name'){
+                                return (
+                                    <div key={key}>
+                                        {mapChildKeyValues(key)}: {key === 'age' ? kid[key] : mapChildKeyValues(kid[key])}
+                                    </div>
+                                )
+                            }
+                        })}
                     </div>
                 )})
             }
@@ -106,7 +106,6 @@ const BookingReview = ({state, dispatch} : Context) => {
                     title="Pay Now with PayFast"
                 />
             </button>
-
         </div>
     )
 }

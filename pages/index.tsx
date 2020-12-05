@@ -49,10 +49,20 @@ const HomePage = (props: IHomePage) => {
             <div className="m-5">
                 <img className="mb-10 max-h-40" src="/noddy-party.svg" alt="my image" />
                 <div className="text-2xl">Proudly hosted by <a className="text-blue underline" href="https://www.facebook.com/rtpeninsula77/">Peninsula 77 Round Table</a></div>
-                <div className="mt-5 text-md">
-                    We are happy to announce that bookings for the 2019 Noddy Party are open. Spots are limited, so book as soon as possible!
-                    Please make sure you read the PARTY DETAILS for details about the location and refreshments being served.
-                </div>
+                {props?.state?.utils?.bookings_openclosed ?
+                    <div className="mt-5 text-md">
+                        We are happy to announce that bookings for the {`${props?.state?.utils?.year_of_party}`} Noddy Party are <strong>open</strong>.
+                        Price per ticket is <strong>R{`${props?.state?.utils?.price_per_ticket}`}</strong>. Spots are limited, so book as soon as possible!
+                        Please make sure you read the PARTY DETAILS for details about the location and refreshments being served.
+                    </div>
+                    :
+                    <div className="mt-5 text-md">
+                        Booking for Noddy is now <strong>closed</strong>. Please keep and eye on our
+                        <a className="text-blue underline" href="https://www.facebook.com/rtpeninsula77/"> Facebook page </a> 
+                        for further details. 
+                    </div>
+                    
+                }
             </div>
             <Home {...props}/> 
             <div className="m-5">

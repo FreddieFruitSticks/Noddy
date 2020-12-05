@@ -1,10 +1,20 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { fetchUtils } from '../services'
+import { connect } from '../context/connector'
+import { ActionType, utilsAction } from '../context/actions'
 
-const PublicLayout =  ({children}) => {
+const PublicLayout =  ({children, dispatch}) => {
     const router = useRouter()
     const [menuOpen, setMenuOpen] = useState(false)
+    
+    useEffect(() => {
+        (async function a() { 
+            const u = await fetchUtils()
+            dispatch(utilsAction(u))
+        })()
+    }, [])
 
     return (
         <div className="m-1 min-h-screen h-full bg-background2">
@@ -88,4 +98,4 @@ const PublicLayout =  ({children}) => {
     )
 }
 
-export default PublicLayout
+export default connect(PublicLayout)

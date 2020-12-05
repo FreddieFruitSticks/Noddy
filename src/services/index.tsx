@@ -16,6 +16,16 @@ export const fetchEvents : any = async () => {
   throw new Error("fetch events returns "+response.status)
 }
 
+export const fetchUtils : any = async () => {
+  const response = await fetch("https://noddy.m4v.co.za/wp-json/acf/v3/utils");
+  if (response.ok){
+    const utilsArray = await response.json();
+    
+    return utilsArray[0].acf
+  }
+  throw new Error("fetch utils returns "+response.status)
+}
+
 export const createParty : (a :any) => Promise<number> = async (data: Party) : Promise<number> => {
   const response = await fetch("https://noddy.m4v.co.za/wp-json/party-api/v1/party", {
     method: 'POST',
