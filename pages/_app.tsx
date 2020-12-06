@@ -9,7 +9,7 @@ const Noddy = ({ Component, pageProps }) => {
     <div>
       <Head>
         <title>Noddy Charity</title>
-        <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+        <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit&display=swap" async defer></script>
       </Head>
       <NoddyStateProvider>
         <PublicLayout>
