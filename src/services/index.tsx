@@ -1,15 +1,15 @@
 import { Party } from "../context/reducer";
 
-export const fetchPosts : any = async () => {
-  const response = await fetch("https://noddy.m4v.co.za/wp-json/wp/v2/posts");
+export const fetchPosts : any = async (...args) => {
+  const response = await fetch(`https://noddy.m4v.co.za/wp-json/${args[0]}`);
   if (response.ok){
     return response.json()
   }
   throw new Error("fetch posts returns "+response.status)
 }
 
-export const fetchEvents : any = async () => {
-  const response = await fetch("https://noddy.m4v.co.za/wp-json/acf/v3/event");
+export const fetchEvents : any = async (...args) => {
+  const response = await fetch(`https://noddy.m4v.co.za/wp-json/${args[0]}`);
   if (response.ok){
     return response.json()
   }

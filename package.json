@@ -19,6 +19,7 @@
     "react-dom": "^16.13.1",
     "react-hook-form": "^6.3.1",
     "react-recaptcha": "^2.3.10",
+    "swr": "^0.3.9",
     "tailwindcss": "^1.4.6"
   },
   "devDependencies": {

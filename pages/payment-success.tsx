@@ -38,7 +38,7 @@ function PaymentSuccess({confirmationError}) {
                 </div>
                 <div className="mt-10 mx-5">
                     Don't panic! We have accepted your money but we were unable to confirm your payment automagically. 
-                    Simply email us on --- put email here --- letting us know, and we will fix it all our side. Sorry for the inconvenience.
+                    Simply email us on tickets@noddy.co.za letting us know, and we will fix it all our side. Sorry for the inconvenience.
                 </div>
                    
             </>    

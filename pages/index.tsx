@@ -3,6 +3,7 @@ import Home from "../src/lib/home"
 import { fetchEvents } from "../src/services"
 import {Context } from "../src/context/context-provider"
 import { connect } from "../src/context/connector"
+import useSWR from 'swr'
 
 export interface IEvent{
     id: number;
@@ -28,12 +29,9 @@ const mapper = (wpEvents: IWPEvent[]) : IEvent[] => {
     }) 
 }
 
-export const getServerSideProps = async (context) => {
-    const events = await fetchEvents()
+export const getStaticProps = async () => {
     return {
-        props:{
-            events: mapper(events)
-        }
+        props:{}
     }
 }
 
@@ -44,6 +42,8 @@ export interface IHome {
 export interface IHomePage extends Context, IHome{}
 
 const HomePage = (props: IHomePage) => {
+    const { data, error } = useSWR('acf/v3/event', fetchEvents)
+
     return (
         <div>
             <div className="m-5">
@@ -64,18 +64,35 @@ const HomePage = (props: IHomePage) => {
                     
                 }
             </div>
-            <Home {...props}/>
-            <div className="m-5 font-semi text-2xl underline">
-                Booking System
-            </div>
-            <div className="m-5 list-disc">
-                <div className="flex flex-row"><li></li><span>Choose the day you want to join</span></div>
-                <div className="flex flex-row"><li></li><span>Fill out the form</span></div>
-                <div className="flex flex-row"><li></li><span>Children under 3 are free (we work on an honesty system)</span></div>
-                <div className="flex flex-row"><li></li><span>Indicate whether you will be supplying a gift for each child</span></div>
-                <div className="flex flex-row"><li></li><span>Continue to payment</span></div>
-                <div className="flex flex-row"><li></li><span>You will recieve an email confirmation of your booking</span></div>
-            </div>
+            {error && 
+                <div className="w-full flex items-center justify-center">
+                    <img className="h-20" src="error.svg"/>
+                    <div>Could not fetch event dates...</div>
+                </div>
+            }
+            {data ? 
+                <Home {...{...props, events: mapper(data)}}/> 
+            :                 
+                <div className="w-full flex items-center justify-center">
+                    <img className="h-20" src="load.svg"/>
+                    <div>Loading events...</div>
+                </div>
+            }
+            
+            {props?.state?.utils?.bookings_openclosed &&
+            <>
+                <div className="m-5 font-semi text-2xl underline">
+                    Booking System
+                </div>
+                <div className="m-5 list-disc">
+                    <div className="flex flex-row"><li></li><span>Choose the day you want to join</span></div>
+                    <div className="flex flex-row"><li></li><span>Fill out the form</span></div>
+                    <div className="flex flex-row"><li></li><span>Children under 3 are free (we work on an honesty system)</span></div>
+                    <div className="flex flex-row"><li></li><span>Indicate whether you will be supplying a gift for each child</span></div>
+                    <div className="flex flex-row"><li></li><span>Continue to payment</span></div>
+                    <div className="flex flex-row"><li></li><span>You will recieve an email confirmation of your booking</span></div>
+                </div>
+            </>}
             <div className="m-5">
                 <div className="text-xl py-5 underline">A special thank you to our sponsors</div>
                 <div onClick={() => {
