@@ -8,7 +8,8 @@ const Noddy = ({ Component, pageProps }) => {
   return (
     <div>
       <Head>
-        <title>Noddy Charity</title>
+        <title>Noddy Charity Chirstmas Party</title>
+        <link rel="preload" href="../src/fonts/BalooTamma2-Medium.ttf" type="font/ttf"/>
         <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit&display=swap" async defer></script>
       </Head>
       <NoddyStateProvider>
