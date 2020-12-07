@@ -5,9 +5,9 @@ import { emailValidator, cellNumberValidator, numberValidator } from '../../shar
 import { partyAction } from '../../context/actions';
 import { useRouter } from 'next/router';
 import { Context } from '../../context/context-provider';
-// import Recaptcha from 'react-recaptcha';
-import loadable from '@loadable/component'
-const Recaptcha = loadable(() => import('react-recaptcha'))
+import Recaptcha from 'react-recaptcha';
+// import loadable from '@loadable/component'
+// const Recaptcha = loadable(() => import('react-recaptcha'))
 
 
 const BookingView = ({state, dispatch}: Context) => {
