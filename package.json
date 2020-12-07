@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@loadable/component": "^5.14.1",
     "next": "^9.4.4",
     "next-fonts": "^1.4.0",
     "postcss-preset-env": "^6.7.0",
