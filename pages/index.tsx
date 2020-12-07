@@ -70,14 +70,7 @@ const HomePage = (props: IHomePage) => {
                     <div>Could not fetch event dates...</div>
                 </div>
             }
-            {/* {data ?  */}
-                <Home {...{...props, events: mapper(data)}}/> 
-            {/* // :                 
-            //     <div className="w-full flex items-center justify-center">
-            //         <img className="h-20" src="load.svg"/>
-            //         <div>Loading events...</div>
-            //     </div>
-            // } */}
+            {data && <Home {...{...props, events: mapper(data)}}/>} 
             
             <div className="m-5 font-semi text-2xl underline">
                 Booking System
