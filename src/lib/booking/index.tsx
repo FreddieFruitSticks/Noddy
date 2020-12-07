@@ -6,8 +6,8 @@ import { partyAction } from '../../context/actions';
 import { useRouter } from 'next/router';
 import { Context } from '../../context/context-provider';
 // import Recaptcha from 'react-recaptcha';
-import loadable from '@loadable/component'
-const Recaptcha = loadable(() => import('react-recaptcha'))
+// import loadable from '@loadable/component'
+// const Recaptcha = loadable(() => import('react-recaptcha'))
 
 
 const BookingView = ({state, dispatch}: Context) => {
@@ -161,23 +161,19 @@ const BookingView = ({state, dispatch}: Context) => {
                                     />
                                     <span className="ml-2">I am bringing a gift for him/her</span>
                                 </div>
-
-                                {/* {childNumber !== numberOfChildren.length &&
-                                    <div className="border-b-4 border-orange mt-3"/>
-                                } */}
                             </div>
                         )
                     })}
                 </div>
                 
-                <Recaptcha
+                {/* <Recaptcha
                     sitekey="6LfAnswZAAAAAO2_TIhAUpsOCr1w96GDr7MwLjP9"
                     render="explicit"
                     verifyCallback={() => {
                         setFormVerified(true)
                     }}
                     onloadCallback={()=>{}}
-                />
+                /> */}
                 
                 <div className="w-full flex items-center justify-start ">
                     <button className="min-w-md max-w-md bg-orange mt-5 text-white py-3 px-2 font-bold rounded" onClick={addChild}>Add Another Child</button>
