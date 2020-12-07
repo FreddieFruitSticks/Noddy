@@ -71,7 +71,8 @@ const HomePage = (props: IHomePage) => {
                 </div>
             }
             {data ? 
-                <Home {...{...props, events: mapper(data)}}/> 
+                <div></div>
+                // <Home {...{...props, events: mapper(data)}}/> 
             :                 
                 <div className="w-full flex items-center justify-center">
                     <img className="h-20" src="load.svg"/>
