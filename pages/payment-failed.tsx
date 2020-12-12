@@ -6,7 +6,7 @@ export const getStaticProps = async (context) => {
 
 function PaymentFailed() {
     return (
-        <div className="mt-20 flex flex-col items-center justify-center">
+        <div className="min-h-screen mt-10 flex flex-col items-center justify-center">
         <>    
             <img className="h-40" src="/err.svg" alt="my image" />
             <div className="text-red text-xl mt-5 font-bold">

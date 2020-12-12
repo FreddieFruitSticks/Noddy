@@ -19,7 +19,7 @@ const BookingView = ({state, dispatch}: Context) => {
     }
     
     useEffect(() => {
-        state.partyForm.kids.forEach((kid, index) => {
+        state?.partyForm?.kids?.forEach((kid, index) => {
             setValue(`kids[${index}].name`, kid.name)
             setValue(`kids[${index}].age`, kid.age)
             setValue(`kids[${index}].hasGift`, kid.hasGift)

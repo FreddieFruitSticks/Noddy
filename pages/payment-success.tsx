@@ -18,7 +18,7 @@ export const getServerSideProps = async ({query}) => {
 
 function PaymentSuccess({confirmationError}) {
     return (
-        <div className="mt-20 flex flex-col items-center justify-center">
+        <div className="min-h-screen mt-10 flex flex-col items-center justify-center">
             {!confirmationError ?
             <>    
                 <img src="/green-checkmark-line.svg" alt="my image" />

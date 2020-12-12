@@ -1,7 +1,7 @@
 import { Party } from "../context/reducer";
 
 export const fetchPosts : any = async (...args) => {
-  const response = await fetch(`https://noddy.m4v.co.za/wp-json/${args[0]}`);
+  const response = await fetch(`https://noddy.m4v.co.za/wp-json/${args[0]}?filter[orderby]=date&order=desc`);
   if (response.ok){
     return response.json()
   }
@@ -9,7 +9,7 @@ export const fetchPosts : any = async (...args) => {
 }
 
 export const fetchEvents : any = async (...args) => {
-  const response = await fetch(`https://noddy.m4v.co.za/wp-json/${args[0]}`);
+  const response = await fetch(`https://noddy.m4v.co.za/wp-json/${args[0]}?filter[orderby]=date&order=desc`);
   if (response.ok){
     return response.json()
   }
