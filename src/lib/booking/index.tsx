@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form';
 import FormInput from '../../shared/form-input';
 import { emailValidator, cellNumberValidator, numberValidator } from '../../shared/validators';
-import { partyAction } from '../../context/actions';
+import { addKidAction, partyAction, removeKidAction } from '../../context/actions';
 import { useRouter } from 'next/router';
 import { Context } from '../../context/context-provider';
 // import Recaptcha from 'react-recaptcha';
@@ -11,9 +11,12 @@ const Recaptcha = loadable(() => import('react-recaptcha'))
 
 
 const BookingView = ({state, dispatch}: Context) => {
-    const [numberOfChildren, setNumberOfChildren] = useState([1])
     const [formVerified, setFormVerified] = useState(false)
     const router = useRouter()
+    
+    const removeChild = (childNumber: number) => {
+        dispatch(removeKidAction(childNumber))
+    }
     
     const {handleSubmit, trigger, register, getValues, errors } = useForm({
         mode: 'onSubmit',
@@ -33,13 +36,15 @@ const BookingView = ({state, dispatch}: Context) => {
         const {email2, ...formVals} = values
         dispatch(partyAction(formVals))
         router.push("/booking-review")
+    }    
+    
+    const onChange = () => {
+        const values = getValues()
+        dispatch(partyAction(values))
     }
     
     const addChild = ({}) => {
-        let b = Array.from(numberOfChildren)
-        const n = b.push(b.length + 1)
-        
-        setNumberOfChildren(b)
+        dispatch(addKidAction({}))
     }
       
     return (
@@ -54,7 +59,7 @@ const BookingView = ({state, dispatch}: Context) => {
             <div className="font-semi underline">
                 Guardian Details
             </div>  
-            <form onSubmit={handleSubmit(onSubmit)} className="w-full">
+            <form onBlur={onChange} onSubmit={handleSubmit(onSubmit)} className="w-full">
                 <FormInput
                     name="name"
                     placeholder="Full name"
@@ -114,15 +119,15 @@ const BookingView = ({state, dispatch}: Context) => {
                     Children Details
                 </div>
                 <div className="mb-5">     
-                    {numberOfChildren.map(childNumber => {
+                    {state?.partyForm?.kids?.map((kid, index) => {
                         return (
-                            <div className="shadow-lg p-2 bg-background3 mt-2" key={childNumber}>
-                                <div className="mt-3" key={childNumber}>
+                            <div className="flex justify-between shadow-lg p-2 bg-background3 mt-2" key={index+1}>
+                                <div className="mt-3" key={index+1}>
                                     <div className="text-orange">
-                                        child {childNumber}
+                                        child {index + 1}
                                     </div>
                                     <FormInput
-                                        name={`kids[${childNumber-1}].name`}
+                                        name={`kids[${index}].name`}
                                         placeholder="First and Last Name"
                                         errors={errors}
                                         formValidator={register({
@@ -130,14 +135,14 @@ const BookingView = ({state, dispatch}: Context) => {
                                         })}
                                     />
                                     <div className="text-xs text-red">
-                                        {errors?.kids && errors?.kids[childNumber-1] && errors?.kids[childNumber-1]?.name?.message}
+                                        {errors?.kids && errors?.kids[index] && errors?.kids[index]?.name?.message}
                                     </div>
                                             
                                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                                         age
                                     </label>
                                     <div className="relative">
-                                        <select ref={register} name={`kids[${childNumber-1}].age`} className="block appearance-none w-full border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                                        <select defaultValue={state?.partyForm?.kids && state?.partyForm?.kids[index]?.age} ref={register} name={`kids[${index}].age`} className="block appearance-none w-full border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
                                             <option value={0}>{`0`}</option>
                                             <option value={1}>{`1`}</option>
                                             <option value={2}>{`2`}</option>
@@ -147,7 +152,7 @@ const BookingView = ({state, dispatch}: Context) => {
                                             <option value={6}>{`older than 6`}</option>
                                         </select>
                                         <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                                        <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                                            <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
                                         </div>
                                     </div>
                                     <div className="text-xs">
@@ -155,11 +160,16 @@ const BookingView = ({state, dispatch}: Context) => {
                                     </div>
                                     <input
                                         ref={register}
-                                        name={`kids[${childNumber-1}].hasGift`}
+                                        name={`kids[${index}].hasGift`}
                                         type="checkbox" 
                                         className="mt-2 form-checkbox"
                                     />
                                     <span className="ml-2">I am bringing a gift for him/her</span>
+                                </div>
+                                <div className="mx-3" onClick={() => removeChild(index)}>
+                                    <div className="bg-gray-600 mdiv">
+                                        <div className="bg-gray-600 md"></div>
+                                    </div>
                                 </div>
                             </div>
                         )
@@ -176,7 +186,9 @@ const BookingView = ({state, dispatch}: Context) => {
                 />
                 
                 <div className="w-full flex items-center justify-start ">
-                    <button className="min-w-md max-w-md bg-orange mt-5 text-white py-3 px-2 font-bold rounded" onClick={addChild}>Add Another Child</button>
+                    <button 
+                        className="min-w-md max-w-md bg-orange mt-5 text-white py-3 px-2 font-bold rounded" 
+                        onClick={addChild}>Add Another Child</button>
                 </div>
                 <div className="w-full flex items-center justify-start">
                     <button 

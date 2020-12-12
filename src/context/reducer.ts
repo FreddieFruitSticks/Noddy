@@ -69,6 +69,46 @@ const reducer : (a: InitialState, b: IAction<any>) => InitialState = (state, act
             }
             
             return newState
+        }        
+        
+        case ActionType.ADD_KID:{
+            const newState = {
+                ...state,
+                partyForm: {
+                    ...state.partyForm,
+                    kids: [
+                        ...state.partyForm.kids,
+                        {name: "", age: 0, hasGift:false}
+                    ]
+                }
+                
+            }
+            if (typeof window !== 'undefined'){
+                window.localStorage.setItem("noddyState", JSON.stringify(newState))
+            }
+            
+            return newState
+        }
+        
+        case ActionType.REMOVE_KID:{
+            let kidsCopy = [...state.partyForm.kids]
+            const newKids = kidsCopy.splice(action.payload, 1)
+            
+            const newState = {
+                ...state,
+                partyForm: {
+                    ...state.partyForm,
+                    kids: [
+                        ...kidsCopy
+                    ]
+                }
+                
+            }
+            if (typeof window !== 'undefined'){
+                window.localStorage.setItem("noddyState", JSON.stringify(newState))
+            }
+            
+            return newState
         }
         
       default:

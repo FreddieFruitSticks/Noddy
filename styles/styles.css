@@ -1,4 +1,5 @@
 @import "../src/lib/home/components/style.css";
+@import "../src/lib/booking/styles.css";
 
 @tailwind base;
 

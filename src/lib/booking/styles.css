@@ -1,0 +1,14 @@
+.mdiv {
+    height: 25px;
+    width: 2px;
+    margin-left: 12px;
+    transform: rotate(45deg);
+    Z-index: 1;
+}
+
+.md {
+    height: 25px;
+    width: 2px;
+    transform: rotate(90deg);
+    Z-index: 2;
+}
