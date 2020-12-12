@@ -89,7 +89,7 @@ function email_parents( WP_REST_Request $request ) {
   $results=$wpdb->get_results("select distinct * from wp_postmeta where meta_key='email'");
   $sent = false;
   
-  foreach($results  as $key => $row) {
+  foreach($results as $key => $row) {
     $email_address = $row->meta_value;
     $party_id = $row->post_id;
     
@@ -98,7 +98,34 @@ function email_parents( WP_REST_Request $request ) {
     $invitation_sent = $row2->meta_value;
     
     if (!$invitation_sent) {
-      $a = wp_mail( $email_address, 'Test', 'Test Message', '', '' );
+      $a = wp_mail( $email_address, 'Noddy Party bookings are now OPEN!!', '<!DOCTYPE html>
+      <html lang="en">
+      <head>
+          <style>
+              table, th, td {
+                  border: 1px solid black;
+                  border-collapse: collapse;
+                  padding: 10px;
+              }
+          </style>
+          <meta charset="UTF-8">
+          <title>Create AGUT account instruction</title>
+      </head>
+      <body>
+        Dear parents,
+      <h3 style="color:#f16159">Noddy Party bookings are now OPEN!</h3>
+      <br>
+        Please click <a href="https://noddy.vercel.app">here</a> to go to our website and make a booking!
+      <br>
+      
+      
+      <br>
+      Thanks,<br>
+      The Noddy Team
+      </body>
+      </html>
+  
+  ', 'Content-type: text/html', '' );
       $sent=true;
     }
     

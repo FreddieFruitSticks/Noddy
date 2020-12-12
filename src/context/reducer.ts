@@ -49,6 +49,7 @@ const reducer : (a: InitialState, b: IAction<any>) => InitialState = (state, act
                     ...action.payload
                 }
             }
+            
             if (typeof window !== 'undefined'){
                 window.localStorage.setItem("noddyState", JSON.stringify(newState))
             }
@@ -64,6 +65,7 @@ const reducer : (a: InitialState, b: IAction<any>) => InitialState = (state, act
                     ...action.payload
                 }
             }
+            
             if (typeof window !== 'undefined'){
                 window.localStorage.setItem("noddyState", JSON.stringify(newState))
             }
@@ -83,6 +85,7 @@ const reducer : (a: InitialState, b: IAction<any>) => InitialState = (state, act
                 }
                 
             }
+            
             if (typeof window !== 'undefined'){
                 window.localStorage.setItem("noddyState", JSON.stringify(newState))
             }
@@ -104,6 +107,7 @@ const reducer : (a: InitialState, b: IAction<any>) => InitialState = (state, act
                 }
                 
             }
+            
             if (typeof window !== 'undefined'){
                 window.localStorage.setItem("noddyState", JSON.stringify(newState))
             }

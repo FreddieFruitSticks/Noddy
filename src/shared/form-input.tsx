@@ -7,6 +7,8 @@ interface FormInputProps {
     placeholder?: string;
     name: string;
     defaultValue?: any
+    value?: any
+    onChange?: any
     errors: DeepMap<Record<string, any>, FieldError>
 }
 

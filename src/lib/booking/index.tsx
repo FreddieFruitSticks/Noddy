@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form';
 import FormInput from '../../shared/form-input';
 import { emailValidator, cellNumberValidator, numberValidator } from '../../shared/validators';
@@ -18,7 +18,15 @@ const BookingView = ({state, dispatch}: Context) => {
         dispatch(removeKidAction(childNumber))
     }
     
-    const {handleSubmit, trigger, register, getValues, errors } = useForm({
+    useEffect(() => {
+        state.partyForm.kids.forEach((kid, index) => {
+            setValue(`kids[${index}].name`, kid.name)
+            setValue(`kids[${index}].age`, kid.age)
+            setValue(`kids[${index}].hasGift`, kid.hasGift)
+        })
+    },[state])
+    
+    const {handleSubmit, trigger, register, getValues, setValue, errors } = useForm({
         mode: 'onSubmit',
         reValidateMode: 'onChange',
         defaultValues: {
@@ -38,7 +46,7 @@ const BookingView = ({state, dispatch}: Context) => {
         router.push("/booking-review")
     }    
     
-    const onChange = () => {
+    const onBlur = () => {
         const values = getValues()
         dispatch(partyAction(values))
     }
@@ -48,7 +56,7 @@ const BookingView = ({state, dispatch}: Context) => {
     }
       
     return (
-        <div className="mt-5 px-5 max-w-xl">
+        <div className="min-h-screen mt-5 px-5 max-w-xl">
             <div className="font-semi mb-3 text-2xl underline">
                 Party Details
             </div>
@@ -59,7 +67,7 @@ const BookingView = ({state, dispatch}: Context) => {
             <div className="font-semi underline">
                 Guardian Details
             </div>  
-            <form onBlur={onChange} onSubmit={handleSubmit(onSubmit)} className="w-full">
+            <form onBlur={onBlur} onSubmit={handleSubmit(onSubmit)} className="w-full">
                 <FormInput
                     name="name"
                     placeholder="Full name"
@@ -118,7 +126,7 @@ const BookingView = ({state, dispatch}: Context) => {
                 <div className="font-semi mt-5 underline">
                     Children Details
                 </div>
-                <div className="mb-5">     
+                <div>     
                     {state?.partyForm?.kids?.map((kid, index) => {
                         return (
                             <div className="flex justify-between shadow-lg p-2 bg-background3 mt-2" key={index+1}>
@@ -142,7 +150,7 @@ const BookingView = ({state, dispatch}: Context) => {
                                         age
                                     </label>
                                     <div className="relative">
-                                        <select defaultValue={state?.partyForm?.kids && state?.partyForm?.kids[index]?.age} ref={register} name={`kids[${index}].age`} className="block appearance-none w-full border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                                        <select defaultValue={kid?.age} ref={register} name={`kids[${index}].age`} className="block appearance-none w-full border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
                                             <option value={0}>{`0`}</option>
                                             <option value={1}>{`1`}</option>
                                             <option value={2}>{`2`}</option>
@@ -161,7 +169,7 @@ const BookingView = ({state, dispatch}: Context) => {
                                     <input
                                         ref={register}
                                         name={`kids[${index}].hasGift`}
-                                        type="checkbox" 
+                                        type="checkbox"
                                         className="mt-2 form-checkbox"
                                     />
                                     <span className="ml-2">I am bringing a gift for him/her</span>
@@ -176,6 +184,15 @@ const BookingView = ({state, dispatch}: Context) => {
                     })}
                 </div>
                 
+
+                <div className="mb-5 w-full flex items-center justify-start ">
+                    <button
+                        type="button"
+                        className="min-w-md max-w-md bg-orange mt-5 text-white py-3 px-2 font-bold rounded" 
+                        onClick={addChild}>
+                            Add Another Child
+                        </button>
+                </div>
                 <Recaptcha
                     sitekey="6LfAnswZAAAAAO2_TIhAUpsOCr1w96GDr7MwLjP9"
                     render="explicit"
@@ -185,11 +202,6 @@ const BookingView = ({state, dispatch}: Context) => {
                     onloadCallback={()=>{}}
                 />
                 
-                <div className="w-full flex items-center justify-start ">
-                    <button 
-                        className="min-w-md max-w-md bg-orange mt-5 text-white py-3 px-2 font-bold rounded" 
-                        onClick={addChild}>Add Another Child</button>
-                </div>
                 <div className="w-full flex items-center justify-start">
                     <button 
                         disabled={!formVerified} 

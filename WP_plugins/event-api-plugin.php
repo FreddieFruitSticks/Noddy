@@ -62,6 +62,35 @@ function create_party_api( WP_REST_Request $request ) {
     
     $a = create_party_db($parameters, $catId);
     
+    $c = wp_mail( $email_address, 'Noddy Party Booking Confirmation', '<!DOCTYPE html>
+      <html lang="en">
+      <head>
+          <style>
+              table, th, td {
+                  border: 1px solid black;
+                  border-collapse: collapse;
+                  padding: 10px;
+              }
+          </style>
+          <meta charset="UTF-8">
+          <title>Create AGUT account instruction</title>
+      </head>
+      <body>
+        Dear parents,
+      <h3 style="color:#f16159">Noddy Party bookings are now OPEN!</h3>
+      <br>
+        Please click <a href="https://noddy.vercel.app">here</a> to go to our website and make a booking!
+      <br>
+      
+      
+      <br>
+      Thanks,<br>
+      The Noddy Team
+      </body>
+      </html>
+  
+  ', 'Content-type: text/html', '' );
+    
     $response = new WP_REST_Response($a);
     
     $response->set_status( 200 );
