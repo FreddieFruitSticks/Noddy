@@ -17,7 +17,9 @@ const disableReactDevTools = (): void => {
 };
 
 const Noddy = ({ Component, pageProps }) => {
-  if (process.env.NODE_ENV === 'production'){
+  console.log("!!!!!!!!!!!!!!!!!!")
+  console.log(process.env.NODE_ENV)
+  if (process.env.NODE_ENV != 'development'){
     disableReactDevTools()
   }
     return (
@@ -28,7 +30,7 @@ const Noddy = ({ Component, pageProps }) => {
         <link rel="preload" href="/noddy2.svg" as="image"/>
         <link rel="preload" href="/load.svg" as="image"/>
         <link rel="preload" href='https://fonts.googleapis.com/css?family=Lobster' as="style"/>
-        <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Lobster' crossOrigin="anonymous" type='text/css'/>
+        <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Lobster' crossOrigin="anonymous" as="style" type='text/css'/>
  
         <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit&display=swap" async defer></script>
       </Head>
