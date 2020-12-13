@@ -3,6 +3,17 @@ const withFonts = require('next-fonts');
 module.exports = withFonts({
   enableSvg: true,
   webpack(config, options) {
+    config.module.rules.push({
+      test: /\.ttf$/,
+      use: [
+        {
+          loader: 'ttf-loader',
+          options: {
+            name: './font/[hash].[ext]',
+          },
+        },
+      ]
+    })
     return config;
   },
   env: {
@@ -11,3 +22,9 @@ module.exports = withFonts({
     MERCHANT_ID: process.env.MERCHANT_ID,
   },
 }); 
+
+// const withBundleAnalyzer = require('@next/bundle-analyzer')({
+//   enabled: process.env.ANALYZE === 'true'
+// })
+
+// module.exports = withBundleAnalyzer({})
