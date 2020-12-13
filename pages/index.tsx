@@ -49,7 +49,7 @@ const HomePage = (props: IHomePage) => {
             <div className="m-5">
                 <div className="max-w-lg">
                     <h1 className="max-w-lg text-4xl min-xl:text-5xl anim"> <div> The Rondebosch </div> </h1>
-                    <img className="max-h-40" src="/noddy2.svg" alt="my image" />
+                    <img className="w-40 h-40 max-h-40" src="/noddy2.svg" alt="my image" />
                     <h1 className="flex justify-end text-4xl min-xl:text-5xl anim anim2 mb-10 "> <div> Christmas Party </div> </h1>
                 </div>
                 
