@@ -4,6 +4,7 @@ import { fetchEvents } from "../src/services"
 import {Context } from "../src/context/context-provider"
 import { connect } from "../src/context/connector"
 import useSWR from 'swr'
+import Head from 'next/head'
 
 export interface IEvent{
     id: number;
@@ -46,6 +47,13 @@ const HomePage = (props: IHomePage) => {
 
     return (
         <div>
+            <Head>
+                <title>Noddy Charity Chirstmas Party</title>
+                <link rel="preload" href="/noddy2.svg" as="image"/>
+                <link rel="preload" href='https://fonts.googleapis.com/css?family=Lobster' as="style"/>
+                <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Lobster' crossOrigin="anonymous" as="style" type='text/css'/>
+        
+            </Head>
             <div className="m-5">
                 <div className="max-w-lg">
                     <h1 className="max-w-lg text-4xl min-xl:text-5xl anim"> <div> The Rondebosch </div> </h1>
