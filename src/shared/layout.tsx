@@ -18,7 +18,7 @@ const PublicLayout =  ({children, dispatch}) => {
 
     return (
         <div className="m-1 min-h-screen h-full bg-background2">
-            <nav className="bg-gray-800 mb-5">
+            <nav className="bg-gray-800">
                 <div className="max-w-7xl mx-auto px-2 min-sm:px-6 min-lg:px-8">
                     <div className="relative flex items-center justify-between h-16">
                     <div className="absolute inset-y-0 left-0 flex items-center min-sm:hidden">
