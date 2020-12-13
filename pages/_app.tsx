@@ -30,7 +30,7 @@ const Noddy = ({ Component, pageProps }) => {
         <link rel="preload" href='https://fonts.googleapis.com/css?family=Lobster' as="style"/>
         <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Lobster' crossOrigin="anonymous" as="style" type='text/css'/>
  
-        <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit&display=swap" async defer></script>
+        {/* <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit&display=swap" async defer></script> */}
       </Head>
       <NoddyStateProvider>
         <PublicLayout>
