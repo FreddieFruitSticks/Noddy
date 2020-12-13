@@ -3,17 +3,6 @@ const withFonts = require('next-fonts');
 module.exports = withFonts({
   enableSvg: true,
   webpack(config, options) {
-    config.module.rules.push({
-      test: /\.ttf$/,
-      use: [
-        {
-          loader: 'ttf-loader',
-          options: {
-            name: './font/[hash].[ext]',
-          },
-        },
-      ]
-    })
     return config;
   },
   env: {
