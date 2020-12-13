@@ -17,8 +17,6 @@ const disableReactDevTools = (): void => {
 };
 
 const Noddy = ({ Component, pageProps }) => {
-  console.log("!!!!!!!!!!!!!!!!!!")
-  console.log(process.env.NODE_ENV)
   if (process.env.NODE_ENV != 'development'){
     disableReactDevTools()
   }

@@ -49,7 +49,7 @@ const HomePage = (props: IHomePage) => {
             <div className="m-5">
                 <div className="max-w-lg">
                     <h1 className="max-w-lg text-4xl min-xl:text-5xl anim"> <div> The Rondebosch </div> </h1>
-                    <img width="40px" height="40px" className="max-h-40" src="/noddy2.svg" alt="my image" />
+                    <img width="100%" height="auto" className="max-h-40" src="/noddy2.svg" alt="my image" />
                     <h1 className="flex justify-end text-4xl min-xl:text-5xl anim anim2 mb-10 "> <div> Christmas Party </div> </h1>
                 </div>
                 
@@ -104,7 +104,7 @@ const HomePage = (props: IHomePage) => {
                 <div onClick={() => {
                     window.open("https://m4verick.com/", "_blank");
                 }} className="cursor-pointer shadow-xl max-w-4xl p-3 pt-3 border border-gray-200">
-                    <img width="40px" height="40px" src="/m4verick.svg" alt="my image" />
+                    <img width="100%" height="auto" src="/m4verick.svg" alt="my image" />
                     <div className="mt-5">
                         M4verick Labs operates as a fast-paced digital transformation partner. Boasting a broad range of impressive partnerships, 
                         their skills and service offerings have supported our developers and saved us from many costs. Round Table Peninsula 77 would like 
@@ -114,7 +114,7 @@ const HomePage = (props: IHomePage) => {
                 <div onClick={() => {
                     window.open("https://www.techfox.co.za/", "_blank");
                 }} className="cursor-pointer mt-10 max-w-4xl max-w-50 shadow-2xl p-3 pt-3 border border-gray-200">
-                    <img width="40px" height="40px" src="/techfox-logo-main.svg" alt="my image" />
+                    <img width="100%" height="auto" src="/techfox-logo-main.svg" alt="my image" />
                     <div className="mt-5">
                         Techfox is an innovative online retailer that focuses on the highest standards of product quality and client services. 
                         Their contribution has saved us significant costs, and Round Table Peninsula 77 would like to say a 
