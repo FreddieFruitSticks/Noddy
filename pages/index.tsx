@@ -47,7 +47,13 @@ const HomePage = (props: IHomePage) => {
     return (
         <div>
             <div className="m-5">
-                <img className="mb-10 max-h-40" src="/noddy-party.svg" alt="my image" />
+                <div className="max-w-lg">
+                    <h1 className="max-w-lg text-4xl min-xl:text-5xl anim"> <div> The Rondebosch </div> </h1>
+                    <img className="max-h-40" src="/noddy2.svg" alt="my image" />
+                    <h1 className="flex justify-end text-4xl min-xl:text-5xl anim anim2 mb-10 "> <div> Christmas Party </div> </h1>
+                </div>
+                
+
                 <div className="text-2xl">Proudly hosted by <a className="text-blue underline" href="https://www.facebook.com/rtpeninsula77/">Peninsula 77 Round Table</a></div>
                 {props?.state?.utils?.bookings_openclosed ?
                     <div className="mt-5 text-md">
