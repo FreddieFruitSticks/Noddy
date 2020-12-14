@@ -21,13 +21,9 @@ const emailParents = async () => {
 }
 
 const SendEmails = () => {
-  const [liked, setLiked] = useState(false)
   const [responseOK, setResponseOK] = useState(false)
   const [showMessage, setShowMessage] = useState(false)
   
-  if (liked) {
-    return 'You liked this.';
-  }
   return (
     <div>
       <button onClick={async () => {

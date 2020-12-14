@@ -8,10 +8,10 @@ export interface Party{
     email?: string;
     cell?: string;
     adults?: number;
-    kids?: IKids[]
+    kids?: IKid[]
 }
 
-interface IKids{
+export interface IKid{
     name: string;
     age: number;
     hasGift: boolean;

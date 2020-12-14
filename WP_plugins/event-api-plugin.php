@@ -421,3 +421,37 @@ add_action( 'rest_api_init', function () {
   add_filter( 'acf/rest_api/item_permissions/edit', function( $permission ) {
     return current_user_can( 'edit_posts' );
   } );
+  
+/* Sort posts in wp_list_table by column in ascending or descending order. */
+function custom_post_order($query){
+  /* 
+      Set post types.
+      _builtin => true returns WordPress default post types. 
+      _builtin => false returns custom registered post types. 
+  */
+  if ($query->get('post_type') == 'event'){
+    $query->set('orderby', 'meta_value');
+    $query->set('meta_key', 'date');
+    $query->set('order', 'ASC');
+  }
+  
+  // $post_types = get_post_types('', 'names');
+  // /* The current post type. */
+  // $post_type = $query->get('post_type');
+  
+  /* Check post types. */
+  if($query->get('post_type') == 'party'){
+      /* Post Column: e.g. title */
+      if($query->get('orderby') == ''){
+          $query->set('orderby', 'meta_value_num');
+          $query->set('meta_key', 'children_0_child_age');
+      }
+      /* Post Order: ASC / DESC */
+      if($query->get('order') == ''){
+          $query->set('order', 'ASC');
+      }
+  }
+}
+add_action('pre_get_posts', 'custom_post_order');
+// if(is_admin()){
+// }

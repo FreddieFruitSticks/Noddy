@@ -104,6 +104,7 @@ const HomePage = (props: IHomePage) => {
                     <div className="flex flex-row"><li></li><span>Indicate whether you will be supplying a gift for each child</span></div>
                     <div className="flex flex-row"><li></li><span>Continue to payment</span></div>
                     <div className="flex flex-row"><li></li><span>You will recieve an email confirmation of your booking</span></div>
+                    <div className="flex flex-row"><li></li><span>You do not need to print the email. We will have you on our system</span></div>
                     <div className="flex flex-row"><li></li><span>If there are less available tickets than the number in your group, <strong>book anyway</strong>!</span></div>
                 </div>
             </>

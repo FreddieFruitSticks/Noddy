@@ -1,4 +1,4 @@
-import { Party } from "../context/reducer";
+import { IKid, Party } from "../context/reducer";
 
 export const fetchPosts : any = async (...args) => {
   const response = await fetch(`https://noddy.m4v.co.za/wp-json/${args[0]}?filter[orderby]=date&order=desc`);
@@ -27,6 +27,19 @@ export const fetchUtils : any = async () => {
 }
 
 export const createParty : (a :any) => Promise<number> = async (data: Party) : Promise<number> => {
+  let kids = [...data.kids]
+  
+  kids = kids.sort((kid1: IKid, kid2: IKid) => {
+    if (kid1.age < kid2.age){
+      return -1
+    }else if (kid1.age > kid2.age){
+      return 1
+    }
+    return 0
+  } )
+  
+  data.kids = kids
+  
   const response = await fetch("https://noddy.m4v.co.za/wp-json/party-api/v1/party", {
     method: 'POST',
     mode: 'cors',
