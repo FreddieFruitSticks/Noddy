@@ -174,7 +174,7 @@ add_action( 'rest_api_init', function () {
     $party_id = wp_insert_post( array(
         'post_title'    => $parameters['name'],
         'post_type'  => 'party',
-        'post_status'   => 'draft',
+        'post_status'   => 'publish',
         'comment_status'   => 'closed',
         'ping_status'   => 'closed',
         'post_category' => array($catId)

@@ -20,7 +20,7 @@ interface IWPEvent{
     }
 }
 
-const mapper = (wpEvents: IWPEvent[]) : IEvent[] => {
+export const eventsMapper = (wpEvents: IWPEvent[]) : IEvent[] => {
     return wpEvents.map(wpEvent => {
         return {
             id: wpEvent?.id,
@@ -85,7 +85,7 @@ const HomePage = (props: IHomePage) => {
                 </div>
             }
             {data ? 
-                <Home {...{...props, events: mapper(data)}}/> 
+                <Home {...{...props, events: eventsMapper(data)}}/> 
             :                 
                 <div className="w-full flex items-center justify-center">
                     <img className="h-20" src="load.svg"/>

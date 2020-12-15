@@ -8,12 +8,28 @@ export const fetchPosts : any = async (...args) => {
   throw new Error("fetch posts returns "+response.status)
 }
 
+export const fetchParties : any = async (...args) => {
+  const response = await fetch(`https://noddy.m4v.co.za/wp-json/${args[0]}`);
+  if (response.ok){
+    return response.json()
+  }
+  throw new Error("fetch party returns "+response.status)
+}
+
 export const fetchEvents : any = async (...args) => {
   const response = await fetch(`https://noddy.m4v.co.za/wp-json/${args[0]}?filter[orderby]=date&order=desc`);
   if (response.ok){
     return response.json()
   }
   throw new Error("fetch events returns "+response.status)
+}
+
+export const fetchCategories : any = async () => {
+  const response = await fetch(`https://noddy.m4v.co.za/wp-json/wp/v2/categories`);
+  if (response.ok){
+    return response.json()
+  }
+  throw new Error("fetch categories returns "+response.status)
 }
 
 export const fetchUtils : any = async () => {
