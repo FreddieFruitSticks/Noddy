@@ -108,7 +108,7 @@ const PartyAdmin = () => {
       <DragDropContext
         onDragEnd={result => onDragEnd(result, columns, setColumns)}
       >
-        {Object.entries(columns).map(([columnId, column], index) => {
+        {Object.entries(columns).map(([columnId, column] : [any, any], index) => {
           return (
             <div
               style={{
