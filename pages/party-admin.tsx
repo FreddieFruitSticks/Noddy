@@ -52,13 +52,11 @@ const reorder = (list) => {
 
 
 
-// export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+    resetServerContext()
 
-//     resetServerContext()
-
-//     return {props: { data : []}}
-
-// }
+    return {props: { data : []}}
+}
 
 const PartyAdmin = () => {
   const [columns, setColumns] = useState(columnsFromBackend);
