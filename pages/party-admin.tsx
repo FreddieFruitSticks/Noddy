@@ -9,16 +9,16 @@ interface Item {
 }
 
 const itemsFromBackend = [
-  { id: 1, content: "First task" },
-  { id: 2, content: "Second task" },
-  { id: 3, content: "Third task" },
-  { id: 4, content: "Fourth task" },
-  { id: 5, content: "Fifth task" },
-  { id: 6, content: "sixth task" },
-  { id: 7, content: "seventh task" },
-  { id: 8, content: "eighth task" },
-  { id: 9, content: "ninth task" },
-  { id: 10, content: "tenth task" },
+  { id: 1, content: "1 year old" },
+  { id: 2, content: "2 year old" },
+  { id: 3, content: "3 year old" },
+  { id: 4, content: "4 year old" },
+  { id: 5, content: "5 year old" },
+  { id: 6, content: "6 year old" },
+  { id: 7, content: "7 year old" },
+  { id: 8, content: "8 year old" },
+  { id: 9, content: "9 year old" },
+  { id: 10, content: "10 year old" }
 ];
 
 const columnsFromBackend = {
