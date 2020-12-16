@@ -1,10 +1,11 @@
-import { Party, Utils } from "./reducer"
+import { ElfAdminColumn, ElfAdminColumns, Party, Utils } from "./reducer"
 
 export enum ActionType {
     PARTY_FORM="PARTY_FORM",
     ADD_KID="ADD_KID",
     REMOVE_KID="REMOVE_KID",
-    UTILS="UTILS"
+    UTILS="UTILS",
+    ELF_ADMIN_COLUMNS="ELF_ADMIN_COLUMNS"
 }
 
 export interface IAction<T> {
@@ -36,6 +37,13 @@ export const removeKidAction = (kidArrayIndex: number) : IAction<number> => {
 export const utilsAction = (payload: Utils) : IAction<Utils> => {
     return {
         type: ActionType.UTILS,
+        payload: payload
+    }
+}
+
+export const elfAdminColumnsAction = (payload: ElfAdminColumns) : IAction<ElfAdminColumns> => {
+    return {
+        type: ActionType.ELF_ADMIN_COLUMNS,
         payload: payload
     }
 }

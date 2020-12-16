@@ -2,49 +2,17 @@ import React, { useEffect, useState } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { resetServerContext } from "react-beautiful-dnd";
 import { GetServerSideProps } from "next";
-import { fetchCategories, fetchEvents, fetchParties } from "../src/services";
-import useSWR from "swr";
-import { IEvent, IHome, eventsMapper } from ".";
-import { IKid } from "../src/context/reducer";
-
-interface Item {
-    id: number;
-    content: string
-}
-
-interface IWPParty{
-  id: number
-  acf:{
-    cell_number: string
-    children: IKid[]
-    email: string
-    event_date: string
-    eventid: string
-    invitation_sent: boolean
-    number_of_adults: string
-    party_name: string
-    payment_confirmed: boolean
-  }
-}
-
-interface IParty{
-  id: number
-  cellNumber: string
-  children: IKid[]
-  email: string
-  eventDate: string
-  eventid: string
-  invitationSent: boolean
-  numberOfAdults: string
-  partyName: string
-  paymentConfirmed: boolean
-}
-
+import { fetchEvents, fetchParties } from "../src/services";
+import { eventsMapper } from ".";
+import { ElfAdminColumn, ElfAdminColumns, IParty, IWPParty } from "../src/context/reducer";
+import { elfAdminColumnsAction } from "../src/context/actions";
+import { connect } from "../src/context/connector";
+import { Context } from "../src/context/context-provider";
 
 
 const reorder = (list) => {
     const result = Array.from(list);
-    result.sort((party1: Item, party2: Item) => {
+    result.sort((party1: IParty, party2: IParty) => {
         if (party1.id < party2.id){
           return -1
         }else if (party1.id > party2.id){
@@ -92,6 +60,11 @@ const DropDown = ({setEventId} : { setEventId: any}) => {
         }} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">{event.date}</div>          
         )
       })}
+      <div key={0} onClick={() => {
+          setEventId(0)
+          setShow(false)
+          setDate('Show All')
+        }} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Show All</div> 
     </div>
   </div>
 </div>
@@ -118,97 +91,54 @@ export const partiesMapper = (wpParties: IWPParty[]) : IParty[] => {
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     resetServerContext()
 
-    return {props: { data : []}}
+    return {props: {}}
 }
 
-const PartyAdmin = () => {
-  const columnsFromBackend = {
-    6: {
-      name: "Parties",
-      items: []
-    },
-    7: {
-      name: "Arrived",
-      items: []
-    },
-    8: {
-      name: "Gift Packed",
-      items: []
-    }
-  };
-  
-  const [columns, setColumns] = useState(columnsFromBackend);
+const PartyAdmin = ({state, dispatch}: Context) => {  
   const [eventId, setEventId] = useState(0);
-  const [parties, setParties] = useState([]);
-  
-  
   useEffect(() => {
     (async function(){
       const parties = await fetchParties('acf/v3/party')
-      setParties(partiesMapper(parties))
-      const columnsFromBackend = {
-        6: {
+      
+      const defaultColumns = {
+        0: {
           name: "Parties",
           items: partiesMapper(parties)
         },
-        7: {
+        1: {
           name: "Arrived",
           items: []
         },
-        8: {
+        2: {
           name: "Gift Packed",
           items: []
         }
       };
-      setColumns(columnsFromBackend)
+      
+      const columnsFromState = state?.elfAdmin?.columns
+      dispatch(elfAdminColumnsAction(columnsFromState ? columnsFromState : defaultColumns))
     })()
   }, [])
   
-  useEffect(() => {
-    let partiesCopy: IParty[] = [...parties]
-    partiesCopy = partiesCopy.filter(party => {
-      if (parseInt(party.eventid, 10) === 0){
-        return true
-      }
-      
-      if (parseInt(party.eventid, 10) === eventId){
-        return true
-      }
-      
-      return false
-    })
-    
-    
-    const columnsFromBackend = {
-      6: {
-        name: "Parties",
-        items: partiesCopy
-      },
-      7: {
-        name: "Arrived",
-        items: []
-      },
-      8: {
-        name: "Gift Packed",
-        items: []
-      }
-    };
-    setColumns(columnsFromBackend)
-  }, [eventId])
+  const isId = (id) => element => {
+    return element.id == id
+  }
   
-  const onDragEnd = (result, columns, setColumns) => {
+  const onDragEnd = (result, filteredColumns, columns) => {
     if (!result.destination) return;
     const { source, destination } = result;
-
+    const sourceColumn = columns[source.droppableId];
+    
+    const element = filteredColumns[source.droppableId].items[source.index].id
+    const indexOfColumn = columns[source.droppableId].items.findIndex(isId(element))
     
     if (source.droppableId !== destination.droppableId) {
-      const sourceColumn = columns[source.droppableId];
       const destColumn = columns[destination.droppableId];
       const sourceItems = [...sourceColumn.items];
       const destItems = [...destColumn.items];
-      const [removed] = sourceItems.splice(source.index, 1);
+      const [removed] = sourceItems.splice(indexOfColumn, 1);
       destItems.splice(destination.index, 0, removed);
-      setColumns({
+      const newColumns = {
         ...columns,
         [source.droppableId]: {
           ...sourceColumn,
@@ -218,30 +148,67 @@ const PartyAdmin = () => {
           ...destColumn,
           items: reorder(destItems)
         }
-      });
+      };
+      
+      dispatch(elfAdminColumnsAction(newColumns))
     } else {
       const column = columns[source.droppableId];
       const copiedItems = [...column.items];
       const [removed] = copiedItems.splice(source.index, 1);
       copiedItems.splice(destination.index, 0, removed);
-      setColumns({
+      const newColumns = {
         ...columns,
         [source.droppableId]: {
           ...column,
           items: reorder(copiedItems)
         }
-      });
+      };
+      
+      dispatch(elfAdminColumnsAction(newColumns))
     }
   };
+  
+  const partyFilter: any = party => {
+    if (eventId === 0) {
+      return true;
+    }
+
+    if (parseInt(party.eventid, 10) === eventId) {
+      return true;
+    }
+
+    return false;
+  };
+  
+  const filteredElfAdminColumns = (elfAdminColumns : ElfAdminColumns) => {
+    let columnsCopy = {...elfAdminColumns}
+    columnsCopy = {
+      0: {
+        name: columnsCopy[0].name,
+        items: columnsCopy[0].items.filter(partyFilter)
+      },      
+      1: {
+        name: columnsCopy[1].name,
+        items: columnsCopy[1].items.filter(partyFilter)
+      },
+      2: {
+        name: columnsCopy[2].name,
+        items: columnsCopy[2].items.filter(partyFilter)
+      },
+    }
+    
+    return columnsCopy
+  }
   
   return (
     <>
     <DropDown setEventId={setEventId}/>
     <div style={{ display: "flex", justifyContent: "center", height: "100%" }}>
       <DragDropContext
-        onDragEnd={result => onDragEnd(result, columns, setColumns)}
+        onDragEnd={(result) => {onDragEnd(result, filteredElfAdminColumns(state?.elfAdmin?.columns), state?.elfAdmin?.columns); console.log("!!!!!!!!!!!!!!!",result)}}
       >
-        {Object.entries(columns).map(([columnId, column] : [any, any], index) => {
+        {state?.elfAdmin?.columns && Object.entries(state?.elfAdmin?.columns).map(([columnId, column] : [any, any], index) => {
+
           return (
             <div
               style={{
@@ -268,7 +235,7 @@ const PartyAdmin = () => {
                           minHeight: 500
                         }}
                       >
-                        {column.items.map((item, index) => {
+                        {column.items.filter(partyFilter).map((item, index) => {
                           return (
                             <Draggable
                               key={item.id}
@@ -315,4 +282,4 @@ const PartyAdmin = () => {
   );
 }
 
-export default PartyAdmin;
+export default connect(PartyAdmin);
