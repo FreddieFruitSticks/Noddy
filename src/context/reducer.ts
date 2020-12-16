@@ -77,7 +77,9 @@ export interface InitialState {
 } 
 
 export const initialState: InitialState = {
-    partyForm: null,
+    partyForm: {
+        kids: []
+    },
     utils: null,
     elfAdmin: null
 }

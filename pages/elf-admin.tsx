@@ -205,7 +205,7 @@ const PartyAdmin = ({state, dispatch}: Context) => {
     <DropDown setEventId={setEventId}/>
     <div style={{ display: "flex", justifyContent: "center", height: "100%" }}>
       <DragDropContext
-        onDragEnd={(result) => {onDragEnd(result, filteredElfAdminColumns(state?.elfAdmin?.columns), state?.elfAdmin?.columns); console.log("!!!!!!!!!!!!!!!",result)}}
+        onDragEnd={(result) => {onDragEnd(result, filteredElfAdminColumns(state?.elfAdmin?.columns), state?.elfAdmin?.columns)}}
       >
         {state?.elfAdmin?.columns && Object.entries(state?.elfAdmin?.columns).map(([columnId, column] : [any, any], index) => {
 
