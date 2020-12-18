@@ -5,7 +5,8 @@ export enum ActionType {
     ADD_KID="ADD_KID",
     REMOVE_KID="REMOVE_KID",
     UTILS="UTILS",
-    ELF_ADMIN_COLUMNS="ELF_ADMIN_COLUMNS"
+    ELF_ADMIN_COLUMNS="ELF_ADMIN_COLUMNS",
+    ELF_ADMIN_CHECK_KID="ELF_ADMIN_CHECK_KID"
 }
 
 export interface IAction<T> {
@@ -46,4 +47,17 @@ export const elfAdminColumnsAction = (payload: ElfAdminColumns) : IAction<ElfAdm
         type: ActionType.ELF_ADMIN_COLUMNS,
         payload: payload
     }
+}
+
+export const elfAdminCheckKidAction = (payload: ICheckKidPayload) : IAction<ICheckKidPayload> => {
+    return {
+        type: ActionType.ELF_ADMIN_CHECK_KID,
+        payload: payload
+    }
+}
+
+interface ICheckKidPayload {
+    rowId: number
+    columnId: number
+    childNumber: number
 }

@@ -7,11 +7,17 @@ export interface Item {
     content: string
 }
 
+export interface IWPKid{
+    child_name: string;
+    child_age: number;
+    has_gift: boolean;
+}
+
 export interface IWPParty{
   id: number
   acf:{
     cell_number: string
-    children: IKid[]
+    children: IWPKid[]
     email: string
     event_date: string
     eventid: string
@@ -49,6 +55,10 @@ export interface IKid{
     name: string;
     age: number;
     hasGift: boolean;
+}
+
+export interface ElfAdminKid extends IKid{
+    checked: boolean
 }
 
 export interface Utils{
@@ -172,6 +182,42 @@ const reducer : (a: InitialState, b: IAction<any>) => InitialState = (state, act
                 elfAdmin:{
                     columns: {
                         ...action.payload
+                    }
+                }            
+            }
+            
+            if (typeof window !== 'undefined'){
+                window.localStorage.setItem("noddyState", JSON.stringify(newState))
+            }
+            
+            return newState
+        }        
+        case ActionType.ELF_ADMIN_CHECK_KID:{
+            const oldChild = {...state.elfAdmin.columns[action.payload.columnId].items[action.payload.rowId].children[action.payload.childNumber]};
+            
+            const newChild = {
+                ...oldChild,
+                checked: !oldChild.checked
+            }
+            
+            const oldItem = {...state.elfAdmin.columns[action.payload.columnId].items[action.payload.rowId]}
+            oldItem.children.splice(action.payload.childNumber, 1, newChild)
+            const newItem = {
+                ...oldItem,
+                children: [...oldItem.children]
+            }
+            
+            const oldColumn = state.elfAdmin.columns[action.payload.columnId];
+            oldColumn.items.splice(action.payload.rowId, 1, newItem)
+            
+            const newState:InitialState = {
+                ...state,
+                elfAdmin:{
+                    columns: {
+                        ...state.elfAdmin.columns,
+                        [action.payload.columnId]: {
+                            ...oldColumn
+                        }
                     }
                 }            
             }

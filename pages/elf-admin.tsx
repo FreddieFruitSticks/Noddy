@@ -4,10 +4,11 @@ import { resetServerContext } from "react-beautiful-dnd";
 import { GetServerSideProps } from "next";
 import { fetchEvents, fetchParties } from "../src/services";
 import { eventsMapper } from ".";
-import { ElfAdminColumn, ElfAdminColumns, IParty, IWPParty } from "../src/context/reducer";
+import { ElfAdminColumns, ElfAdminKid, IParty, IWPParty } from "../src/context/reducer";
 import { elfAdminColumnsAction } from "../src/context/actions";
 import { connect } from "../src/context/connector";
 import { Context } from "../src/context/context-provider";
+import Card from "../src/lib/elf-admin/components/card";
 
 
 const reorder = (list) => {
@@ -73,10 +74,18 @@ const DropDown = ({setEventId} : { setEventId: any}) => {
 
 export const partiesMapper = (wpParties: IWPParty[]) : IParty[] => {
   return wpParties.map(wpParty => {
+    const children : ElfAdminKid[] = wpParty?.acf?.children.map(wpChild => {
+      return {
+        name:wpChild.child_name,
+        age: wpChild.child_age,
+        hasGift: wpChild.has_gift,
+        checked: false
+      }
+    })
       return {
           id: wpParty?.id,
           cellNumber: wpParty?.acf?.cell_number,
-          children: wpParty?.acf?.children,
+          children: children,
           email: wpParty?.acf?.email,
           eventDate: wpParty?.acf?.event_date,
           eventid: wpParty?.acf?.eventid,
@@ -225,13 +234,13 @@ const PartyAdmin = ({state, dispatch}: Context) => {
                       <div
                         {...provided.droppableProps}
                         ref={provided.innerRef}
-                        className={`min-h-screen p-1 ${snapshot.isDraggingOver ? `bg-lighterFadedRed` : 'bg-lightgrey'}`}
+                        className={`min-h-screen p-1 `}
                         style={{
-                          background: !snapshot.isDraggingOver && "lightgrey",
+                          background: snapshot.isDraggingOver ? "#FCDDDC" : "lightgrey",
                           width: 250,
                         }}
                       >
-                        {column.items.filter(partyFilter).map((item, index) => {
+                        {column.items.filter(partyFilter).map((item: IParty, index) => {
                           return (
                             <Draggable
                               key={item.id}
@@ -240,25 +249,14 @@ const PartyAdmin = ({state, dispatch}: Context) => {
                             >
                               {(provided, snapshot) => {
                                 return (
-                                  <div
-                                  className={snapshot.isDragging ? "bg-fadedRed" : "bg-lightFadedRed"}
-                                    ref={provided.innerRef}
-                                    {...provided.draggableProps}
-                                    {...provided.dragHandleProps}
-                                    style={{
-                                      userSelect: "none",
-                                      padding: 16,
-                                      margin: "0 0 8px 0",
-                                      minHeight: "50px",
-                                      // backgroundColor: snapshot.isDragging
-                                      //   ? "#263B4A"
-                                      //   : "#456C86",
-                                      color: "white",
-                                      ...provided.draggableProps.style
-                                    }}
-                                  >
-                                    {item.partyName}
-                                  </div>
+                                  <Card
+                                    dispatch={dispatch}
+                                    provided={provided}
+                                    snapshot={snapshot}
+                                    item={item}
+                                    rowId={index}
+                                    columnId={columnId}
+                                  />
                                 );
                               }}
                             </Draggable>

@@ -10,6 +10,9 @@ module.exports = {
   },
   theme: {
     extend: {
+      transitionProperty: {
+        'height': 'height',
+       },
       colors: {
         orange: '#ff5614',
         grey: '#595959',
@@ -30,6 +33,20 @@ module.exports = {
         lightFadedBlue: '#7D77F4',
         lighterFadedBlue: '#DDDCFC'
       },
+      minHeight: {
+        '0': '0',
+        '1/4': '25%',
+        '1/2': '50%',
+        '3/4': '75%',
+        '50': '50px',
+        '100': '100px',
+        'none':'none'
+       },
+       maxHeight: {
+        '50': '50px',
+        '100': '100px',
+        'none': 'none'
+       },
     },
     screens: {
       'xl': {'max': '1279px'},
@@ -44,6 +61,11 @@ module.exports = {
       'min-sm': {'min': '639px'},
     }
   },
-  variants: {},
+  variants: {
+    minHeight: ['hover', 'focus'],
+    maxHeight: ['hover', 'focus'],
+    extend: {
+    }
+  },
   plugins: [],
 }

@@ -6383,12 +6383,64 @@ video {
   margin-left: -1px;
 }
 
+.max-h-50{
+  max-height: 50px;
+}
+
+.max-h-100{
+  max-height: 100px;
+}
+
 .max-h-full{
   max-height: 100%;
 }
 
 .max-h-screen{
   max-height: 100vh;
+}
+
+.max-h-none{
+  max-height: none;
+}
+
+.hover\:max-h-50:hover{
+  max-height: 50px;
+}
+
+.hover\:max-h-100:hover{
+  max-height: 100px;
+}
+
+.hover\:max-h-full:hover{
+  max-height: 100%;
+}
+
+.hover\:max-h-screen:hover{
+  max-height: 100vh;
+}
+
+.hover\:max-h-none:hover{
+  max-height: none;
+}
+
+.focus\:max-h-50:focus{
+  max-height: 50px;
+}
+
+.focus\:max-h-100:focus{
+  max-height: 100px;
+}
+
+.focus\:max-h-full:focus{
+  max-height: 100%;
+}
+
+.focus\:max-h-screen:focus{
+  max-height: 100vh;
+}
+
+.focus\:max-h-none:focus{
+  max-height: none;
 }
 
 .max-w-none{
@@ -6443,12 +6495,108 @@ video {
   min-height: 0;
 }
 
+.min-h-50{
+  min-height: 50px;
+}
+
+.min-h-100{
+  min-height: 100px;
+}
+
 .min-h-full{
   min-height: 100%;
 }
 
 .min-h-screen{
   min-height: 100vh;
+}
+
+.min-h-1\/4{
+  min-height: 25%;
+}
+
+.min-h-1\/2{
+  min-height: 50%;
+}
+
+.min-h-3\/4{
+  min-height: 75%;
+}
+
+.min-h-none{
+  min-height: none;
+}
+
+.hover\:min-h-0:hover{
+  min-height: 0;
+}
+
+.hover\:min-h-50:hover{
+  min-height: 50px;
+}
+
+.hover\:min-h-100:hover{
+  min-height: 100px;
+}
+
+.hover\:min-h-full:hover{
+  min-height: 100%;
+}
+
+.hover\:min-h-screen:hover{
+  min-height: 100vh;
+}
+
+.hover\:min-h-1\/4:hover{
+  min-height: 25%;
+}
+
+.hover\:min-h-1\/2:hover{
+  min-height: 50%;
+}
+
+.hover\:min-h-3\/4:hover{
+  min-height: 75%;
+}
+
+.hover\:min-h-none:hover{
+  min-height: none;
+}
+
+.focus\:min-h-0:focus{
+  min-height: 0;
+}
+
+.focus\:min-h-50:focus{
+  min-height: 50px;
+}
+
+.focus\:min-h-100:focus{
+  min-height: 100px;
+}
+
+.focus\:min-h-full:focus{
+  min-height: 100%;
+}
+
+.focus\:min-h-screen:focus{
+  min-height: 100vh;
+}
+
+.focus\:min-h-1\/4:focus{
+  min-height: 25%;
+}
+
+.focus\:min-h-1\/2:focus{
+  min-height: 50%;
+}
+
+.focus\:min-h-3\/4:focus{
+  min-height: 75%;
+}
+
+.focus\:min-h-none:focus{
+  min-height: none;
 }
 
 .min-w-0{
@@ -14870,6 +15018,10 @@ video {
   transition-property: transform;
 }
 
+.transition-height{
+  transition-property: height;
+}
+
 .ease-linear{
   transition-timing-function: linear;
 }
@@ -20724,14 +20876,6 @@ html{
     margin-left: -1px;
   }
 
-  .xl\:max-h-full{
-    max-height: 100%;
-  }
-
-  .xl\:max-h-screen{
-    max-height: 100vh;
-  }
-
   .xl\:max-w-none{
     max-width: none;
   }
@@ -20778,18 +20922,6 @@ html{
 
   .xl\:max-w-full{
     max-width: 100%;
-  }
-
-  .xl\:min-h-0{
-    min-height: 0;
-  }
-
-  .xl\:min-h-full{
-    min-height: 100%;
-  }
-
-  .xl\:min-h-screen{
-    min-height: 100vh;
   }
 
   .xl\:min-w-0{
@@ -29211,6 +29343,10 @@ html{
     transition-property: transform;
   }
 
+  .xl\:transition-height{
+    transition-property: height;
+  }
+
   .xl\:ease-linear{
     transition-timing-function: linear;
   }
@@ -35053,14 +35189,6 @@ html{
     margin-left: -1px;
   }
 
-  .lg\:max-h-full{
-    max-height: 100%;
-  }
-
-  .lg\:max-h-screen{
-    max-height: 100vh;
-  }
-
   .lg\:max-w-none{
     max-width: none;
   }
@@ -35107,18 +35235,6 @@ html{
 
   .lg\:max-w-full{
     max-width: 100%;
-  }
-
-  .lg\:min-h-0{
-    min-height: 0;
-  }
-
-  .lg\:min-h-full{
-    min-height: 100%;
-  }
-
-  .lg\:min-h-screen{
-    min-height: 100vh;
   }
 
   .lg\:min-w-0{
@@ -43540,6 +43656,10 @@ html{
     transition-property: transform;
   }
 
+  .lg\:transition-height{
+    transition-property: height;
+  }
+
   .lg\:ease-linear{
     transition-timing-function: linear;
   }
@@ -49382,14 +49502,6 @@ html{
     margin-left: -1px;
   }
 
-  .md\:max-h-full{
-    max-height: 100%;
-  }
-
-  .md\:max-h-screen{
-    max-height: 100vh;
-  }
-
   .md\:max-w-none{
     max-width: none;
   }
@@ -49436,18 +49548,6 @@ html{
 
   .md\:max-w-full{
     max-width: 100%;
-  }
-
-  .md\:min-h-0{
-    min-height: 0;
-  }
-
-  .md\:min-h-full{
-    min-height: 100%;
-  }
-
-  .md\:min-h-screen{
-    min-height: 100vh;
   }
 
   .md\:min-w-0{
@@ -57869,6 +57969,10 @@ html{
     transition-property: transform;
   }
 
+  .md\:transition-height{
+    transition-property: height;
+  }
+
   .md\:ease-linear{
     transition-timing-function: linear;
   }
@@ -63711,14 +63815,6 @@ html{
     margin-left: -1px;
   }
 
-  .sm\:max-h-full{
-    max-height: 100%;
-  }
-
-  .sm\:max-h-screen{
-    max-height: 100vh;
-  }
-
   .sm\:max-w-none{
     max-width: none;
   }
@@ -63765,18 +63861,6 @@ html{
 
   .sm\:max-w-full{
     max-width: 100%;
-  }
-
-  .sm\:min-h-0{
-    min-height: 0;
-  }
-
-  .sm\:min-h-full{
-    min-height: 100%;
-  }
-
-  .sm\:min-h-screen{
-    min-height: 100vh;
   }
 
   .sm\:min-w-0{
@@ -72198,6 +72282,10 @@ html{
     transition-property: transform;
   }
 
+  .sm\:transition-height{
+    transition-property: height;
+  }
+
   .sm\:ease-linear{
     transition-timing-function: linear;
   }
@@ -78040,14 +78128,6 @@ html{
     margin-left: -1px;
   }
 
-  .xs\:max-h-full{
-    max-height: 100%;
-  }
-
-  .xs\:max-h-screen{
-    max-height: 100vh;
-  }
-
   .xs\:max-w-none{
     max-width: none;
   }
@@ -78094,18 +78174,6 @@ html{
 
   .xs\:max-w-full{
     max-width: 100%;
-  }
-
-  .xs\:min-h-0{
-    min-height: 0;
-  }
-
-  .xs\:min-h-full{
-    min-height: 100%;
-  }
-
-  .xs\:min-h-screen{
-    min-height: 100vh;
   }
 
   .xs\:min-w-0{
@@ -86527,6 +86595,10 @@ html{
     transition-property: transform;
   }
 
+  .xs\:transition-height{
+    transition-property: height;
+  }
+
   .xs\:ease-linear{
     transition-timing-function: linear;
   }
@@ -92369,14 +92441,6 @@ html{
     margin-left: -1px;
   }
 
-  .min-xl\:max-h-full{
-    max-height: 100%;
-  }
-
-  .min-xl\:max-h-screen{
-    max-height: 100vh;
-  }
-
   .min-xl\:max-w-none{
     max-width: none;
   }
@@ -92423,18 +92487,6 @@ html{
 
   .min-xl\:max-w-full{
     max-width: 100%;
-  }
-
-  .min-xl\:min-h-0{
-    min-height: 0;
-  }
-
-  .min-xl\:min-h-full{
-    min-height: 100%;
-  }
-
-  .min-xl\:min-h-screen{
-    min-height: 100vh;
   }
 
   .min-xl\:min-w-0{
@@ -100856,6 +100908,10 @@ html{
     transition-property: transform;
   }
 
+  .min-xl\:transition-height{
+    transition-property: height;
+  }
+
   .min-xl\:ease-linear{
     transition-timing-function: linear;
   }
@@ -106698,14 +106754,6 @@ html{
     margin-left: -1px;
   }
 
-  .min-lg\:max-h-full{
-    max-height: 100%;
-  }
-
-  .min-lg\:max-h-screen{
-    max-height: 100vh;
-  }
-
   .min-lg\:max-w-none{
     max-width: none;
   }
@@ -106752,18 +106800,6 @@ html{
 
   .min-lg\:max-w-full{
     max-width: 100%;
-  }
-
-  .min-lg\:min-h-0{
-    min-height: 0;
-  }
-
-  .min-lg\:min-h-full{
-    min-height: 100%;
-  }
-
-  .min-lg\:min-h-screen{
-    min-height: 100vh;
   }
 
   .min-lg\:min-w-0{
@@ -115185,6 +115221,10 @@ html{
     transition-property: transform;
   }
 
+  .min-lg\:transition-height{
+    transition-property: height;
+  }
+
   .min-lg\:ease-linear{
     transition-timing-function: linear;
   }
@@ -121027,14 +121067,6 @@ html{
     margin-left: -1px;
   }
 
-  .min-md\:max-h-full{
-    max-height: 100%;
-  }
-
-  .min-md\:max-h-screen{
-    max-height: 100vh;
-  }
-
   .min-md\:max-w-none{
     max-width: none;
   }
@@ -121081,18 +121113,6 @@ html{
 
   .min-md\:max-w-full{
     max-width: 100%;
-  }
-
-  .min-md\:min-h-0{
-    min-height: 0;
-  }
-
-  .min-md\:min-h-full{
-    min-height: 100%;
-  }
-
-  .min-md\:min-h-screen{
-    min-height: 100vh;
   }
 
   .min-md\:min-w-0{
@@ -129514,6 +129534,10 @@ html{
     transition-property: transform;
   }
 
+  .min-md\:transition-height{
+    transition-property: height;
+  }
+
   .min-md\:ease-linear{
     transition-timing-function: linear;
   }
@@ -135356,14 +135380,6 @@ html{
     margin-left: -1px;
   }
 
-  .min-sm\:max-h-full{
-    max-height: 100%;
-  }
-
-  .min-sm\:max-h-screen{
-    max-height: 100vh;
-  }
-
   .min-sm\:max-w-none{
     max-width: none;
   }
@@ -135410,18 +135426,6 @@ html{
 
   .min-sm\:max-w-full{
     max-width: 100%;
-  }
-
-  .min-sm\:min-h-0{
-    min-height: 0;
-  }
-
-  .min-sm\:min-h-full{
-    min-height: 100%;
-  }
-
-  .min-sm\:min-h-screen{
-    min-height: 100vh;
   }
 
   .min-sm\:min-w-0{
@@ -143841,6 +143845,10 @@ html{
 
   .min-sm\:transition-transform{
     transition-property: transform;
+  }
+
+  .min-sm\:transition-height{
+    transition-property: height;
   }
 
   .min-sm\:ease-linear{
