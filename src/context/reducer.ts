@@ -41,6 +41,10 @@ export interface IParty{
   paymentConfirmed: boolean
 }
 
+export interface IElfAdminParty extends IParty{
+    text: string
+}
+
 export interface Party{
     eventId?: number;
     date?: Date;
@@ -205,6 +209,35 @@ const reducer : (a: InitialState, b: IAction<any>) => InitialState = (state, act
             const newItem = {
                 ...oldItem,
                 children: [...oldItem.children]
+            }
+            
+            const oldColumn = state.elfAdmin.columns[action.payload.columnId];
+            oldColumn.items.splice(action.payload.rowId, 1, newItem)
+            
+            const newState:InitialState = {
+                ...state,
+                elfAdmin:{
+                    columns: {
+                        ...state.elfAdmin.columns,
+                        [action.payload.columnId]: {
+                            ...oldColumn
+                        }
+                    }
+                }            
+            }
+            
+            if (typeof window !== 'undefined'){
+                window.localStorage.setItem("noddyState", JSON.stringify(newState))
+            }
+            
+            return newState
+        }
+        
+        case ActionType.ELF_ADMIN_KID_TEXT:{
+            const oldItem = {...state.elfAdmin.columns[action.payload.columnId].items[action.payload.rowId]}
+            const newItem = {
+                ...oldItem,
+                text: action.payload.text
             }
             
             const oldColumn = state.elfAdmin.columns[action.payload.columnId];

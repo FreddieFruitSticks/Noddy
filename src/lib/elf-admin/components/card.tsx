@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { elfAdminCheckKidAction } from '../../../context/actions'
+import { elfAdminCheckKidAction, elfAdminKidTextAction } from '../../../context/actions'
 import { ElfAdminKid, IKid } from '../../../context/reducer'
 
 var BreakException = {};
@@ -8,7 +8,6 @@ const Card = ({dispatch, provided, snapshot, item, rowId, columnId}) => {
     const [open, setOpen] = useState(false)
     const [colour, setColour] = useState("bg-fadedRed")
     const [lighColour, setLightColour] = useState("bg-lightFadedRed")
-    
     useEffect(()=>{
         try{
             item?.children?.forEach((child: ElfAdminKid) => {
@@ -23,13 +22,12 @@ const Card = ({dispatch, provided, snapshot, item, rowId, columnId}) => {
         }catch(e){
             if (e !== BreakException) throw e
         }
-
     })
 
     return (
         <div
             className={`overflow-y-hidden cursor-pointer ${open && "max-h-none"} 
-            max-h-50 min-h-50 hover:h-100 transition-height flex flex-col ${snapshot.isDragging ? colour : lighColour}`}
+            max-h-50 min-h-75 hover:h-100 transition-height flex flex-col ${snapshot.isDragging ? colour : lighColour}`}
             ref={provided.innerRef}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
@@ -42,8 +40,21 @@ const Card = ({dispatch, provided, snapshot, item, rowId, columnId}) => {
             >
             <div
                 onClick={() => setOpen(!open)} 
-                className={`p-4 cursor-pointer`}>
-                {item.partyName}
+                className={`px-4 py-4 cursor-pointer`}>
+                <div>
+                    {item.partyName}
+                </div>
+                <div className="flex justify-between">
+                    <div>
+                        {item.paymentConfirmed ? "confirmed" : "unconfirmed"}
+                    </div>
+                    <div>
+                        no: {item.children.length}
+                    </div>
+                    <div>
+                        youngest: {item.children[0].age}
+                    </div>
+                </div>
             </div>
             <div className="px-4 pb-4">
                 <div className="underline py-2">
@@ -71,6 +82,15 @@ const Card = ({dispatch, provided, snapshot, item, rowId, columnId}) => {
                     )
                     
                 })}
+            <textarea
+                value={item.text}
+                onChange={(event) => {
+                    dispatch(elfAdminKidTextAction({rowId: rowId, columnId:columnId, text:event.target.value}))
+                }}
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                name={name}
+                autoFocus={false}
+            />
             </div>
         </div>
     )

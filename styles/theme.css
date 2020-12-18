@@ -6499,6 +6499,10 @@ video {
   min-height: 50px;
 }
 
+.min-h-75{
+  min-height: 75px;
+}
+
 .min-h-100{
   min-height: 100px;
 }
@@ -6535,6 +6539,10 @@ video {
   min-height: 50px;
 }
 
+.hover\:min-h-75:hover{
+  min-height: 75px;
+}
+
 .hover\:min-h-100:hover{
   min-height: 100px;
 }
@@ -6569,6 +6577,10 @@ video {
 
 .focus\:min-h-50:focus{
   min-height: 50px;
+}
+
+.focus\:min-h-75:focus{
+  min-height: 75px;
 }
 
 .focus\:min-h-100:focus{
