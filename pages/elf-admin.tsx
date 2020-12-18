@@ -39,7 +39,7 @@ const DropDown = ({setEventId} : { setEventId: any}) => {
   }, [])
   
   return (
-    <div className="relative inline-block text-left">
+    <div className="relative cursor-pointer inline-block text-left">
   <div>
     <button onClick={() => setShow(!show)} type="button" className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" id="options-menu" aria-haspopup="true" aria-expanded="true">
       {date}
@@ -100,7 +100,7 @@ const PartyAdmin = ({state, dispatch}: Context) => {
     (async function(){
       const parties = await fetchParties('acf/v3/party')
       
-      const defaultColumns = {
+      let columnsFromState = state?.elfAdmin?.columns ? state.elfAdmin.columns : {
         0: {
           name: "Parties",
           items: partiesMapper(parties)
@@ -113,10 +113,9 @@ const PartyAdmin = ({state, dispatch}: Context) => {
           name: "Gift Packed",
           items: []
         }
-      };
+      }
       
-      const columnsFromState = state?.elfAdmin?.columns
-      dispatch(elfAdminColumnsAction(columnsFromState ? columnsFromState : defaultColumns))
+      dispatch(elfAdminColumnsAction(columnsFromState))
     })()
   }, [])
   
@@ -146,7 +145,7 @@ const PartyAdmin = ({state, dispatch}: Context) => {
         },
         [destination.droppableId]: {
           ...destColumn,
-          items: reorder(destItems)
+          items: destination.droppableId != '2' ? reorder(destItems) : destItems
         }
       };
       
@@ -160,7 +159,7 @@ const PartyAdmin = ({state, dispatch}: Context) => {
         ...columns,
         [source.droppableId]: {
           ...column,
-          items: reorder(copiedItems)
+          items: destination.droppableId != '2' ? reorder(copiedItems) : copiedItems
         }
       };
       
@@ -226,13 +225,10 @@ const PartyAdmin = ({state, dispatch}: Context) => {
                       <div
                         {...provided.droppableProps}
                         ref={provided.innerRef}
+                        className={`min-h-screen p-1 ${snapshot.isDraggingOver ? `bg-lighterFadedRed` : 'bg-lightgrey'}`}
                         style={{
-                          background: snapshot.isDraggingOver
-                            ? "lightblue"
-                            : "lightgrey",
-                          padding: 4,
+                          background: !snapshot.isDraggingOver && "lightgrey",
                           width: 250,
-                          minHeight: 500
                         }}
                       >
                         {column.items.filter(partyFilter).map((item, index) => {
@@ -245,6 +241,7 @@ const PartyAdmin = ({state, dispatch}: Context) => {
                               {(provided, snapshot) => {
                                 return (
                                   <div
+                                  className={snapshot.isDragging ? "bg-fadedRed" : "bg-lightFadedRed"}
                                     ref={provided.innerRef}
                                     {...provided.draggableProps}
                                     {...provided.dragHandleProps}
@@ -253,9 +250,9 @@ const PartyAdmin = ({state, dispatch}: Context) => {
                                       padding: 16,
                                       margin: "0 0 8px 0",
                                       minHeight: "50px",
-                                      backgroundColor: snapshot.isDragging
-                                        ? "#263B4A"
-                                        : "#456C86",
+                                      // backgroundColor: snapshot.isDragging
+                                      //   ? "#263B4A"
+                                      //   : "#456C86",
                                       color: "white",
                                       ...provided.draggableProps.style
                                     }}

@@ -20,7 +20,15 @@ module.exports = {
         yellow:'#EFCE4A',
         red: "#E1341E",
         blue: "#1b3de4",
-        fadedRed: '#f16159'
+        fadedRed: '#f16159',
+        lightFadedRed: '#f47d77',
+        lighterFadedRed: '#FCDDDC',
+        fadedGreen: '#59F161',
+        lightFadedGreen: '#77F47D',
+        lighterFadedGreen: '#DCFCDD',
+        fadedBlue: '#6159F1',
+        lightFadedBlue: '#7D77F4',
+        lighterFadedBlue: '#DDDCFC'
       },
     },
     screens: {
