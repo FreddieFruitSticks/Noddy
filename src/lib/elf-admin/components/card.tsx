@@ -8,6 +8,7 @@ const Card = ({dispatch, provided, snapshot, item, rowId, columnId}) => {
     const [open, setOpen] = useState(false)
     const [colour, setColour] = useState("bg-fadedRed")
     const [lighColour, setLightColour] = useState("bg-lightFadedRed")
+    const [bag, setBag] = useState(false)
     useEffect(()=>{
         try{
             item?.children?.forEach((child: ElfAdminKid) => {
@@ -27,7 +28,7 @@ const Card = ({dispatch, provided, snapshot, item, rowId, columnId}) => {
     return (
         <div
             className={`overflow-y-hidden cursor-pointer ${open && "max-h-none"} 
-            max-h-50 min-h-75 hover:h-100 transition-height flex flex-col ${snapshot.isDragging ? colour : lighColour}`}
+            max-h-50 min-h-75 hover:h-100 transition-height flex flex-col ${bag ? "bg-fadedBlue" : snapshot.isDragging ? colour : lighColour}`}
             ref={provided.innerRef}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
@@ -38,13 +39,21 @@ const Card = ({dispatch, provided, snapshot, item, rowId, columnId}) => {
                 ...provided.draggableProps.style
             }}
             >
+
             <div
-                onClick={() => setOpen(!open)} 
                 className={`px-4 py-4 cursor-pointer`}>
-                <div>
-                    {item.partyName}
-                </div>
                 <div className="flex justify-between">
+                    <div onClick={() => setOpen(!open)}>
+                        {item.partyName}
+                    </div>
+                    <input
+                        type="checkbox"
+                        className="h-4 w-4 form-checkbox"
+                        onClick={()=>{setBag(!bag)}}
+                    />
+
+                </div>
+                <div onClick={() => setOpen(!open)} className="flex justify-between">
                     <div>
                         {item.paymentConfirmed ? "confirmed" : "unconfirmed"}
                     </div>
