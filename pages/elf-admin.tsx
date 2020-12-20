@@ -13,9 +13,9 @@ import DropDown from "../src/lib/elf-admin/components/dropdown";
 const reorder = (list) => {
     const result = Array.from(list);
     result.sort((party1: IParty, party2: IParty) => {
-        if (party1.id < party2.id){
+        if (party1.children[0].age < party2.children[0].age){
           return -1
-        }else if (party1.id > party2.id){
+        }else if (party1.children[0].age > party2.children[0].age){
           return 1
         }
         return 0
