@@ -207,7 +207,7 @@ const PartyAdmin = ({state, dispatch}: Context) => {
                                     provided={provided}
                                     snapshot={snapshot}
                                     item={item}
-                                    rowId={index}
+                                    rowId={column.items.findIndex(isId(item.id))}
                                     columnId={columnId}
                                   />
                                 );
