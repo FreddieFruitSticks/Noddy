@@ -16,6 +16,34 @@ export const fetchParties : any = async (...args) => {
   throw new Error("fetch party returns "+response.status)
 }
 
+export const fetchAllParties : any = async (...args) => {
+  let allParties = []
+  
+  for (let i = 1;;i++){
+    try{
+      const response = await fetch(`https://noddy.m4v.co.za/wp-json/${args[0]}?per_page=25&page=${i}`);
+      if (response.ok){
+        let parties = await response.json()
+        i+=1
+        
+        if (parties.lenght === 0){
+          break;
+        }
+        
+        allParties = [...allParties, ...parties]
+      }else {
+        break;
+      }
+      
+    }catch(e){
+      console.log(e)
+      break;
+    }
+  }
+  
+  return allParties
+}
+
 export const fetchEvents : any = async (...args) => {
   const response = await fetch(`https://noddy.m4v.co.za/wp-json/${args[0]}?filter[orderby]=date&order=desc`);
   if (response.ok){

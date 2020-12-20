@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { resetServerContext } from "react-beautiful-dnd";
 import { GetServerSideProps } from "next";
-import { fetchParties } from "../src/services";
+import { fetchAllParties, fetchParties } from "../src/services";
 import { ElfAdminColumns, ElfAdminKid, IElfAdminParty, IParty, IWPParty } from "../src/context/reducer";
 import { elfAdminColumnsAction } from "../src/context/actions";
 import { connect } from "../src/context/connector";
@@ -60,7 +60,7 @@ const PartyAdmin = ({state, dispatch}: Context) => {
   const [eventId, setEventId] = useState(0);
   useEffect(() => {
     (async function(){
-      const parties = await fetchParties('acf/v3/party')
+      const parties = await fetchAllParties('acf/v3/party')
       
       let columnsFromState = state?.elfAdmin?.columns ? state.elfAdmin.columns : {
         0: {
