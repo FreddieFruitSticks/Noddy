@@ -1513,8 +1513,8 @@ video {
 
 .divide-lightFadedGreen > :not(template) ~ :not(template){
   --divide-opacity: 1;
-  border-color: #77F47D;
-  border-color: rgba(119, 244, 125, var(--divide-opacity));
+  border-color: #03bb51;
+  border-color: rgba(3, 187, 81, var(--divide-opacity));
 }
 
 .divide-lighterFadedGreen > :not(template) ~ :not(template){
@@ -1995,8 +1995,8 @@ video {
 
 .bg-lightFadedGreen{
   --bg-opacity: 1;
-  background-color: #77F47D;
-  background-color: rgba(119, 244, 125, var(--bg-opacity));
+  background-color: #03bb51;
+  background-color: rgba(3, 187, 81, var(--bg-opacity));
 }
 
 .bg-lighterFadedGreen{
@@ -2393,8 +2393,8 @@ video {
 
 .hover\:bg-lightFadedGreen:hover{
   --bg-opacity: 1;
-  background-color: #77F47D;
-  background-color: rgba(119, 244, 125, var(--bg-opacity));
+  background-color: #03bb51;
+  background-color: rgba(3, 187, 81, var(--bg-opacity));
 }
 
 .hover\:bg-lighterFadedGreen:hover{
@@ -2791,8 +2791,8 @@ video {
 
 .focus\:bg-lightFadedGreen:focus{
   --bg-opacity: 1;
-  background-color: #77F47D;
-  background-color: rgba(119, 244, 125, var(--bg-opacity));
+  background-color: #03bb51;
+  background-color: rgba(3, 187, 81, var(--bg-opacity));
 }
 
 .focus\:bg-lighterFadedGreen:focus{
@@ -3329,8 +3329,8 @@ video {
 
 .border-lightFadedGreen{
   --border-opacity: 1;
-  border-color: #77F47D;
-  border-color: rgba(119, 244, 125, var(--border-opacity));
+  border-color: #03bb51;
+  border-color: rgba(3, 187, 81, var(--border-opacity));
 }
 
 .border-lighterFadedGreen{
@@ -3727,8 +3727,8 @@ video {
 
 .hover\:border-lightFadedGreen:hover{
   --border-opacity: 1;
-  border-color: #77F47D;
-  border-color: rgba(119, 244, 125, var(--border-opacity));
+  border-color: #03bb51;
+  border-color: rgba(3, 187, 81, var(--border-opacity));
 }
 
 .hover\:border-lighterFadedGreen:hover{
@@ -4125,8 +4125,8 @@ video {
 
 .focus\:border-lightFadedGreen:focus{
   --border-opacity: 1;
-  border-color: #77F47D;
-  border-color: rgba(119, 244, 125, var(--border-opacity));
+  border-color: #03bb51;
+  border-color: rgba(3, 187, 81, var(--border-opacity));
 }
 
 .focus\:border-lighterFadedGreen:focus{
@@ -8857,26 +8857,26 @@ video {
 
 .placeholder-lightFadedGreen::-moz-placeholder{
   --placeholder-opacity: 1;
-  color: #77F47D;
-  color: rgba(119, 244, 125, var(--placeholder-opacity));
+  color: #03bb51;
+  color: rgba(3, 187, 81, var(--placeholder-opacity));
 }
 
 .placeholder-lightFadedGreen:-ms-input-placeholder{
   --placeholder-opacity: 1;
-  color: #77F47D;
-  color: rgba(119, 244, 125, var(--placeholder-opacity));
+  color: #03bb51;
+  color: rgba(3, 187, 81, var(--placeholder-opacity));
 }
 
 .placeholder-lightFadedGreen::-ms-input-placeholder{
   --placeholder-opacity: 1;
-  color: #77F47D;
-  color: rgba(119, 244, 125, var(--placeholder-opacity));
+  color: #03bb51;
+  color: rgba(3, 187, 81, var(--placeholder-opacity));
 }
 
 .placeholder-lightFadedGreen::placeholder{
   --placeholder-opacity: 1;
-  color: #77F47D;
-  color: rgba(119, 244, 125, var(--placeholder-opacity));
+  color: #03bb51;
+  color: rgba(3, 187, 81, var(--placeholder-opacity));
 }
 
 .placeholder-lighterFadedGreen::-moz-placeholder{
@@ -10449,26 +10449,26 @@ video {
 
 .focus\:placeholder-lightFadedGreen:focus::-moz-placeholder{
   --placeholder-opacity: 1;
-  color: #77F47D;
-  color: rgba(119, 244, 125, var(--placeholder-opacity));
+  color: #03bb51;
+  color: rgba(3, 187, 81, var(--placeholder-opacity));
 }
 
 .focus\:placeholder-lightFadedGreen:focus:-ms-input-placeholder{
   --placeholder-opacity: 1;
-  color: #77F47D;
-  color: rgba(119, 244, 125, var(--placeholder-opacity));
+  color: #03bb51;
+  color: rgba(3, 187, 81, var(--placeholder-opacity));
 }
 
 .focus\:placeholder-lightFadedGreen:focus::-ms-input-placeholder{
   --placeholder-opacity: 1;
-  color: #77F47D;
-  color: rgba(119, 244, 125, var(--placeholder-opacity));
+  color: #03bb51;
+  color: rgba(3, 187, 81, var(--placeholder-opacity));
 }
 
 .focus\:placeholder-lightFadedGreen:focus::placeholder{
   --placeholder-opacity: 1;
-  color: #77F47D;
-  color: rgba(119, 244, 125, var(--placeholder-opacity));
+  color: #03bb51;
+  color: rgba(3, 187, 81, var(--placeholder-opacity));
 }
 
 .focus\:placeholder-lighterFadedGreen:focus::-moz-placeholder{
@@ -11372,8 +11372,8 @@ video {
 
 .text-lightFadedGreen{
   --text-opacity: 1;
-  color: #77F47D;
-  color: rgba(119, 244, 125, var(--text-opacity));
+  color: #03bb51;
+  color: rgba(3, 187, 81, var(--text-opacity));
 }
 
 .text-lighterFadedGreen{
@@ -11770,8 +11770,8 @@ video {
 
 .hover\:text-lightFadedGreen:hover{
   --text-opacity: 1;
-  color: #77F47D;
-  color: rgba(119, 244, 125, var(--text-opacity));
+  color: #03bb51;
+  color: rgba(3, 187, 81, var(--text-opacity));
 }
 
 .hover\:text-lighterFadedGreen:hover{
@@ -12168,8 +12168,8 @@ video {
 
 .focus\:text-lightFadedGreen:focus{
   --text-opacity: 1;
-  color: #77F47D;
-  color: rgba(119, 244, 125, var(--text-opacity));
+  color: #03bb51;
+  color: rgba(3, 187, 81, var(--text-opacity));
 }
 
 .focus\:text-lighterFadedGreen:focus{
@@ -16018,8 +16018,8 @@ html{
 
   .xl\:divide-lightFadedGreen > :not(template) ~ :not(template){
     --divide-opacity: 1;
-    border-color: #77F47D;
-    border-color: rgba(119, 244, 125, var(--divide-opacity));
+    border-color: #03bb51;
+    border-color: rgba(3, 187, 81, var(--divide-opacity));
   }
 
   .xl\:divide-lighterFadedGreen > :not(template) ~ :not(template){
@@ -16500,8 +16500,8 @@ html{
 
   .xl\:bg-lightFadedGreen{
     --bg-opacity: 1;
-    background-color: #77F47D;
-    background-color: rgba(119, 244, 125, var(--bg-opacity));
+    background-color: #03bb51;
+    background-color: rgba(3, 187, 81, var(--bg-opacity));
   }
 
   .xl\:bg-lighterFadedGreen{
@@ -16898,8 +16898,8 @@ html{
 
   .xl\:hover\:bg-lightFadedGreen:hover{
     --bg-opacity: 1;
-    background-color: #77F47D;
-    background-color: rgba(119, 244, 125, var(--bg-opacity));
+    background-color: #03bb51;
+    background-color: rgba(3, 187, 81, var(--bg-opacity));
   }
 
   .xl\:hover\:bg-lighterFadedGreen:hover{
@@ -17296,8 +17296,8 @@ html{
 
   .xl\:focus\:bg-lightFadedGreen:focus{
     --bg-opacity: 1;
-    background-color: #77F47D;
-    background-color: rgba(119, 244, 125, var(--bg-opacity));
+    background-color: #03bb51;
+    background-color: rgba(3, 187, 81, var(--bg-opacity));
   }
 
   .xl\:focus\:bg-lighterFadedGreen:focus{
@@ -17834,8 +17834,8 @@ html{
 
   .xl\:border-lightFadedGreen{
     --border-opacity: 1;
-    border-color: #77F47D;
-    border-color: rgba(119, 244, 125, var(--border-opacity));
+    border-color: #03bb51;
+    border-color: rgba(3, 187, 81, var(--border-opacity));
   }
 
   .xl\:border-lighterFadedGreen{
@@ -18232,8 +18232,8 @@ html{
 
   .xl\:hover\:border-lightFadedGreen:hover{
     --border-opacity: 1;
-    border-color: #77F47D;
-    border-color: rgba(119, 244, 125, var(--border-opacity));
+    border-color: #03bb51;
+    border-color: rgba(3, 187, 81, var(--border-opacity));
   }
 
   .xl\:hover\:border-lighterFadedGreen:hover{
@@ -18630,8 +18630,8 @@ html{
 
   .xl\:focus\:border-lightFadedGreen:focus{
     --border-opacity: 1;
-    border-color: #77F47D;
-    border-color: rgba(119, 244, 125, var(--border-opacity));
+    border-color: #03bb51;
+    border-color: rgba(3, 187, 81, var(--border-opacity));
   }
 
   .xl\:focus\:border-lighterFadedGreen:focus{
@@ -23182,26 +23182,26 @@ html{
 
   .xl\:placeholder-lightFadedGreen::-moz-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .xl\:placeholder-lightFadedGreen:-ms-input-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .xl\:placeholder-lightFadedGreen::-ms-input-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .xl\:placeholder-lightFadedGreen::placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .xl\:placeholder-lighterFadedGreen::-moz-placeholder{
@@ -24774,26 +24774,26 @@ html{
 
   .xl\:focus\:placeholder-lightFadedGreen:focus::-moz-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .xl\:focus\:placeholder-lightFadedGreen:focus:-ms-input-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .xl\:focus\:placeholder-lightFadedGreen:focus::-ms-input-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .xl\:focus\:placeholder-lightFadedGreen:focus::placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .xl\:focus\:placeholder-lighterFadedGreen:focus::-moz-placeholder{
@@ -25697,8 +25697,8 @@ html{
 
   .xl\:text-lightFadedGreen{
     --text-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--text-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--text-opacity));
   }
 
   .xl\:text-lighterFadedGreen{
@@ -26095,8 +26095,8 @@ html{
 
   .xl\:hover\:text-lightFadedGreen:hover{
     --text-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--text-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--text-opacity));
   }
 
   .xl\:hover\:text-lighterFadedGreen:hover{
@@ -26493,8 +26493,8 @@ html{
 
   .xl\:focus\:text-lightFadedGreen:focus{
     --text-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--text-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--text-opacity));
   }
 
   .xl\:focus\:text-lighterFadedGreen:focus{
@@ -30331,8 +30331,8 @@ html{
 
   .lg\:divide-lightFadedGreen > :not(template) ~ :not(template){
     --divide-opacity: 1;
-    border-color: #77F47D;
-    border-color: rgba(119, 244, 125, var(--divide-opacity));
+    border-color: #03bb51;
+    border-color: rgba(3, 187, 81, var(--divide-opacity));
   }
 
   .lg\:divide-lighterFadedGreen > :not(template) ~ :not(template){
@@ -30813,8 +30813,8 @@ html{
 
   .lg\:bg-lightFadedGreen{
     --bg-opacity: 1;
-    background-color: #77F47D;
-    background-color: rgba(119, 244, 125, var(--bg-opacity));
+    background-color: #03bb51;
+    background-color: rgba(3, 187, 81, var(--bg-opacity));
   }
 
   .lg\:bg-lighterFadedGreen{
@@ -31211,8 +31211,8 @@ html{
 
   .lg\:hover\:bg-lightFadedGreen:hover{
     --bg-opacity: 1;
-    background-color: #77F47D;
-    background-color: rgba(119, 244, 125, var(--bg-opacity));
+    background-color: #03bb51;
+    background-color: rgba(3, 187, 81, var(--bg-opacity));
   }
 
   .lg\:hover\:bg-lighterFadedGreen:hover{
@@ -31609,8 +31609,8 @@ html{
 
   .lg\:focus\:bg-lightFadedGreen:focus{
     --bg-opacity: 1;
-    background-color: #77F47D;
-    background-color: rgba(119, 244, 125, var(--bg-opacity));
+    background-color: #03bb51;
+    background-color: rgba(3, 187, 81, var(--bg-opacity));
   }
 
   .lg\:focus\:bg-lighterFadedGreen:focus{
@@ -32147,8 +32147,8 @@ html{
 
   .lg\:border-lightFadedGreen{
     --border-opacity: 1;
-    border-color: #77F47D;
-    border-color: rgba(119, 244, 125, var(--border-opacity));
+    border-color: #03bb51;
+    border-color: rgba(3, 187, 81, var(--border-opacity));
   }
 
   .lg\:border-lighterFadedGreen{
@@ -32545,8 +32545,8 @@ html{
 
   .lg\:hover\:border-lightFadedGreen:hover{
     --border-opacity: 1;
-    border-color: #77F47D;
-    border-color: rgba(119, 244, 125, var(--border-opacity));
+    border-color: #03bb51;
+    border-color: rgba(3, 187, 81, var(--border-opacity));
   }
 
   .lg\:hover\:border-lighterFadedGreen:hover{
@@ -32943,8 +32943,8 @@ html{
 
   .lg\:focus\:border-lightFadedGreen:focus{
     --border-opacity: 1;
-    border-color: #77F47D;
-    border-color: rgba(119, 244, 125, var(--border-opacity));
+    border-color: #03bb51;
+    border-color: rgba(3, 187, 81, var(--border-opacity));
   }
 
   .lg\:focus\:border-lighterFadedGreen:focus{
@@ -37495,26 +37495,26 @@ html{
 
   .lg\:placeholder-lightFadedGreen::-moz-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .lg\:placeholder-lightFadedGreen:-ms-input-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .lg\:placeholder-lightFadedGreen::-ms-input-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .lg\:placeholder-lightFadedGreen::placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .lg\:placeholder-lighterFadedGreen::-moz-placeholder{
@@ -39087,26 +39087,26 @@ html{
 
   .lg\:focus\:placeholder-lightFadedGreen:focus::-moz-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .lg\:focus\:placeholder-lightFadedGreen:focus:-ms-input-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .lg\:focus\:placeholder-lightFadedGreen:focus::-ms-input-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .lg\:focus\:placeholder-lightFadedGreen:focus::placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .lg\:focus\:placeholder-lighterFadedGreen:focus::-moz-placeholder{
@@ -40010,8 +40010,8 @@ html{
 
   .lg\:text-lightFadedGreen{
     --text-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--text-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--text-opacity));
   }
 
   .lg\:text-lighterFadedGreen{
@@ -40408,8 +40408,8 @@ html{
 
   .lg\:hover\:text-lightFadedGreen:hover{
     --text-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--text-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--text-opacity));
   }
 
   .lg\:hover\:text-lighterFadedGreen:hover{
@@ -40806,8 +40806,8 @@ html{
 
   .lg\:focus\:text-lightFadedGreen:focus{
     --text-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--text-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--text-opacity));
   }
 
   .lg\:focus\:text-lighterFadedGreen:focus{
@@ -44644,8 +44644,8 @@ html{
 
   .md\:divide-lightFadedGreen > :not(template) ~ :not(template){
     --divide-opacity: 1;
-    border-color: #77F47D;
-    border-color: rgba(119, 244, 125, var(--divide-opacity));
+    border-color: #03bb51;
+    border-color: rgba(3, 187, 81, var(--divide-opacity));
   }
 
   .md\:divide-lighterFadedGreen > :not(template) ~ :not(template){
@@ -45126,8 +45126,8 @@ html{
 
   .md\:bg-lightFadedGreen{
     --bg-opacity: 1;
-    background-color: #77F47D;
-    background-color: rgba(119, 244, 125, var(--bg-opacity));
+    background-color: #03bb51;
+    background-color: rgba(3, 187, 81, var(--bg-opacity));
   }
 
   .md\:bg-lighterFadedGreen{
@@ -45524,8 +45524,8 @@ html{
 
   .md\:hover\:bg-lightFadedGreen:hover{
     --bg-opacity: 1;
-    background-color: #77F47D;
-    background-color: rgba(119, 244, 125, var(--bg-opacity));
+    background-color: #03bb51;
+    background-color: rgba(3, 187, 81, var(--bg-opacity));
   }
 
   .md\:hover\:bg-lighterFadedGreen:hover{
@@ -45922,8 +45922,8 @@ html{
 
   .md\:focus\:bg-lightFadedGreen:focus{
     --bg-opacity: 1;
-    background-color: #77F47D;
-    background-color: rgba(119, 244, 125, var(--bg-opacity));
+    background-color: #03bb51;
+    background-color: rgba(3, 187, 81, var(--bg-opacity));
   }
 
   .md\:focus\:bg-lighterFadedGreen:focus{
@@ -46460,8 +46460,8 @@ html{
 
   .md\:border-lightFadedGreen{
     --border-opacity: 1;
-    border-color: #77F47D;
-    border-color: rgba(119, 244, 125, var(--border-opacity));
+    border-color: #03bb51;
+    border-color: rgba(3, 187, 81, var(--border-opacity));
   }
 
   .md\:border-lighterFadedGreen{
@@ -46858,8 +46858,8 @@ html{
 
   .md\:hover\:border-lightFadedGreen:hover{
     --border-opacity: 1;
-    border-color: #77F47D;
-    border-color: rgba(119, 244, 125, var(--border-opacity));
+    border-color: #03bb51;
+    border-color: rgba(3, 187, 81, var(--border-opacity));
   }
 
   .md\:hover\:border-lighterFadedGreen:hover{
@@ -47256,8 +47256,8 @@ html{
 
   .md\:focus\:border-lightFadedGreen:focus{
     --border-opacity: 1;
-    border-color: #77F47D;
-    border-color: rgba(119, 244, 125, var(--border-opacity));
+    border-color: #03bb51;
+    border-color: rgba(3, 187, 81, var(--border-opacity));
   }
 
   .md\:focus\:border-lighterFadedGreen:focus{
@@ -51808,26 +51808,26 @@ html{
 
   .md\:placeholder-lightFadedGreen::-moz-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .md\:placeholder-lightFadedGreen:-ms-input-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .md\:placeholder-lightFadedGreen::-ms-input-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .md\:placeholder-lightFadedGreen::placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .md\:placeholder-lighterFadedGreen::-moz-placeholder{
@@ -53400,26 +53400,26 @@ html{
 
   .md\:focus\:placeholder-lightFadedGreen:focus::-moz-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .md\:focus\:placeholder-lightFadedGreen:focus:-ms-input-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .md\:focus\:placeholder-lightFadedGreen:focus::-ms-input-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .md\:focus\:placeholder-lightFadedGreen:focus::placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .md\:focus\:placeholder-lighterFadedGreen:focus::-moz-placeholder{
@@ -54323,8 +54323,8 @@ html{
 
   .md\:text-lightFadedGreen{
     --text-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--text-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--text-opacity));
   }
 
   .md\:text-lighterFadedGreen{
@@ -54721,8 +54721,8 @@ html{
 
   .md\:hover\:text-lightFadedGreen:hover{
     --text-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--text-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--text-opacity));
   }
 
   .md\:hover\:text-lighterFadedGreen:hover{
@@ -55119,8 +55119,8 @@ html{
 
   .md\:focus\:text-lightFadedGreen:focus{
     --text-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--text-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--text-opacity));
   }
 
   .md\:focus\:text-lighterFadedGreen:focus{
@@ -58957,8 +58957,8 @@ html{
 
   .sm\:divide-lightFadedGreen > :not(template) ~ :not(template){
     --divide-opacity: 1;
-    border-color: #77F47D;
-    border-color: rgba(119, 244, 125, var(--divide-opacity));
+    border-color: #03bb51;
+    border-color: rgba(3, 187, 81, var(--divide-opacity));
   }
 
   .sm\:divide-lighterFadedGreen > :not(template) ~ :not(template){
@@ -59439,8 +59439,8 @@ html{
 
   .sm\:bg-lightFadedGreen{
     --bg-opacity: 1;
-    background-color: #77F47D;
-    background-color: rgba(119, 244, 125, var(--bg-opacity));
+    background-color: #03bb51;
+    background-color: rgba(3, 187, 81, var(--bg-opacity));
   }
 
   .sm\:bg-lighterFadedGreen{
@@ -59837,8 +59837,8 @@ html{
 
   .sm\:hover\:bg-lightFadedGreen:hover{
     --bg-opacity: 1;
-    background-color: #77F47D;
-    background-color: rgba(119, 244, 125, var(--bg-opacity));
+    background-color: #03bb51;
+    background-color: rgba(3, 187, 81, var(--bg-opacity));
   }
 
   .sm\:hover\:bg-lighterFadedGreen:hover{
@@ -60235,8 +60235,8 @@ html{
 
   .sm\:focus\:bg-lightFadedGreen:focus{
     --bg-opacity: 1;
-    background-color: #77F47D;
-    background-color: rgba(119, 244, 125, var(--bg-opacity));
+    background-color: #03bb51;
+    background-color: rgba(3, 187, 81, var(--bg-opacity));
   }
 
   .sm\:focus\:bg-lighterFadedGreen:focus{
@@ -60773,8 +60773,8 @@ html{
 
   .sm\:border-lightFadedGreen{
     --border-opacity: 1;
-    border-color: #77F47D;
-    border-color: rgba(119, 244, 125, var(--border-opacity));
+    border-color: #03bb51;
+    border-color: rgba(3, 187, 81, var(--border-opacity));
   }
 
   .sm\:border-lighterFadedGreen{
@@ -61171,8 +61171,8 @@ html{
 
   .sm\:hover\:border-lightFadedGreen:hover{
     --border-opacity: 1;
-    border-color: #77F47D;
-    border-color: rgba(119, 244, 125, var(--border-opacity));
+    border-color: #03bb51;
+    border-color: rgba(3, 187, 81, var(--border-opacity));
   }
 
   .sm\:hover\:border-lighterFadedGreen:hover{
@@ -61569,8 +61569,8 @@ html{
 
   .sm\:focus\:border-lightFadedGreen:focus{
     --border-opacity: 1;
-    border-color: #77F47D;
-    border-color: rgba(119, 244, 125, var(--border-opacity));
+    border-color: #03bb51;
+    border-color: rgba(3, 187, 81, var(--border-opacity));
   }
 
   .sm\:focus\:border-lighterFadedGreen:focus{
@@ -66121,26 +66121,26 @@ html{
 
   .sm\:placeholder-lightFadedGreen::-moz-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .sm\:placeholder-lightFadedGreen:-ms-input-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .sm\:placeholder-lightFadedGreen::-ms-input-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .sm\:placeholder-lightFadedGreen::placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .sm\:placeholder-lighterFadedGreen::-moz-placeholder{
@@ -67713,26 +67713,26 @@ html{
 
   .sm\:focus\:placeholder-lightFadedGreen:focus::-moz-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .sm\:focus\:placeholder-lightFadedGreen:focus:-ms-input-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .sm\:focus\:placeholder-lightFadedGreen:focus::-ms-input-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .sm\:focus\:placeholder-lightFadedGreen:focus::placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .sm\:focus\:placeholder-lighterFadedGreen:focus::-moz-placeholder{
@@ -68636,8 +68636,8 @@ html{
 
   .sm\:text-lightFadedGreen{
     --text-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--text-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--text-opacity));
   }
 
   .sm\:text-lighterFadedGreen{
@@ -69034,8 +69034,8 @@ html{
 
   .sm\:hover\:text-lightFadedGreen:hover{
     --text-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--text-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--text-opacity));
   }
 
   .sm\:hover\:text-lighterFadedGreen:hover{
@@ -69432,8 +69432,8 @@ html{
 
   .sm\:focus\:text-lightFadedGreen:focus{
     --text-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--text-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--text-opacity));
   }
 
   .sm\:focus\:text-lighterFadedGreen:focus{
@@ -73270,8 +73270,8 @@ html{
 
   .xs\:divide-lightFadedGreen > :not(template) ~ :not(template){
     --divide-opacity: 1;
-    border-color: #77F47D;
-    border-color: rgba(119, 244, 125, var(--divide-opacity));
+    border-color: #03bb51;
+    border-color: rgba(3, 187, 81, var(--divide-opacity));
   }
 
   .xs\:divide-lighterFadedGreen > :not(template) ~ :not(template){
@@ -73752,8 +73752,8 @@ html{
 
   .xs\:bg-lightFadedGreen{
     --bg-opacity: 1;
-    background-color: #77F47D;
-    background-color: rgba(119, 244, 125, var(--bg-opacity));
+    background-color: #03bb51;
+    background-color: rgba(3, 187, 81, var(--bg-opacity));
   }
 
   .xs\:bg-lighterFadedGreen{
@@ -74150,8 +74150,8 @@ html{
 
   .xs\:hover\:bg-lightFadedGreen:hover{
     --bg-opacity: 1;
-    background-color: #77F47D;
-    background-color: rgba(119, 244, 125, var(--bg-opacity));
+    background-color: #03bb51;
+    background-color: rgba(3, 187, 81, var(--bg-opacity));
   }
 
   .xs\:hover\:bg-lighterFadedGreen:hover{
@@ -74548,8 +74548,8 @@ html{
 
   .xs\:focus\:bg-lightFadedGreen:focus{
     --bg-opacity: 1;
-    background-color: #77F47D;
-    background-color: rgba(119, 244, 125, var(--bg-opacity));
+    background-color: #03bb51;
+    background-color: rgba(3, 187, 81, var(--bg-opacity));
   }
 
   .xs\:focus\:bg-lighterFadedGreen:focus{
@@ -75086,8 +75086,8 @@ html{
 
   .xs\:border-lightFadedGreen{
     --border-opacity: 1;
-    border-color: #77F47D;
-    border-color: rgba(119, 244, 125, var(--border-opacity));
+    border-color: #03bb51;
+    border-color: rgba(3, 187, 81, var(--border-opacity));
   }
 
   .xs\:border-lighterFadedGreen{
@@ -75484,8 +75484,8 @@ html{
 
   .xs\:hover\:border-lightFadedGreen:hover{
     --border-opacity: 1;
-    border-color: #77F47D;
-    border-color: rgba(119, 244, 125, var(--border-opacity));
+    border-color: #03bb51;
+    border-color: rgba(3, 187, 81, var(--border-opacity));
   }
 
   .xs\:hover\:border-lighterFadedGreen:hover{
@@ -75882,8 +75882,8 @@ html{
 
   .xs\:focus\:border-lightFadedGreen:focus{
     --border-opacity: 1;
-    border-color: #77F47D;
-    border-color: rgba(119, 244, 125, var(--border-opacity));
+    border-color: #03bb51;
+    border-color: rgba(3, 187, 81, var(--border-opacity));
   }
 
   .xs\:focus\:border-lighterFadedGreen:focus{
@@ -80434,26 +80434,26 @@ html{
 
   .xs\:placeholder-lightFadedGreen::-moz-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .xs\:placeholder-lightFadedGreen:-ms-input-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .xs\:placeholder-lightFadedGreen::-ms-input-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .xs\:placeholder-lightFadedGreen::placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .xs\:placeholder-lighterFadedGreen::-moz-placeholder{
@@ -82026,26 +82026,26 @@ html{
 
   .xs\:focus\:placeholder-lightFadedGreen:focus::-moz-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .xs\:focus\:placeholder-lightFadedGreen:focus:-ms-input-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .xs\:focus\:placeholder-lightFadedGreen:focus::-ms-input-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .xs\:focus\:placeholder-lightFadedGreen:focus::placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .xs\:focus\:placeholder-lighterFadedGreen:focus::-moz-placeholder{
@@ -82949,8 +82949,8 @@ html{
 
   .xs\:text-lightFadedGreen{
     --text-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--text-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--text-opacity));
   }
 
   .xs\:text-lighterFadedGreen{
@@ -83347,8 +83347,8 @@ html{
 
   .xs\:hover\:text-lightFadedGreen:hover{
     --text-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--text-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--text-opacity));
   }
 
   .xs\:hover\:text-lighterFadedGreen:hover{
@@ -83745,8 +83745,8 @@ html{
 
   .xs\:focus\:text-lightFadedGreen:focus{
     --text-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--text-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--text-opacity));
   }
 
   .xs\:focus\:text-lighterFadedGreen:focus{
@@ -87583,8 +87583,8 @@ html{
 
   .min-xl\:divide-lightFadedGreen > :not(template) ~ :not(template){
     --divide-opacity: 1;
-    border-color: #77F47D;
-    border-color: rgba(119, 244, 125, var(--divide-opacity));
+    border-color: #03bb51;
+    border-color: rgba(3, 187, 81, var(--divide-opacity));
   }
 
   .min-xl\:divide-lighterFadedGreen > :not(template) ~ :not(template){
@@ -88065,8 +88065,8 @@ html{
 
   .min-xl\:bg-lightFadedGreen{
     --bg-opacity: 1;
-    background-color: #77F47D;
-    background-color: rgba(119, 244, 125, var(--bg-opacity));
+    background-color: #03bb51;
+    background-color: rgba(3, 187, 81, var(--bg-opacity));
   }
 
   .min-xl\:bg-lighterFadedGreen{
@@ -88463,8 +88463,8 @@ html{
 
   .min-xl\:hover\:bg-lightFadedGreen:hover{
     --bg-opacity: 1;
-    background-color: #77F47D;
-    background-color: rgba(119, 244, 125, var(--bg-opacity));
+    background-color: #03bb51;
+    background-color: rgba(3, 187, 81, var(--bg-opacity));
   }
 
   .min-xl\:hover\:bg-lighterFadedGreen:hover{
@@ -88861,8 +88861,8 @@ html{
 
   .min-xl\:focus\:bg-lightFadedGreen:focus{
     --bg-opacity: 1;
-    background-color: #77F47D;
-    background-color: rgba(119, 244, 125, var(--bg-opacity));
+    background-color: #03bb51;
+    background-color: rgba(3, 187, 81, var(--bg-opacity));
   }
 
   .min-xl\:focus\:bg-lighterFadedGreen:focus{
@@ -89399,8 +89399,8 @@ html{
 
   .min-xl\:border-lightFadedGreen{
     --border-opacity: 1;
-    border-color: #77F47D;
-    border-color: rgba(119, 244, 125, var(--border-opacity));
+    border-color: #03bb51;
+    border-color: rgba(3, 187, 81, var(--border-opacity));
   }
 
   .min-xl\:border-lighterFadedGreen{
@@ -89797,8 +89797,8 @@ html{
 
   .min-xl\:hover\:border-lightFadedGreen:hover{
     --border-opacity: 1;
-    border-color: #77F47D;
-    border-color: rgba(119, 244, 125, var(--border-opacity));
+    border-color: #03bb51;
+    border-color: rgba(3, 187, 81, var(--border-opacity));
   }
 
   .min-xl\:hover\:border-lighterFadedGreen:hover{
@@ -90195,8 +90195,8 @@ html{
 
   .min-xl\:focus\:border-lightFadedGreen:focus{
     --border-opacity: 1;
-    border-color: #77F47D;
-    border-color: rgba(119, 244, 125, var(--border-opacity));
+    border-color: #03bb51;
+    border-color: rgba(3, 187, 81, var(--border-opacity));
   }
 
   .min-xl\:focus\:border-lighterFadedGreen:focus{
@@ -94747,26 +94747,26 @@ html{
 
   .min-xl\:placeholder-lightFadedGreen::-moz-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .min-xl\:placeholder-lightFadedGreen:-ms-input-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .min-xl\:placeholder-lightFadedGreen::-ms-input-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .min-xl\:placeholder-lightFadedGreen::placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .min-xl\:placeholder-lighterFadedGreen::-moz-placeholder{
@@ -96339,26 +96339,26 @@ html{
 
   .min-xl\:focus\:placeholder-lightFadedGreen:focus::-moz-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .min-xl\:focus\:placeholder-lightFadedGreen:focus:-ms-input-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .min-xl\:focus\:placeholder-lightFadedGreen:focus::-ms-input-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .min-xl\:focus\:placeholder-lightFadedGreen:focus::placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .min-xl\:focus\:placeholder-lighterFadedGreen:focus::-moz-placeholder{
@@ -97262,8 +97262,8 @@ html{
 
   .min-xl\:text-lightFadedGreen{
     --text-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--text-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--text-opacity));
   }
 
   .min-xl\:text-lighterFadedGreen{
@@ -97660,8 +97660,8 @@ html{
 
   .min-xl\:hover\:text-lightFadedGreen:hover{
     --text-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--text-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--text-opacity));
   }
 
   .min-xl\:hover\:text-lighterFadedGreen:hover{
@@ -98058,8 +98058,8 @@ html{
 
   .min-xl\:focus\:text-lightFadedGreen:focus{
     --text-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--text-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--text-opacity));
   }
 
   .min-xl\:focus\:text-lighterFadedGreen:focus{
@@ -101896,8 +101896,8 @@ html{
 
   .min-lg\:divide-lightFadedGreen > :not(template) ~ :not(template){
     --divide-opacity: 1;
-    border-color: #77F47D;
-    border-color: rgba(119, 244, 125, var(--divide-opacity));
+    border-color: #03bb51;
+    border-color: rgba(3, 187, 81, var(--divide-opacity));
   }
 
   .min-lg\:divide-lighterFadedGreen > :not(template) ~ :not(template){
@@ -102378,8 +102378,8 @@ html{
 
   .min-lg\:bg-lightFadedGreen{
     --bg-opacity: 1;
-    background-color: #77F47D;
-    background-color: rgba(119, 244, 125, var(--bg-opacity));
+    background-color: #03bb51;
+    background-color: rgba(3, 187, 81, var(--bg-opacity));
   }
 
   .min-lg\:bg-lighterFadedGreen{
@@ -102776,8 +102776,8 @@ html{
 
   .min-lg\:hover\:bg-lightFadedGreen:hover{
     --bg-opacity: 1;
-    background-color: #77F47D;
-    background-color: rgba(119, 244, 125, var(--bg-opacity));
+    background-color: #03bb51;
+    background-color: rgba(3, 187, 81, var(--bg-opacity));
   }
 
   .min-lg\:hover\:bg-lighterFadedGreen:hover{
@@ -103174,8 +103174,8 @@ html{
 
   .min-lg\:focus\:bg-lightFadedGreen:focus{
     --bg-opacity: 1;
-    background-color: #77F47D;
-    background-color: rgba(119, 244, 125, var(--bg-opacity));
+    background-color: #03bb51;
+    background-color: rgba(3, 187, 81, var(--bg-opacity));
   }
 
   .min-lg\:focus\:bg-lighterFadedGreen:focus{
@@ -103712,8 +103712,8 @@ html{
 
   .min-lg\:border-lightFadedGreen{
     --border-opacity: 1;
-    border-color: #77F47D;
-    border-color: rgba(119, 244, 125, var(--border-opacity));
+    border-color: #03bb51;
+    border-color: rgba(3, 187, 81, var(--border-opacity));
   }
 
   .min-lg\:border-lighterFadedGreen{
@@ -104110,8 +104110,8 @@ html{
 
   .min-lg\:hover\:border-lightFadedGreen:hover{
     --border-opacity: 1;
-    border-color: #77F47D;
-    border-color: rgba(119, 244, 125, var(--border-opacity));
+    border-color: #03bb51;
+    border-color: rgba(3, 187, 81, var(--border-opacity));
   }
 
   .min-lg\:hover\:border-lighterFadedGreen:hover{
@@ -104508,8 +104508,8 @@ html{
 
   .min-lg\:focus\:border-lightFadedGreen:focus{
     --border-opacity: 1;
-    border-color: #77F47D;
-    border-color: rgba(119, 244, 125, var(--border-opacity));
+    border-color: #03bb51;
+    border-color: rgba(3, 187, 81, var(--border-opacity));
   }
 
   .min-lg\:focus\:border-lighterFadedGreen:focus{
@@ -109060,26 +109060,26 @@ html{
 
   .min-lg\:placeholder-lightFadedGreen::-moz-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .min-lg\:placeholder-lightFadedGreen:-ms-input-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .min-lg\:placeholder-lightFadedGreen::-ms-input-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .min-lg\:placeholder-lightFadedGreen::placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .min-lg\:placeholder-lighterFadedGreen::-moz-placeholder{
@@ -110652,26 +110652,26 @@ html{
 
   .min-lg\:focus\:placeholder-lightFadedGreen:focus::-moz-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .min-lg\:focus\:placeholder-lightFadedGreen:focus:-ms-input-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .min-lg\:focus\:placeholder-lightFadedGreen:focus::-ms-input-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .min-lg\:focus\:placeholder-lightFadedGreen:focus::placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .min-lg\:focus\:placeholder-lighterFadedGreen:focus::-moz-placeholder{
@@ -111575,8 +111575,8 @@ html{
 
   .min-lg\:text-lightFadedGreen{
     --text-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--text-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--text-opacity));
   }
 
   .min-lg\:text-lighterFadedGreen{
@@ -111973,8 +111973,8 @@ html{
 
   .min-lg\:hover\:text-lightFadedGreen:hover{
     --text-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--text-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--text-opacity));
   }
 
   .min-lg\:hover\:text-lighterFadedGreen:hover{
@@ -112371,8 +112371,8 @@ html{
 
   .min-lg\:focus\:text-lightFadedGreen:focus{
     --text-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--text-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--text-opacity));
   }
 
   .min-lg\:focus\:text-lighterFadedGreen:focus{
@@ -116209,8 +116209,8 @@ html{
 
   .min-md\:divide-lightFadedGreen > :not(template) ~ :not(template){
     --divide-opacity: 1;
-    border-color: #77F47D;
-    border-color: rgba(119, 244, 125, var(--divide-opacity));
+    border-color: #03bb51;
+    border-color: rgba(3, 187, 81, var(--divide-opacity));
   }
 
   .min-md\:divide-lighterFadedGreen > :not(template) ~ :not(template){
@@ -116691,8 +116691,8 @@ html{
 
   .min-md\:bg-lightFadedGreen{
     --bg-opacity: 1;
-    background-color: #77F47D;
-    background-color: rgba(119, 244, 125, var(--bg-opacity));
+    background-color: #03bb51;
+    background-color: rgba(3, 187, 81, var(--bg-opacity));
   }
 
   .min-md\:bg-lighterFadedGreen{
@@ -117089,8 +117089,8 @@ html{
 
   .min-md\:hover\:bg-lightFadedGreen:hover{
     --bg-opacity: 1;
-    background-color: #77F47D;
-    background-color: rgba(119, 244, 125, var(--bg-opacity));
+    background-color: #03bb51;
+    background-color: rgba(3, 187, 81, var(--bg-opacity));
   }
 
   .min-md\:hover\:bg-lighterFadedGreen:hover{
@@ -117487,8 +117487,8 @@ html{
 
   .min-md\:focus\:bg-lightFadedGreen:focus{
     --bg-opacity: 1;
-    background-color: #77F47D;
-    background-color: rgba(119, 244, 125, var(--bg-opacity));
+    background-color: #03bb51;
+    background-color: rgba(3, 187, 81, var(--bg-opacity));
   }
 
   .min-md\:focus\:bg-lighterFadedGreen:focus{
@@ -118025,8 +118025,8 @@ html{
 
   .min-md\:border-lightFadedGreen{
     --border-opacity: 1;
-    border-color: #77F47D;
-    border-color: rgba(119, 244, 125, var(--border-opacity));
+    border-color: #03bb51;
+    border-color: rgba(3, 187, 81, var(--border-opacity));
   }
 
   .min-md\:border-lighterFadedGreen{
@@ -118423,8 +118423,8 @@ html{
 
   .min-md\:hover\:border-lightFadedGreen:hover{
     --border-opacity: 1;
-    border-color: #77F47D;
-    border-color: rgba(119, 244, 125, var(--border-opacity));
+    border-color: #03bb51;
+    border-color: rgba(3, 187, 81, var(--border-opacity));
   }
 
   .min-md\:hover\:border-lighterFadedGreen:hover{
@@ -118821,8 +118821,8 @@ html{
 
   .min-md\:focus\:border-lightFadedGreen:focus{
     --border-opacity: 1;
-    border-color: #77F47D;
-    border-color: rgba(119, 244, 125, var(--border-opacity));
+    border-color: #03bb51;
+    border-color: rgba(3, 187, 81, var(--border-opacity));
   }
 
   .min-md\:focus\:border-lighterFadedGreen:focus{
@@ -123373,26 +123373,26 @@ html{
 
   .min-md\:placeholder-lightFadedGreen::-moz-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .min-md\:placeholder-lightFadedGreen:-ms-input-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .min-md\:placeholder-lightFadedGreen::-ms-input-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .min-md\:placeholder-lightFadedGreen::placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .min-md\:placeholder-lighterFadedGreen::-moz-placeholder{
@@ -124965,26 +124965,26 @@ html{
 
   .min-md\:focus\:placeholder-lightFadedGreen:focus::-moz-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .min-md\:focus\:placeholder-lightFadedGreen:focus:-ms-input-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .min-md\:focus\:placeholder-lightFadedGreen:focus::-ms-input-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .min-md\:focus\:placeholder-lightFadedGreen:focus::placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .min-md\:focus\:placeholder-lighterFadedGreen:focus::-moz-placeholder{
@@ -125888,8 +125888,8 @@ html{
 
   .min-md\:text-lightFadedGreen{
     --text-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--text-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--text-opacity));
   }
 
   .min-md\:text-lighterFadedGreen{
@@ -126286,8 +126286,8 @@ html{
 
   .min-md\:hover\:text-lightFadedGreen:hover{
     --text-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--text-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--text-opacity));
   }
 
   .min-md\:hover\:text-lighterFadedGreen:hover{
@@ -126684,8 +126684,8 @@ html{
 
   .min-md\:focus\:text-lightFadedGreen:focus{
     --text-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--text-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--text-opacity));
   }
 
   .min-md\:focus\:text-lighterFadedGreen:focus{
@@ -130522,8 +130522,8 @@ html{
 
   .min-sm\:divide-lightFadedGreen > :not(template) ~ :not(template){
     --divide-opacity: 1;
-    border-color: #77F47D;
-    border-color: rgba(119, 244, 125, var(--divide-opacity));
+    border-color: #03bb51;
+    border-color: rgba(3, 187, 81, var(--divide-opacity));
   }
 
   .min-sm\:divide-lighterFadedGreen > :not(template) ~ :not(template){
@@ -131004,8 +131004,8 @@ html{
 
   .min-sm\:bg-lightFadedGreen{
     --bg-opacity: 1;
-    background-color: #77F47D;
-    background-color: rgba(119, 244, 125, var(--bg-opacity));
+    background-color: #03bb51;
+    background-color: rgba(3, 187, 81, var(--bg-opacity));
   }
 
   .min-sm\:bg-lighterFadedGreen{
@@ -131402,8 +131402,8 @@ html{
 
   .min-sm\:hover\:bg-lightFadedGreen:hover{
     --bg-opacity: 1;
-    background-color: #77F47D;
-    background-color: rgba(119, 244, 125, var(--bg-opacity));
+    background-color: #03bb51;
+    background-color: rgba(3, 187, 81, var(--bg-opacity));
   }
 
   .min-sm\:hover\:bg-lighterFadedGreen:hover{
@@ -131800,8 +131800,8 @@ html{
 
   .min-sm\:focus\:bg-lightFadedGreen:focus{
     --bg-opacity: 1;
-    background-color: #77F47D;
-    background-color: rgba(119, 244, 125, var(--bg-opacity));
+    background-color: #03bb51;
+    background-color: rgba(3, 187, 81, var(--bg-opacity));
   }
 
   .min-sm\:focus\:bg-lighterFadedGreen:focus{
@@ -132338,8 +132338,8 @@ html{
 
   .min-sm\:border-lightFadedGreen{
     --border-opacity: 1;
-    border-color: #77F47D;
-    border-color: rgba(119, 244, 125, var(--border-opacity));
+    border-color: #03bb51;
+    border-color: rgba(3, 187, 81, var(--border-opacity));
   }
 
   .min-sm\:border-lighterFadedGreen{
@@ -132736,8 +132736,8 @@ html{
 
   .min-sm\:hover\:border-lightFadedGreen:hover{
     --border-opacity: 1;
-    border-color: #77F47D;
-    border-color: rgba(119, 244, 125, var(--border-opacity));
+    border-color: #03bb51;
+    border-color: rgba(3, 187, 81, var(--border-opacity));
   }
 
   .min-sm\:hover\:border-lighterFadedGreen:hover{
@@ -133134,8 +133134,8 @@ html{
 
   .min-sm\:focus\:border-lightFadedGreen:focus{
     --border-opacity: 1;
-    border-color: #77F47D;
-    border-color: rgba(119, 244, 125, var(--border-opacity));
+    border-color: #03bb51;
+    border-color: rgba(3, 187, 81, var(--border-opacity));
   }
 
   .min-sm\:focus\:border-lighterFadedGreen:focus{
@@ -137686,26 +137686,26 @@ html{
 
   .min-sm\:placeholder-lightFadedGreen::-moz-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .min-sm\:placeholder-lightFadedGreen:-ms-input-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .min-sm\:placeholder-lightFadedGreen::-ms-input-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .min-sm\:placeholder-lightFadedGreen::placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .min-sm\:placeholder-lighterFadedGreen::-moz-placeholder{
@@ -139278,26 +139278,26 @@ html{
 
   .min-sm\:focus\:placeholder-lightFadedGreen:focus::-moz-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .min-sm\:focus\:placeholder-lightFadedGreen:focus:-ms-input-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .min-sm\:focus\:placeholder-lightFadedGreen:focus::-ms-input-placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .min-sm\:focus\:placeholder-lightFadedGreen:focus::placeholder{
     --placeholder-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--placeholder-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--placeholder-opacity));
   }
 
   .min-sm\:focus\:placeholder-lighterFadedGreen:focus::-moz-placeholder{
@@ -140201,8 +140201,8 @@ html{
 
   .min-sm\:text-lightFadedGreen{
     --text-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--text-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--text-opacity));
   }
 
   .min-sm\:text-lighterFadedGreen{
@@ -140599,8 +140599,8 @@ html{
 
   .min-sm\:hover\:text-lightFadedGreen:hover{
     --text-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--text-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--text-opacity));
   }
 
   .min-sm\:hover\:text-lighterFadedGreen:hover{
@@ -140997,8 +140997,8 @@ html{
 
   .min-sm\:focus\:text-lightFadedGreen:focus{
     --text-opacity: 1;
-    color: #77F47D;
-    color: rgba(119, 244, 125, var(--text-opacity));
+    color: #03bb51;
+    color: rgba(3, 187, 81, var(--text-opacity));
   }
 
   .min-sm\:focus\:text-lighterFadedGreen:focus{

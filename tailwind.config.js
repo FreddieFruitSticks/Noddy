@@ -27,7 +27,7 @@ module.exports = {
         lightFadedRed: '#f47d77',
         lighterFadedRed: '#FCDDDC',
         fadedGreen: '#59F161',
-        lightFadedGreen: '#77F47D',
+        lightFadedGreen: '#03bb51',
         lighterFadedGreen: '#DCFCDD',
         fadedBlue: '#6159F1',
         lightFadedBlue: '#7D77F4',
