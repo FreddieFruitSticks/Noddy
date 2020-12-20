@@ -72,21 +72,21 @@ const Card = ({dispatch, provided, snapshot, item, rowId, columnId}) => {
                 {item.children.map((child, index) => {
                     return (
                     <div className="flex justify-between">
-                    <input
-                        checked={child.checked}
-                        type="checkbox"
-                        className="h-4 w-4 form-checkbox"
-                        onClick={() => dispatch(elfAdminCheckKidAction({rowId: rowId, columnId:columnId, childNumber:index}))}
-                    />
-                    <div>
-                        {child.name}
-                    </div>
-                    <div>
-                        {child.age}
-                    </div>
-                    <div>
-                        {child.hasGift ? "has gift": "no gift"}
-                    </div>
+                        <input
+                            checked={child.checked}
+                            type="checkbox"
+                            className="h-4 w-4 mr-2 form-checkbox"
+                            onClick={() => dispatch(elfAdminCheckKidAction({rowId: rowId, columnId:columnId, childNumber:index}))}
+                        />
+                        <div className="w-4/12">
+                            {child.name}
+                        </div>
+                        <div className="w-4/12">
+                            {child.age}
+                        </div>
+                        <div className="w-4/12">
+                            {child.hasGift ? "has gift": "no gift"}
+                        </div>
                     </div>
                     )
                     
