@@ -121,3 +121,22 @@ export const confirmPayment : (a :any, authToken: string) => Promise<number> = a
   
   throw new Error("confirm party payment "+response.status)
 }
+
+export const confirmRecaptcha : (a :any) => Promise<any> = async (data: {recaptchaResponse: string}) : Promise<any> => {
+  const response = await fetch("https://noddy.m4v.co.za/wp-json/party-api/v1/recaptcha-verify", {
+    method: 'POST',
+    mode: 'cors',
+    credentials: 'same-origin',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    referrerPolicy: 'no-referrer',
+    body: JSON.stringify(data) 
+  })
+  
+  if (response.ok){
+    return await response.json()
+  }
+  
+  throw new Error("confirm recaptcha "+response.status)
+}

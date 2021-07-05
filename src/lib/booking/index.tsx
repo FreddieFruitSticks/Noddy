@@ -7,6 +7,8 @@ import { useRouter } from 'next/router';
 import { Context } from '../../context/context-provider';
 // import Recaptcha from 'react-recaptcha';
 import loadable from '@loadable/component'
+import { Party } from '../../context/reducer';
+import { confirmRecaptcha } from '../../services';
 const Recaptcha = loadable(() => import('react-recaptcha'))
 
 
@@ -26,7 +28,7 @@ const BookingView = ({state, dispatch}: Context) => {
         })
     },[state])
     
-    const {handleSubmit, trigger, register, getValues, setValue, errors } = useForm({
+    const {handleSubmit, trigger, register, getValues, setValue, errors } = useForm<Party>({
         mode: 'onSubmit',
         reValidateMode: 'onChange',
         defaultValues: {
@@ -196,12 +198,16 @@ const BookingView = ({state, dispatch}: Context) => {
                 <Recaptcha
                     sitekey="6LfAnswZAAAAAO2_TIhAUpsOCr1w96GDr7MwLjP9"
                     render="explicit"
-                    verifyCallback={() => {
-                        setFormVerified(true)
+                    verifyCallback={async (response) => {
+                        const recaptchaResponse = await confirmRecaptcha({recaptchaResponse: response})
+                        const body = JSON.parse(recaptchaResponse.body)
+                        if (body.success){
+                            setFormVerified(true)
+                        }
                     }}
                     onloadCallback={()=>{}}
                 />
-                
+
                 <div className="w-full flex items-center justify-start">
                     <button 
                         disabled={!formVerified} 

@@ -35,6 +35,40 @@ function confirm_party_payment_api( WP_REST_Request $request ) {
     return $response;
 }
 
+function verify_recaptcha(WP_REST_Request $request){
+    $parameters = $request->get_json_params();
+      
+    $response = new WP_REST_Response( 0 );
+    
+    if ( empty( $parameters ) || $parameters['recaptchaResponse'] == '' ) {
+        return new WP_Error( 'no_parameters', 'Invalid body', array( 'status' => 400 ) );
+    }
+    
+    $secret = getenv('RECAPTCHA_SECRET');
+    $recaptcha_response = $parameters['recaptchaResponse'];
+    $url = "https://www.google.com/recaptcha/api/siteverify";
+    
+    $response = wp_remote_post($url, array(
+      'method'      => 'POST',
+      'timeout'     => 45,
+      'redirection' => 5,
+      'httpversion' => '1.0',
+      'blocking'    => true,
+      'headers'     => array(),
+      'body'        => array(
+          'secret' => $secret,
+          'response' => $recaptcha_response,
+      ),
+      'cookies'     => array()
+    ));
+    
+    if(is_wp_error($response)){
+      return new WP_Error( 'no_parameters', 'Error', array( 'status' => 500 ) );
+    }
+
+    return $response;
+}
+
 function create_party_api( WP_REST_Request $request ) {    
   
   $parameters = $request->get_json_params();
@@ -124,6 +158,16 @@ add_action( 'rest_api_init', function () {
     ) );
   } );
   
+add_action( 'rest_api_init', function () {
+  register_rest_route('party-api/v1', '/recaptcha-verify', array(
+    'methods' => 'POST',
+    'callback' => 'verify_recaptcha',
+    'permission_callback' => function () {
+      return true;
+    }
+  ) );
+} );
+  
   add_action( 'rest_api_init', function () {
     register_rest_route( 'party-api/v1', '/party', array(
       'methods' => 'POST',
@@ -134,19 +178,19 @@ add_action( 'rest_api_init', function () {
     ) );
   } );
   
-  function confirm_party_payment_db($parameters){
-    global $wpdb;
-    
-    return $wpdb->update(
-      $wpdb->postmeta,
-      array(
-          'meta_value' => true
-      ),
-      array(
-        'meta_key' => 'payment_confirmed',
-        'post_id' => $parameters['partyId']        
-      ));   
-  }
+function confirm_party_payment_db($parameters){
+  global $wpdb;
+  
+  return $wpdb->update(
+    $wpdb->postmeta,
+    array(
+        'meta_value' => true
+    ),
+    array(
+      'meta_key' => 'payment_confirmed',
+      'post_id' => $parameters['partyId']        
+    ));   
+}
   
   function update_event_ticket_number($event_id, $numberOfTickets){
     global $wpdb;

@@ -116,7 +116,7 @@ const HomePage = (props: IHomePage) => {
                     <img width="100%" height="auto" src="/m4verick.svg" alt="my image" />
                     <div className="mt-5">
                         M4verick Labs operates as a fast-paced digital transformation partner. Boasting a broad range of impressive partnerships, 
-                        their skills and service offerings have supported our developers and saved us from many costs. Round Table Peninsula 77 would like 
+                        their skills and service offering have supported our developers and saved us costs. Round Table Peninsula 77 would like 
                         to <strong>thank</strong> Maverick Labs for their generous contributions.
                     </div>
                 </div>
