@@ -20,6 +20,8 @@ const Noddy = ({ Component, pageProps }) => {
   if (process.env.NODE_ENV != 'development'){
     disableReactDevTools()
   }
+  console.log("!!!!!!!!!!!!!!!!!!!!!!!")
+  console.log(process.env.SEVER_HOST)
     return (
     <div>
       <Head>
