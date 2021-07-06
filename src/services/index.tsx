@@ -1,6 +1,6 @@
 import { IKid, Party } from "../context/reducer";
 
-const host = process.env.SERVER_HOST
+const host = process.env.NEXT_PUBLIC_SEVER_HOST
 
 export const fetchPosts : any = async (...args) => {
   const response = await fetch(`https://${host}/wp-json/${args[0]}?filter[orderby]=date&order=desc`);
