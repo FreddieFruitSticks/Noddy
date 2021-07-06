@@ -1,7 +1,9 @@
 import { IKid, Party } from "../context/reducer";
 
+const host = process.env.NEXT_PUBLIC_SEVER_HOST
+
 export const fetchPosts : any = async (...args) => {
-  const response = await fetch(`https://noddy.m4v.co.za/wp-json/${args[0]}?filter[orderby]=date&order=desc`);
+  const response = await fetch(`https://${host}/wp-json/${args[0]}?filter[orderby]=date&order=desc`);
   if (response.ok){
     return response.json()
   }
@@ -9,7 +11,7 @@ export const fetchPosts : any = async (...args) => {
 }
 
 export const fetchParties : any = async (...args) => {
-  const response = await fetch(`https://noddy.m4v.co.za/wp-json/${args[0]}`);
+  const response = await fetch(`https://${host}/wp-json/${args[0]}`);
   if (response.ok){
     return response.json()
   }
@@ -21,7 +23,7 @@ export const fetchAllParties : any = async (...args) => {
   
   for (let i = 1;;i++){
     try{
-      const response = await fetch(`https://noddy.m4v.co.za/wp-json/${args[0]}?per_page=25&page=${i}`);
+      const response = await fetch(`https://${host}/wp-json/${args[0]}?per_page=25&page=${i}`);
       if (response.ok){
         let parties = await response.json()
         i+=1
@@ -45,7 +47,7 @@ export const fetchAllParties : any = async (...args) => {
 }
 
 export const fetchEvents : any = async (...args) => {
-  const response = await fetch(`https://noddy.m4v.co.za/wp-json/${args[0]}?filter[orderby]=date&order=desc`);
+  const response = await fetch(`https://${host}/wp-json/${args[0]}?filter[orderby]=date&order=desc`);
   if (response.ok){
     return response.json()
   }
@@ -53,7 +55,7 @@ export const fetchEvents : any = async (...args) => {
 }
 
 export const fetchCategories : any = async () => {
-  const response = await fetch(`https://noddy.m4v.co.za/wp-json/wp/v2/categories`);
+  const response = await fetch(`https://${host}/wp-json/wp/v2/categories`);
   if (response.ok){
     return response.json()
   }
@@ -61,7 +63,7 @@ export const fetchCategories : any = async () => {
 }
 
 export const fetchUtils : any = async () => {
-  const response = await fetch("https://noddy.m4v.co.za/wp-json/acf/v3/utils");
+  const response = await fetch(`https://${host}/wp-json/acf/v3/utils`);
   if (response.ok){
     const utilsArray = await response.json();
     
@@ -84,7 +86,7 @@ export const createParty : (a :any) => Promise<number> = async (data: Party) : P
   
   data.kids = kids
   
-  const response = await fetch("https://noddy.m4v.co.za/wp-json/party-api/v1/party", {
+  const response = await fetch(`https://${host}/wp-json/party-api/v1/party`, {
     method: 'POST',
     mode: 'cors',
     credentials: 'same-origin',
@@ -103,7 +105,7 @@ export const createParty : (a :any) => Promise<number> = async (data: Party) : P
 }
 
 export const confirmPayment : (a :any, authToken: string) => Promise<number> = async (data: {partyId: number}, authToken) : Promise<number> => {
-  const response = await fetch("https://noddy.m4v.co.za/wp-json/party-api/v1/party", {
+  const response = await fetch(`https://${host}/wp-json/party-api/v1/party`, {
     method: 'PUT',
     mode: 'cors',
     credentials: 'same-origin',
@@ -123,7 +125,7 @@ export const confirmPayment : (a :any, authToken: string) => Promise<number> = a
 }
 
 export const confirmRecaptcha : (a :any) => Promise<any> = async (data: {recaptchaResponse: string}) : Promise<any> => {
-  const response = await fetch("https://noddy.m4v.co.za/wp-json/party-api/v1/recaptcha-verify", {
+  const response = await fetch(`https://${host}/wp-json/party-api/v1/recaptcha-verify`, {
     method: 'POST',
     mode: 'cors',
     credentials: 'same-origin',
