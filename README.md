@@ -32,11 +32,24 @@ Error logs in `/var/www/html/wordpress/wp-content`
 
 ## Reactjs/Nextjs
 
-Noddy FE is hosted on vercel https://vercel.com/dashboard
+Noddy FE is hosted on vercel https://vercel.com/dashboard (on Freddie's personal account)
+
+Staging: noddy-dev.vercel.app. Admin noddy.m4v.co.za/wp-admin (passwords were sent out to RT members)
+Production: noddy.vercel.app. Admin noddy.prod.m4v.co.za/wp-admin (same as dev passowrds)
+
+To deploy to production simply push to master branch. To deploy to Staging push to develop branch
 
 Check vercel for env vars such as WP_AUTH_TOKEN
 
 Email env vars are in `/var/www/html/wordpress/wp-config.php`
+
+## Google Cloud Platform
+
+Production noddy is held with maverick labs as an f1 micro vm. Development is held on Freddie's personal GCP account. Ask both for access. 
+
+If for whatever reason you need to migrate VMs between project; To migrate a vm from one project to another, first you must grant your user access to the noddy project (if you dont have access to the Noddy project as freddie or Emma (m4verick labs)). Then assign the service role `service account user` role to the right service account. In this case I had to assign this role to `19446431913-compute@developer.gserviceaccount.com`. Then assign `Compute Image User` role to your user. Create a machine image and create a VM instance using that machine imagine as below.
+
+`gcloud beta compute instances create noddy --project=dex-m-5ad68 --zone us-central1-a --source-machine-image projects/noddy-285919/global/machineImages/noddy-2 --service-account 19446431913-compute@developer.gserviceaccount.com`
 
 ### Misc
 
