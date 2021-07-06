@@ -22,6 +22,10 @@ const Noddy = ({ Component, pageProps }) => {
   }
   console.log("!!!!!!!!!!!!!!!!!!!!!!!")
   console.log(process.env.NODE_ENV)
+  console.log(process.env.PAYMENT_URL)
+  console.log(process.env.MERCHANT_ID)
+  console.log(process.env.MERCHANT_URL)
+  console.log(process.env.NEXT_PUBLIC_SEVER_HOST)
     return (
     <div>
       <Head>
