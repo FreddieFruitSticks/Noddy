@@ -531,3 +531,22 @@ function return_tickets( $postid ) {
     }
     // My custom stuff for deleting my custom post type here
 }
+
+add_filter( 'manage_party_posts_columns', 'set_custom_party_columns' );
+function set_custom_party_columns($columns) {
+    $columns['payment_confirmed'] = __( 'Payment Confirmed', 'your_text_domain' );
+
+    return $columns;
+}
+
+// Add the data to the custom columns for the book post type:
+  add_action( 'manage_party_posts_custom_column' , 'custom_party_column', 10, 2 );
+  function custom_party_column( $column, $post_id ) {
+      switch ( $column ) {
+  
+          case 'payment_confirmed' :
+              echo get_post_meta( $post_id , 'payment_confirmed' , true ); 
+              break;
+  
+      }
+  }
