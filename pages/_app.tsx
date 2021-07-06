@@ -21,7 +21,7 @@ const Noddy = ({ Component, pageProps }) => {
     disableReactDevTools()
   }
   console.log("!!!!!!!!!!!!!!!!!!!!!!!")
-  console.log(process.env.SEVER_HOST)
+  console.log(process.env.NODE_ENV)
     return (
     <div>
       <Head>
