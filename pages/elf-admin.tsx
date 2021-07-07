@@ -61,9 +61,6 @@ const PartyAdmin = ({state, dispatch}: Context) => {
   useEffect(() => {
     (async function(){
       const parties = await fetchAllParties('acf/v3/party')
-      console.log("!!!!!!!!!!!!!!!!!!")
-      console.log("!!!!!!!!!!!!!!!!!!")
-      console.log(parties)
       
       let columnsFromState = state?.elfAdmin?.columns ? state.elfAdmin.columns : {
         0: {

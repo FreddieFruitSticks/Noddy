@@ -17,8 +17,6 @@ export const getServerSideProps = async ({query}) => {
 }
 
 function PaymentSuccess({confirmationError}) {
-    console.log("!!!!!!!!!!!!!!!!!")
-    console.log(confirmationError)
     return (
         <div className="min-h-screen mt-10 flex flex-col items-center justify-center">
             {!confirmationError ?
