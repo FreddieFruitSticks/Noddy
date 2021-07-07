@@ -508,31 +508,30 @@ add_action('pre_get_posts', 'custom_post_order');
 add_action( 'before_delete_post', 'return_tickets' );
 function return_tickets( $postid ) {
   global $wpdb;
-    // // We check if the global post type isn't ours and just return
-    // global $post_type;   
- 
-    // if ( 'wpdocs_my_custom_post_type' !== $post_type ) {
-    //     return;
-    // }
     
     if(get_post_type($postid) == 'party'){
-      $numberOfChildren = get_post_meta( $postid, 'children', true );
-      $numberOfAdults = get_post_meta( $postid, 'number_of_adults', true );
-      $eventId = get_post_meta( $postid, 'eventid', true );
-      $numberOfTickets = get_post_meta( $eventId, 'numberoftickets', true );
       
-      $numberOfPeople = (int)$numberOfChildren + (int)$numberOfAdults;
-      $n2 = (int)$numberOfTickets + $numberOfPeople;
-    
-      $wpdb->update(
-        $wpdb->postmeta,
-        array(
-            'meta_value' => ($n2)
-        ),
-        array(
-          'meta_key' => 'numberoftickets',
-          'post_id' => $eventId
-        ));
+      $confirmed = get_post_meta( $postid, 'payment_confirmed', true );
+      
+      if ($confirmed){
+        $numberOfChildren = get_post_meta( $postid, 'children', true );
+        $numberOfAdults = get_post_meta( $postid, 'number_of_adults', true );
+        $eventId = get_post_meta( $postid, 'eventid', true );
+        $numberOfTickets = get_post_meta( $eventId, 'numberoftickets', true );
+        
+        $numberOfPeople = (int)$numberOfChildren + (int)$numberOfAdults;
+        $n2 = (int)$numberOfTickets + $numberOfPeople;
+        
+        $wpdb->update(
+          $wpdb->postmeta,
+          array(
+              'meta_value' => ($n2)
+          ),
+          array(
+            'meta_key' => 'numberoftickets',
+            'post_id' => $eventId
+          ));
+      }
     }
     // My custom stuff for deleting my custom post type here
 }
