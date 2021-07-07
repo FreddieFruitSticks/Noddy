@@ -34,13 +34,13 @@ When updating, click the "update" button on the right of the screen.
 
 When all the tickets have been purchased OR the date has passed the date of the event, the event on the client app will show "unavailable". On the backend, however, you will still be able to add people to the event for any last minute bookings.
 
-#### Parties
+#### 3. Parties
 
 These are the groups that have booked. Clicking on the parties tile you will see a list of all the parties. Take not of the columns, specifically the "Payment Confirmed" column (1 = true, 0 = false). This is useful when deleting unconfirmed bookings. Deleting the party will return the tickets to the event from which they booked.
 
 Clicking on a party takes you to the details of the party where you can see the children list, number of adults, etc. You will see a payment confirmed (do not tamper with this unless you know what you are doing). The next item "email sent" is to confirm whether or not this party has been emailed for the next Noddy event.
 
-#### Noddy Utils
+#### 4. Noddy Utils
 
 This if for utility control of the site; shutting down the Noddy event, changing the year, and changing the price per ticket.
 
@@ -52,7 +52,7 @@ Price per ticket will show on the client site, and it will also be used in the c
 The year of the party will show up on the client site so that people know which year they are booking for.
 Bookings open/closed controls the client site and makes all events unavailable and informs site onlookers that noddy is closed
 
-#### Email parents (CAUTION!!!)
+#### 5. Email parents (CAUTION!!!)
 
 This is further down the list (if you cant see it it's because you dont have access to view this). This is to send emails to all the parents from the previous year that Noddy is open.
 
