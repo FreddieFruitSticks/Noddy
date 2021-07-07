@@ -4,7 +4,7 @@ import { confirmPayment } from '../src/services'
 export const getServerSideProps = async ({query}) => {
     let err = null
     try{
-        const response = await confirmPayment({partyId: query.partyId, eventId: query.eventId, tickets: query.tickets}, `${process.env.WP_AUTH_TOKE}`)
+        const response = await confirmPayment({partyId: query.partyId, eventId: query.eventId, tickets: query.tickets}, `${process.env.WP_AUTH_TOKEN}`)
     }catch(e){
         err = e
     }

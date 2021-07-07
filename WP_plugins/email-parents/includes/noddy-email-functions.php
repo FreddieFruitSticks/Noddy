@@ -109,13 +109,13 @@ function email_parents( WP_REST_Request $request ) {
               }
           </style>
           <meta charset="UTF-8">
-          <title>Create AGUT account instruction</title>
+          <title>Noddy bookings open</title>
       </head>
       <body>
         Dear parents,
       <h3 style="color:#f16159">Noddy Party bookings are now OPEN!</h3>
       <br>
-        Please click <a href="https://noddy.vercel.app">here</a> to go to our website and make a booking!
+        Please click <a href="https://noddy.co.za">here</a> to go to our website and make a booking!
       <br>
       
       
@@ -139,8 +139,6 @@ function email_parents( WP_REST_Request $request ) {
         'post_id' => $party_id      
       ));   
   }
-  // trigger_error("Cannot divide by zero", E_USER_ERROR);
-  // error_log("!!!!!!!!!!!!!!!!!!!!!!!!");
   
   $converted_res = $sent ? 'true' : 'false';
   $response = new WP_REST_Response( $converted_res . SMTP_HOST );
