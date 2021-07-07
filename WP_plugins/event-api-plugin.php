@@ -30,6 +30,57 @@ function confirm_party_payment_api( WP_REST_Request $request ) {
     $a = confirm_party_payment_db($parameters);
     $b = update_event_ticket_number($parameters['eventId'], $parameters['tickets']);
     
+    $numberOfChildren = get_post_meta( $parameters['partyId'], 'children', true );
+    $numberOfAdults = get_post_meta( $parameters['partyId'], 'number_of_adults', true );
+    $partyName = get_post_meta( $parameters['partyId'], 'party_name', true );
+    $d = get_post_meta( $parameters['partyId'], 'event_date', true );
+    $email = get_post_meta( $parameters['partyId'], 'email', true );
+    
+    $year = substr($d, 0, 4);
+    $month = substr($d, 4, 2);
+    $day = substr($d, 6, 2);
+    $date = $year . "-". $month . "-" . $day;
+    
+    $c = wp_mail( $email, 'Noddy Party Booking Confirmation', "<!DOCTYPE html>
+      <html lang=\"en\">
+      <head>
+          <style>
+              table, th, td {
+                  border: 1px solid black;
+                  border-collapse: collapse;
+                  padding: 10px;
+              }
+          </style>
+          <meta charset=\"UTF-8\">
+          <title>Noddy Booking confirmation</title>
+      </head>
+      <body>
+        Dear $partyName,
+      <h3 style=\"color:#f16159\">Your booking details are as follows</h3>
+      <br>
+      <table>
+        <tr>
+            <th>Party Name</th>
+            <th>Number of adults</th>
+            <th>Number of kids</th>
+            <th>Date</th>
+        </tr>
+        <tr>
+            <td>$partyName</td>
+            <td>$numberOfAdults</td>
+            <td>$numberOfChildren</td>
+            <td>$date</td>
+        </tr>
+      </table>
+      <br>
+      
+      
+      <br>
+      Thanks,<br>
+      The Noddy Team
+      </body>
+      </html>", 'Content-type: text/html', '' );
+    
     $response = new WP_REST_Response( $b );
     
     return $response;
@@ -69,8 +120,7 @@ function verify_recaptcha(WP_REST_Request $request){
     return $response;
 }
 
-function create_party_api( WP_REST_Request $request ) {    
-  
+function create_party_api( WP_REST_Request $request ) {
   $parameters = $request->get_json_params();
   if ( empty( $parameters ) ) {
     return new WP_Error( 'no_parameters', 'Invalid body', array( 'status' => 400 ) );
@@ -95,51 +145,6 @@ function create_party_api( WP_REST_Request $request ) {
     }
     
     $a = create_party_db($parameters, $catId);
-    
-    $name = $parameters['name'];
-    $adults = $parameters['adults'];
-    $date = $parameters['date'];
-    $numberOfKids = count($parameters['kids']);
-    
-    $c = wp_mail( $parameters['email'], 'Noddy Party Booking Confirmation', "<!DOCTYPE html>
-      <html lang=\"en\">
-      <head>
-          <style>
-              table, th, td {
-                  border: 1px solid black;
-                  border-collapse: collapse;
-                  padding: 10px;
-              }
-          </style>
-          <meta charset=\"UTF-8\">
-          <title>Create AGUT account instruction</title>
-      </head>
-      <body>
-        Dear $name,
-      <h3 style=\"color:#f16159\">Your booking details are as follows</h3>
-      <br>
-      <table>
-        <tr>
-            <th>Party Name</th>
-            <th>Number of adults</th>
-            <th>Number of kids</th>
-            <th>Date</th>
-        </tr>
-        <tr>
-            <td>$name</td>
-            <td>$adults</td>
-            <td>$numberOfKids</td>
-            <td>$date</td>
-        </tr>
-      </table>
-      <br>
-      
-      
-      <br>
-      Thanks,<br>
-      The Noddy Team
-      </body>
-      </html>", 'Content-type: text/html', '' );
     
     $response = new WP_REST_Response($a);
     
@@ -499,3 +504,76 @@ function custom_post_order($query){
 add_action('pre_get_posts', 'custom_post_order');
 // if(is_admin()){
 // }
+
+add_action( 'before_delete_post', 'return_tickets' );
+function return_tickets( $postid ) {
+  global $wpdb;
+    // // We check if the global post type isn't ours and just return
+    // global $post_type;   
+ 
+    // if ( 'wpdocs_my_custom_post_type' !== $post_type ) {
+    //     return;
+    // }
+    
+    if(get_post_type($postid) == 'party'){
+      $numberOfChildren = get_post_meta( $postid, 'children', true );
+      $numberOfAdults = get_post_meta( $postid, 'number_of_adults', true );
+      $eventId = get_post_meta( $postid, 'eventid', true );
+      $numberOfTickets = get_post_meta( $eventId, 'numberoftickets', true );
+      
+      $numberOfPeople = (int)$numberOfChildren + (int)$numberOfAdults;
+      $n2 = (int)$numberOfTickets + $numberOfPeople;
+    
+      $wpdb->update(
+        $wpdb->postmeta,
+        array(
+            'meta_value' => ($n2)
+        ),
+        array(
+          'meta_key' => 'numberoftickets',
+          'post_id' => $eventId
+        ));
+    }
+    // My custom stuff for deleting my custom post type here
+}
+
+add_filter( 'manage_party_posts_columns', 'set_custom_party_columns' );
+function set_custom_party_columns($columns) {
+    $columns['payment_confirmed'] = __( 'Payment Confirmed', 'your_text_domain' );
+
+    return $columns;
+}
+
+  add_action( 'manage_party_posts_custom_column' , 'custom_party_column', 10, 2 );
+  function custom_party_column( $column, $post_id ) {
+      switch ( $column ) {
+  
+          case 'payment_confirmed' :
+              echo get_post_meta( $post_id , 'payment_confirmed' , true ); 
+              break;
+  
+      }
+  }
+
+  add_filter( 'manage_event_posts_columns', 'set_custom_event_columns' );
+  function set_custom_event_columns($columns) {
+      unset( $columns['date'] );
+      $columns['event_date'] = __( 'Event Date', 'your_text_domain' );
+
+      return $columns;
+  }
+
+  add_action( 'manage_event_posts_custom_column' , 'custom_event_column', 10, 2 );
+  function custom_event_column( $column, $post_id ) {
+      switch ( $column ) {
+  
+          case 'event_date' :
+              $d = get_post_meta( $post_id , 'date' , true );
+              $year = substr($d, 0, 4);
+              $month = substr($d, 4, 2);
+              $day = substr($d, 6, 2);
+              echo $year . "-". $month . "-" . $day;
+              break;
+  
+      }
+  }

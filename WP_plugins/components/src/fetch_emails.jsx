@@ -2,7 +2,16 @@ import React, {useState} from "react";
 import ReactDOM from "react-dom";
 
 const emailParents = async () => {
-  const response = await fetch("https://noddy.m4v.co.za/wp-json/email-api/v1/email", {
+  
+  let serverHost = "noddy.m4v.co.za"
+  
+  // complete hack because I dont feel like messing around with env vars in WP - dont try this at home kids.
+  if (window && window.location && window.location.host === "noddy.co.za"){
+    serverHost = "noddy.prod.m4v.co.za"
+  }
+  
+  // This sits behind a login so I just hardocde the auth in. Again, too lazy. 
+  const response = await fetch(`https://${serverHost}/wp-json/email-api/v1/email`, {
     method: 'PUT',
     headers: {
       // 'Content-Type': 'application/json',
@@ -26,7 +35,7 @@ const SendEmails = () => {
   
   return (
     <div>
-      <button onClick={async () => {
+      <button style={{color: 'red', padding: '10px', fontSize: "20px"}} onClick={async () => {
         const sent = await emailParents()
         setResponseOK(sent)
         setShowMessage(true)
