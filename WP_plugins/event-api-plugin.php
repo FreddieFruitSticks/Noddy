@@ -489,17 +489,17 @@ function custom_post_order($query){
   // $post_type = $query->get('post_type');
   
   /* Check post types. */
-  // if($query->get('post_type') == 'party'){
-  //     /* Post Column: e.g. title */
-  //     if($query->get('orderby') == ''){
-  //         $query->set('orderby', 'meta_value_num');
-  //         $query->set('meta_key', 'children_0_child_age');
-  //     }
-  //     /* Post Order: ASC / DESC */
-  //     if($query->get('order') == ''){
-  //         $query->set('order', 'ASC');
-  //     }
-  // }
+  if($query->get('post_type') == 'party'){
+      /* Post Column: e.g. title */
+      if($query->get('orderby') == ''){
+          $query->set('orderby', 'meta_value_num');
+          $query->set('meta_key', 'event_date');
+      }
+      /* Post Order: ASC / DESC */
+      if($query->get('order') == ''){
+          $query->set('order', 'ASC');
+      }
+  }
 }
 add_action('pre_get_posts', 'custom_post_order');
 // if(is_admin()){
