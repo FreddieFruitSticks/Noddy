@@ -92,7 +92,7 @@ Email parents plugin requires webpack build (run this from /Noddy/WP_plugins/com
 
 `npx webpack --config webpack.config.jsx ./src/fetch_emails.js -o ../email-parents/includes/fetch_emails.js  --mode production`
 
-To upload plugin files to WP server:
+To upload plugin files to WP server (these need to be pushed to staging (noddy-dev) and prod (noddy)):
 
 `sudo gcloud compute scp --recurse ../email-parents noddy-dev:/var/www/html/wordpress/wp-content/plugins/ --zone us-central1-a`
 
