@@ -112,7 +112,7 @@ function create_party_api( WP_REST_Request $request ) {
               }
           </style>
           <meta charset=\"UTF-8\">
-          <title>Create AGUT account instruction</title>
+          <title>Noddy Booking confirmation</title>
       </head>
       <body>
         Dear $name,
@@ -539,13 +539,35 @@ function set_custom_party_columns($columns) {
     return $columns;
 }
 
-// Add the data to the custom columns for the book post type:
   add_action( 'manage_party_posts_custom_column' , 'custom_party_column', 10, 2 );
   function custom_party_column( $column, $post_id ) {
       switch ( $column ) {
   
           case 'payment_confirmed' :
               echo get_post_meta( $post_id , 'payment_confirmed' , true ); 
+              break;
+  
+      }
+  }
+
+  add_filter( 'manage_event_posts_columns', 'set_custom_event_columns' );
+  function set_custom_event_columns($columns) {
+      unset( $columns['date'] );
+      $columns['event_date'] = __( 'Event Date', 'your_text_domain' );
+
+      return $columns;
+  }
+
+  add_action( 'manage_event_posts_custom_column' , 'custom_event_column', 10, 2 );
+  function custom_event_column( $column, $post_id ) {
+      switch ( $column ) {
+  
+          case 'event_date' :
+              $d = get_post_meta( $post_id , 'date' , true );
+              $year = substr($d, 0, 4);
+              $month = substr($d, 4, 2);
+              $day = substr($d, 6, 2);
+              echo $year . "-". $month . "-" . $day;
               break;
   
       }
