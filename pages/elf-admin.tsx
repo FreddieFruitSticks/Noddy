@@ -26,7 +26,7 @@ const reorder = (list) => {
 
 export const partiesMapper = (wpParties: IWPParty[]) : IElfAdminParty[] => {
   return wpParties.map(wpParty => {
-    const children : ElfAdminKid[] = wpParty?.acf?.children.map(wpChild => {
+    const children : ElfAdminKid[] = wpParty?.acf?.children?.map(wpChild => {
       return {
         name:wpChild.child_name,
         age: wpChild.child_age,
@@ -61,6 +61,9 @@ const PartyAdmin = ({state, dispatch}: Context) => {
   useEffect(() => {
     (async function(){
       const parties = await fetchAllParties('acf/v3/party')
+      console.log("!!!!!!!!!!!!!!!!!!")
+      console.log("!!!!!!!!!!!!!!!!!!")
+      console.log(parties)
       
       let columnsFromState = state?.elfAdmin?.columns ? state.elfAdmin.columns : {
         0: {
