@@ -88,9 +88,9 @@ App hosted on Vercel. WP admin hosted on Maverick Labs (production) and Freddies
 
 ### Wordpress and php
 
-Email parents plugin requires webpack build:
+Email parents plugin requires webpack build (run this from /Noddy/WP_plugins/components folder) :
 
-`npx webpack --config webpack.config.js ./src/fetch_emails.js -o ../email-parents/includes/fetch_emails.js  --mode production`
+`npx webpack --config webpack.config.jsx ./src/fetch_emails.js -o ../email-parents/includes/fetch_emails.js  --mode production`
 
 To upload plugin files to WP server:
 
