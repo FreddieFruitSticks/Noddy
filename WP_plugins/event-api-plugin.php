@@ -81,7 +81,10 @@ function confirm_party_payment_api( WP_REST_Request $request ) {
       </body>
       </html>", 'Content-type: text/html', '' );
     
-    $response = new WP_REST_Response( $b );
+    $resp = array(
+      'eventId'  => $parameters['eventId']
+  );
+    $response = new WP_REST_Response( $resp );
     
     return $response;
 }

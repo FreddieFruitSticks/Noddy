@@ -20,8 +20,8 @@ const NoddyStateProvider = ({children}) => {
     }
     
     let [state, dispatch] = useReducer(reducer, {...initialState, ...localState})
-    console.log("-------------state after-----------------")
-    console.log(state)
+    // console.log("-------------state after-----------------")
+    // console.log(state)
     
     return (
         <GlobalStateContext.Provider value={{state, dispatch}}>

@@ -100,10 +100,10 @@ export const initialState: InitialState = {
 
 
 const reducer : (a: InitialState, b: IAction<any>) => InitialState = (state, action) => {
-    console.log("-------------state before-----------------")
-    console.log(state)
-    console.log("----------------action--------------------")
-    console.log(action)
+    // console.log("-------------state before-----------------")
+    // console.log(state)
+    // console.log("----------------action--------------------")
+    // console.log(action)
 
     switch (action.type) {
         case ActionType.PARTY_FORM:{
