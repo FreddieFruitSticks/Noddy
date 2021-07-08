@@ -210,9 +210,8 @@ const BookingView = ({state, dispatch}: Context) => {
 
                 <div className="w-full flex items-center justify-start">
                     <button 
-                        // disabled={!formVerified} 
-                        disabled={false} 
-                        className={`w-6/12 ${false && 'opacity-25'} max-w-xs bg-blue mt-5 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded`} 
+                        disabled={!formVerified} 
+                        className={`w-6/12 ${!formVerified && 'opacity-25'} max-w-xs bg-blue mt-5 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded`} 
                         type="submit">
                             Submit
                     </button>            
