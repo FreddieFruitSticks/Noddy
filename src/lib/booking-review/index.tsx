@@ -28,18 +28,18 @@ const BookingReview = ({state, dispatch} : Context) => {
     const [price, setPrice] = useState(0)
     
     useEffect(() => {
+        let p = 0
         if (state?.partyForm?.adults){
-            setPrice(price + +state?.utils?.price_per_ticket*state?.partyForm?.adults)
+            p += +state?.utils?.price_per_ticket*state?.partyForm?.adults
         }
         
-        let p = 0
         state?.partyForm?.kids.forEach((kid, index) => {
             if (kid.age >= 3){
                 p += +state?.utils?.price_per_ticket
             }
         })
         
-        setPrice(price + p)
+        setPrice(p)
         
     },[])
     
