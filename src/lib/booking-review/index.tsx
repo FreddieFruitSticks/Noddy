@@ -55,9 +55,6 @@ const BookingReview = ({state, dispatch} : Context) => {
                 const partyId = response
                 const numberOfTicket = +state?.partyForm?.adults + +state?.partyForm?.kids?.length
                 setDisabled(false)
-                // window.location.replace(`${merchantUrl}?cmd=_paynow&receiver=${merchantId}&item_name=Noddy&amount=${5}.00&return_url=${process.env.PAYMENT_URL}%2Fpayment-success%3FpartyId%3D${partyId}%26eventId%3D${state.partyForm.eventId}%26tickets%3D${numberOfTicket}&cancel_url=${process.env.PAYMENT_URL}%2Fpayment-failed`);
-
-                // window.location.assign(`${merchantUrl}?cmd=_paynow&receiver=${merchantId}&item_name=noddy&amount=5.00&cancel_url=${process.env.PAYMENT_URL}/payment-failed&return_url=${process.env.PAYMENT_URL}/payment-success?partyId=${partyId}&eventId=${state.partyForm.eventId}&tickets=${numberOfTicket}`);
                 window.location.assign(`${merchantUrl}?cmd=_paynow&receiver=${merchantId}&item_name=noddy&amount=5.00&cancel_url=${process.env.PAYMENT_URL}/payment-failed&return_url=${process.env.PAYMENT_URL}/payment-success?data=${partyId}-${state.partyForm.eventId}-${numberOfTicket}`);
             }catch(err){
                 console.log(err)
@@ -107,15 +104,6 @@ const BookingReview = ({state, dispatch} : Context) => {
             <div className="mt-5 text-lg">
                 Total Price: R {price}
             </div>
-            <a href={`${merchantUrl}/eng/process?cmd=_paynow&receiver=${merchantId}&item_name=noddy&amount=5.00&cancel_url=${process.env.PAYMENT_URL}/payment-failed&return_url=${process.env.PAYMENT_URL}/payment-success?partyId=410&eventId=42&tickets=2`}>
-                <img 
-                    src="https://www.payfast.co.za/images/buttons/light-small-paynow.png" 
-                    width="165" 
-                    height="36" 
-                    alt="Pay" 
-                    title="Pay Now with PayFast" 
-                />
-            </a>
             <button
                 onClick={redirect}
                 disabled={isDisabled}
