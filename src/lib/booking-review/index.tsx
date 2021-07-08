@@ -25,15 +25,24 @@ const mapChildKeyValues = (quantity) => {
 
 const BookingReview = ({state, dispatch} : Context) => {
     const [isDisabled, setDisabled] = useState(false)
+    const [price, setPrice] = useState(0)
     
     useEffect(() => {
+        if (state?.partyForm?.adults){
+            setPrice(price + +state?.utils?.price_per_ticket*state?.partyForm?.adults)
+        }
+        
+        let p = 0
+        state?.partyForm?.kids.forEach((kid, index) => {
+            if (kid.age >= 3){
+                p += +state?.utils?.price_per_ticket
+            }
+        })
+        
+        setPrice(price + p)
         
     },[])
     
-    let price = 0
-    if (state?.partyForm?.adults){
-        price = price + +state?.utils?.price_per_ticket*state?.partyForm?.adults
-    }
     
     const merchantId = process.env.MERCHANT_ID
     const merchantUrl = process.env.MERCHANT_URL
@@ -46,7 +55,7 @@ const BookingReview = ({state, dispatch} : Context) => {
                 const partyId = response
                 const numberOfTicket = +state?.partyForm?.adults + +state?.partyForm?.kids?.length
                 setDisabled(false)
-                window.location.assign("https://www.payfast.co.za/eng/process?cmd=_paynow&amp;receiver=10180796&amp;item_name=noddy&amp;amount=5.00&amp;return_url=https%3A%2F%2Fnoddy.co.za%2Fpayment-success%3FpartyId%3D410%26eventId%3D42%26tickets%3D2&amp;cancel_url=https%3A%2F%2Fnoddy.co.za%2Fpayment-failed");
+                window.location.assign(window.decodeURIComponent("https://www.payfast.co.za/eng/process?cmd=_paynow&amp;receiver=10180796&amp;item_name=noddy&amp;amount=5.00&amp;return_url=https%3A%2F%2Fnoddy.co.za%2Fpayment-success%3FpartyId%3D410%26eventId%3D42%26tickets%3D2&amp;cancel_url=https%3A%2F%2Fnoddy.co.za%2Fpayment-failed"));
             }catch(err){
                 console.log(err)
             }
@@ -75,9 +84,6 @@ const BookingReview = ({state, dispatch} : Context) => {
                 Children Details
             </div> 
             {state?.partyForm?.kids.map((kid, index) => {
-                if (kid.age >= 3){
-                    price += +state?.utils?.price_per_ticket
-                }
                 return (
                     <div key={kid.name+index}>
                         <div className="text-orange mt-2 underline">
