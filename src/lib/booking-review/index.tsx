@@ -58,7 +58,7 @@ const BookingReview = ({state, dispatch} : Context) => {
                 // window.location.replace(`${merchantUrl}?cmd=_paynow&receiver=${merchantId}&item_name=Noddy&amount=${5}.00&return_url=${process.env.PAYMENT_URL}%2Fpayment-success%3FpartyId%3D${partyId}%26eventId%3D${state.partyForm.eventId}%26tickets%3D${numberOfTicket}&cancel_url=${process.env.PAYMENT_URL}%2Fpayment-failed`);
 
                 // window.location.assign(`${merchantUrl}?cmd=_paynow&receiver=${merchantId}&item_name=noddy&amount=5.00&cancel_url=${process.env.PAYMENT_URL}/payment-failed&return_url=${process.env.PAYMENT_URL}/payment-success?partyId=${partyId}&eventId=${state.partyForm.eventId}&tickets=${numberOfTicket}`);
-                window.location.assign(`${merchantUrl}?cmd=_paynow&receiver=${merchantId}&item_name=noddy&amount=5.00&cancel_url=${process.env.PAYMENT_URL}/payment-failed&return_url=${process.env.PAYMENT_URL}/payment-success?data=${partyId}|${state.partyForm.eventId}|${numberOfTicket}`);
+                window.location.assign(`${merchantUrl}?cmd=_paynow&receiver=${merchantId}&item_name=noddy&amount=5.00&cancel_url=${process.env.PAYMENT_URL}/payment-failed&return_url=${process.env.PAYMENT_URL}/payment-success?data=${partyId}-${state.partyForm.eventId}-${numberOfTicket}`);
             }catch(err){
                 console.log(err)
             }
