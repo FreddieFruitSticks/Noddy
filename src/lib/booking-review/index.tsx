@@ -55,7 +55,7 @@ const BookingReview = ({state, dispatch} : Context) => {
                 const partyId = response
                 const numberOfTicket = +state?.partyForm?.adults + +state?.partyForm?.kids?.length
                 setDisabled(false)
-                window.location.assign(`${merchantUrl}?cmd=_paynow&receiver=${merchantId}&item_name=noddy&amount=5.00&cancel_url=${process.env.PAYMENT_URL}/payment-failed&return_url=${process.env.PAYMENT_URL}/payment-success?data=${partyId}-${state.partyForm.eventId}-${numberOfTicket}`);
+                window.location.assign(`${merchantUrl}?cmd=_paynow&name_first=${state?.partyForm?.name}&receiver=${merchantId}&item_name=Noddy&amount=5.00&cancel_url=${process.env.PAYMENT_URL}/payment-failed&return_url=${process.env.PAYMENT_URL}/payment-success?data=${partyId}-${state.partyForm.eventId}-${numberOfTicket}`);
             }catch(err){
                 console.log(err)
             }
