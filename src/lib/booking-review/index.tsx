@@ -98,6 +98,7 @@ const BookingReview = ({state, dispatch} : Context) => {
             }catch(err){
                 console.log(err)
                 setConfirmError(err)
+                setConfirming(false)
             }
             // setConfirming(false)
         }
