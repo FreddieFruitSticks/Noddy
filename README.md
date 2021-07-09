@@ -36,7 +36,7 @@ When all the tickets have been purchased OR the date has passed the date of the 
 
 #### 3. Parties
 
-These are the groups that have booked. Clicking on the parties tile you will see a list of all the parties. Take not of the columns, specifically the "Payment Confirmed" column (1 = true, 0 = false). This is useful when deleting unconfirmed bookings. Deleting the party will return the tickets to the event from which they booked. DO NOT BULK DELETE UNLESS THE EVENT IS OVER. Bulk delete will not return all the tickets. The tickets are returned only on single delete.
+These are the groups that have booked. Clicking on the parties tile you will see a list of all the parties. Take not of the columns, specifically the "Payment Confirmed" column (1 = true, 0 = false). This is useful when deleting unconfirmed bookings. Deleting the party will return the tickets to the event from which they booked. DO NOT BULK DELETE PAID CUSTOMERS UNLESS THE EVENT IS OVER. Bulk delete will not return all the tickets. The tickets are returned only on single delete. Feel free to bulk delete UNPAID customers.
 
 Clicking on a party takes you to the details of the party where you can see the children list, number of adults, etc. You will see a payment confirmed (do not tamper with this unless you know what you are doing). The next item "email sent" is to confirm whether or not this party has been emailed for the next Noddy event.
 
