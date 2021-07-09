@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Context } from '../../context/context-provider'
-import { createParty } from '../../services'
+import { confirmPayment, createParty } from '../../services'
 import { createHash } from 'crypto';
 
 
@@ -54,10 +54,7 @@ const BookingReview = ({state, dispatch} : Context) => {
         setPrice(p)
         
     },[])
-    
-    const payfastEncoding = (data: string) => {
-        return encodeURIComponent(data.trim()).replace(/%20/g, "+")
-    }
+
     
     const generateSignature = (partyId1) => {
         const data = [];
@@ -65,8 +62,11 @@ const BookingReview = ({state, dispatch} : Context) => {
         data["merchant_key"] = merchantKey;
         data["return_url"] = `${`${process.env.PAYMENT_URL}/payment-success?data=${partyId1}-${state.partyForm.eventId}-${numberOfTicket}`}`;
         data["cancel_url"] = `${`${process.env.PAYMENT_URL}/payment-failed`}`;
+        data["notify_url"] = "";
         data["name_first"] = state?.partyForm?.name;
+        data["name_last"] = "";
         data["email_address"] = state?.partyForm?.email;
+        data["m_payment_id"] = "";
         data["amount"] = `${price}.00`;
         data["item_name"] = "Noddy Tickets";
         
@@ -151,11 +151,11 @@ const BookingReview = ({state, dispatch} : Context) => {
                 <input type="hidden" name="merchant_key" value={merchantKey}/>
                 <input type="hidden" name="return_url" value={`${process.env.PAYMENT_URL}/payment-success?data=${partyId}-${state.partyForm.eventId}-${numberOfTicket}`}/>
                 <input type="hidden" name="cancel_url" value={`${process.env.PAYMENT_URL}/payment-failed`}></input>
-                {/* <input type="hidden" name="notify_url" value=""></input> */}
+                <input type="hidden" name="notify_url" value=""></input>
                 <input type="hidden" name="name_first" value={state?.partyForm?.name}/>
-                {/* <input type="hidden" name="name_last" value=""/> */}
+                <input type="hidden" name="name_last" value=""/>
                 <input type="hidden" name="email_address" value={state?.partyForm?.email}/>
-                {/* <input type="hidden" name="m_payment_id" value=""/> */}
+                <input type="hidden" name="m_payment_id" value=""/>
                 <input type="hidden" name="amount" value={`${price}.00`}/>
                 <input type="hidden" name="item_name" value="Noddy Tickets"/>
                 <input type="hidden" name="signature" value={signature}/> 
@@ -168,6 +168,21 @@ const BookingReview = ({state, dispatch} : Context) => {
                     There has been an error with your confirmation
                 </div>
             }
+            
+            {/* <button
+                onClick={confirmDetails}
+                disabled={!isConfirmed}
+                form="payment-form"
+                type="submit"
+            >
+                <img 
+                    src="https://www.payfast.co.za/images/buttons/light-small-paynow.png"
+                    width="165"
+                    height="36"
+                    alt="Pay"
+                    title="Pay Now with PayFast"
+                />
+            </button> */}
 
             
             {isConfirmed && partyId ?
