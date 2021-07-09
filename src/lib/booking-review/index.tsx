@@ -62,11 +62,8 @@ const BookingReview = ({state, dispatch} : Context) => {
         data["merchant_key"] = merchantKey;
         data["return_url"] = `${`${process.env.PAYMENT_URL}/payment-success?data=${partyId1}-${state.partyForm.eventId}-${numberOfTicket}`}`;
         data["cancel_url"] = `${`${process.env.PAYMENT_URL}/payment-failed`}`;
-        data["notify_url"] = "";
         data["name_first"] = state?.partyForm?.name;
-        data["name_last"] = "";
         data["email_address"] = state?.partyForm?.email;
-        data["m_payment_id"] = "";
         data["amount"] = `${price}.00`;
         data["item_name"] = "Noddy Tickets";
         
@@ -95,8 +92,8 @@ const BookingReview = ({state, dispatch} : Context) => {
                 const response = await createParty(state.partyForm)
                 setConfirmed(true)
                 setPartyId(response)
-                setSignature(generateSignature(response))
-                // window.location.assign(`${merchantUrl}?cmd=_paynow&email_address=${state?.partyForm?.email}&name_first=${state?.partyForm?.name}&receiver=${merchantId}&item_name=Noddy&amount=5.00&cancel_url=${process.env.PAYMENT_URL}/payment-failed&return_url=${process.env.PAYMENT_URL}/payment-success?data=${partyId}-${state.partyForm.eventId}-${numberOfTicket}`);
+                // setSignature(generateSignature(response))
+                window.location.assign(`${merchantUrl}?cmd=_paynow&email_address=${state?.partyForm?.email}&name_first=${state?.partyForm?.name}&receiver=${merchantId}&item_name=Noddy&amount=5.00&cancel_url=${process.env.PAYMENT_URL}/payment-failed&return_url=${process.env.PAYMENT_URL}/payment-success?data=${partyId}-${state.partyForm.eventId}-${numberOfTicket}`);
             }catch(err){
                 console.log(err)
                 setConfirmError(err)
@@ -151,11 +148,8 @@ const BookingReview = ({state, dispatch} : Context) => {
                 <input type="hidden" name="merchant_key" value={merchantKey}/>
                 <input type="hidden" name="return_url" value={`${process.env.PAYMENT_URL}/payment-success?data=${partyId}-${state.partyForm.eventId}-${numberOfTicket}`}/>
                 <input type="hidden" name="cancel_url" value={`${process.env.PAYMENT_URL}/payment-failed`}></input>
-                <input type="hidden" name="notify_url" value=""></input>
                 <input type="hidden" name="name_first" value={state?.partyForm?.name}/>
-                <input type="hidden" name="name_last" value=""/>
                 <input type="hidden" name="email_address" value={state?.partyForm?.email}/>
-                <input type="hidden" name="m_payment_id" value=""/>
                 <input type="hidden" name="amount" value={`${price}.00`}/>
                 <input type="hidden" name="item_name" value="Noddy Tickets"/>
                 <input type="hidden" name="signature" value={signature}/> 
@@ -169,23 +163,27 @@ const BookingReview = ({state, dispatch} : Context) => {
                 </div>
             }
             
-            {/* <button
-                onClick={confirmDetails}
-                disabled={!isConfirmed}
-                form="payment-form"
-                type="submit"
-            >
-                <img 
-                    src="https://www.payfast.co.za/images/buttons/light-small-paynow.png"
-                    width="165"
-                    height="36"
-                    alt="Pay"
-                    title="Pay Now with PayFast"
-                />
-            </button> */}
+            {isConfirming ?
+                <div className="w-full flex items-center justify-center">
+                    <img className="h-20" src="load.svg"/>
+                    <div>Confirming...</div>
+                </div>
+                    :
+                <button
+                    onClick={confirmDetails}
+                    disabled={isConfirming}
+                >
+                    <img 
+                        src="https://www.payfast.co.za/images/buttons/light-small-paynow.png"
+                        width="165"
+                        height="36"
+                        alt="Pay"
+                        title="Pay Now with PayFast"
+                    />
+                </button>}
 
             
-            {isConfirmed && partyId ?
+            {/* {isConfirmed && partyId ?
                 <div>
                     <div                         
                         className="mt-3 text-green" 
@@ -222,7 +220,7 @@ const BookingReview = ({state, dispatch} : Context) => {
                             Confirm Details
                     </button>
                 </div>
-            }
+            } */}
         </div>
     )
 }
