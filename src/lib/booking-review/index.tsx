@@ -91,14 +91,15 @@ const BookingReview = ({state, dispatch} : Context) => {
             try {
                 const response = await createParty(state.partyForm)
                 setConfirmed(true)
-                setPartyId(response)
+                // setPartyId(response)
+                const partyId = response
                 // setSignature(generateSignature(response))
                 window.location.assign(`${merchantUrl}?cmd=_paynow&email_address=${state?.partyForm?.email}&name_first=${state?.partyForm?.name}&receiver=${merchantId}&item_name=Noddy&amount=5.00&cancel_url=${process.env.PAYMENT_URL}/payment-failed&return_url=${process.env.PAYMENT_URL}/payment-success?data=${partyId}-${state.partyForm.eventId}-${numberOfTicket}`);
             }catch(err){
                 console.log(err)
                 setConfirmError(err)
             }
-            setConfirming(false)
+            // setConfirming(false)
         }
     }
     return (
