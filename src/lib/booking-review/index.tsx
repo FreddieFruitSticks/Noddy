@@ -184,7 +184,11 @@ const BookingReview = ({state, dispatch} : Context) => {
                     />
                 </button>}
 
-            
+            <div                         
+                className="m-3 text-orange" 
+            >
+                N.B. Please wait to be redirected back to the app after payment is complete to confirm your payment
+            </div>
             {/* {isConfirmed && partyId ?
                 <div>
                     <div                         
