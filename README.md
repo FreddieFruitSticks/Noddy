@@ -101,7 +101,9 @@ To upload plugin files to WP server (these need to be pushed to staging (noddy-d
 As state this needs to be done for both staging and prod. For this, you must log in to both, set the right project and set the right host name:
 
 prod: `gcloud auth login freddieodonnell@gmail.com` or staging: `gcloud auth login freddiescomputekingdom@gmail.com`
+
 prod: `gcloud config set project dex-m-5ad68`or staging: `gcloud config set project noddy-285919`
+
 in the above `scp` commands hostnames are prod: `noddy` or staging: `noddy-dev`
 
 env vars for php files are on the google compute insance in `/etc/php/7.3/fpm/pool.d/www.conf` eg `env['RECAPTCHA_SECRET']=...`. Once this file is updated restart php-fpm
