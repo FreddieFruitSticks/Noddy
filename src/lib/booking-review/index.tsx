@@ -145,7 +145,7 @@ const BookingReview = ({state, dispatch} : Context) => {
             <div className="mt-5 text-lg">
                 Total Price: R {price}
             </div>
-            <form id="payment-form" action={merchantUrl} method="post">
+            {/* <form id="payment-form" action={merchantUrl} method="post">
                 <input type="hidden" name="merchant_id" value={merchantId}/>
                 <input type="hidden" name="merchant_key" value={merchantKey}/>
                 <input type="hidden" name="return_url" value={`${process.env.PAYMENT_URL}/payment-success?data=${partyId}-${state.partyForm.eventId}-${numberOfTicket}`}/>
@@ -155,7 +155,7 @@ const BookingReview = ({state, dispatch} : Context) => {
                 <input type="hidden" name="amount" value={`${price}.00`}/>
                 <input type="hidden" name="item_name" value="Noddy Tickets"/>
                 <input type="hidden" name="signature" value={signature}/> 
-            </form>
+            </form> */}
             
             {confirmError && 
                 <div                         
