@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Context } from '../../context/context-provider'
 import { createParty } from '../../services'
+import { createHash } from 'crypto';
+
 
 const mapChildKeyValues = (quantity) => {
     switch (quantity){
@@ -30,6 +32,13 @@ const BookingReview = ({state, dispatch} : Context) => {
     const [partyId, setPartyId] = useState(undefined)
     const [confirmError, setConfirmError] = useState(undefined)
     
+    const [signature, setSignature] = useState("")
+    const merchantId = process.env.MERCHANT_ID
+    const merchantUrl = process.env.MERCHANT_URL
+    const merchantKey = process.env.MERCHANT_KEY
+    const payfastSalt = process.env.PAYFAST_SALT
+    const numberOfTicket = +state?.partyForm?.adults + +state?.partyForm?.kids?.length
+    
     useEffect(() => {
         let p = 0
         if (state?.partyForm?.adults){
@@ -46,11 +55,38 @@ const BookingReview = ({state, dispatch} : Context) => {
         
     },[])
     
+    const payfastEncoding = (data: string) => {
+        return encodeURIComponent(data.trim()).replace(/%20/g, "+")
+    }
     
-    const merchantId = process.env.MERCHANT_ID
-    const merchantUrl = process.env.MERCHANT_URL
-    const merchantKey = process.env.MERCHANT_KEY
-    const numberOfTicket = +state?.partyForm?.adults + +state?.partyForm?.kids?.length
+    const generateSignature = (partyId1) => {
+        const data = [];
+        data["merchant_id"] = merchantId;
+        data["merchant_key"] = merchantKey;
+        data["return_url"] = `${`${process.env.PAYMENT_URL}/payment-success?data=${partyId1}-${state.partyForm.eventId}-${numberOfTicket}`}`;
+        data["cancel_url"] = `${`${process.env.PAYMENT_URL}/payment-failed`}`;
+        data["name_first"] = state?.partyForm?.name;
+        data["email_address"] = state?.partyForm?.email;
+        data["amount"] = `${price}.00`;
+        data["item_name"] = "Noddy Tickets";
+        
+        let pfOutput = "";
+        for (let key in data) {
+          if(data.hasOwnProperty(key)){
+            if (data[key] !== "") {
+              pfOutput +=`${key}=${encodeURIComponent(data[key].trim()).replace(/%20/g, "+")}&`
+            }
+          }
+        }
+      
+        // Remove last ampersand
+        let getString = pfOutput.slice(0, -1);
+        if (payfastSalt !== null) {
+          getString +=`&passphrase=${encodeURIComponent(payfastSalt.trim()).replace(/%20/g, "+")}`;
+        }
+      
+        return createHash("md5").update(getString).digest("hex");
+      };
     
     const confirmDetails = async () => {
         if (typeof window !== "undefined"){
@@ -59,6 +95,7 @@ const BookingReview = ({state, dispatch} : Context) => {
                 const response = await createParty(state.partyForm)
                 setConfirmed(true)
                 setPartyId(response)
+                setSignature(generateSignature(response))
                 // window.location.assign(`${merchantUrl}?cmd=_paynow&email_address=${state?.partyForm?.email}&name_first=${state?.partyForm?.name}&receiver=${merchantId}&item_name=Noddy&amount=5.00&cancel_url=${process.env.PAYMENT_URL}/payment-failed&return_url=${process.env.PAYMENT_URL}/payment-success?data=${partyId}-${state.partyForm.eventId}-${numberOfTicket}`);
             }catch(err){
                 console.log(err)
@@ -109,7 +146,7 @@ const BookingReview = ({state, dispatch} : Context) => {
             <div className="mt-5 text-lg">
                 Total Price: R {price}
             </div>
-            
+
             <form id="payment-form" action={merchantUrl} method="post">
                 <input type="hidden" name="merchant_id" value={merchantId}/>
                 <input type="hidden" name="merchant_key" value={merchantKey}/>
@@ -119,6 +156,7 @@ const BookingReview = ({state, dispatch} : Context) => {
                 <input type="hidden" name="cancel_url" value={`${process.env.PAYMENT_URL}/payment-failed`}></input>
                 <input type="hidden" name="name_first" value={state?.partyForm?.name}/>
                 <input type="hidden" name="email_address" value={state?.partyForm?.email}/>
+                <input type="hidden" name="signature" value={signature}/> 
             </form>
             
             {confirmError && 

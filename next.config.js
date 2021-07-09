@@ -10,6 +10,7 @@ module.exports = withFonts({
     MERCHANT_URL: process.env.MERCHANT_URL,
     MERCHANT_ID: process.env.MERCHANT_ID,
     MERCHANT_KEY: process.env.MERCHANT_KEY,
+    PAYFAST_SALT: process.env.PAYFAST_SALT,
     NEXT_PUBLIC_SEVER_HOST: process.env.NEXT_PUBLIC_SEVER_HOST,
   },
 }); 
