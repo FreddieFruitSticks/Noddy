@@ -24,8 +24,11 @@ const mapChildKeyValues = (quantity) => {
 }
 
 const BookingReview = ({state, dispatch} : Context) => {
-    const [isDisabled, setDisabled] = useState(false)
+    const [isConfirming, setConfirming] = useState(false)
+    const [isConfirmed, setConfirmed] = useState(false)
     const [price, setPrice] = useState(0)
+    const [partyId, setPartyId] = useState(undefined)
+    const [confirmError, setConfirmError] = useState(undefined)
     
     useEffect(() => {
         let p = 0
@@ -46,22 +49,24 @@ const BookingReview = ({state, dispatch} : Context) => {
     
     const merchantId = process.env.MERCHANT_ID
     const merchantUrl = process.env.MERCHANT_URL
+    const merchantKey = process.env.MERCHANT_KEY
+    const numberOfTicket = +state?.partyForm?.adults + +state?.partyForm?.kids?.length
     
-    const redirect = async () => {
-        setDisabled(true)
+    const confirmDetails = async () => {
         if (typeof window !== "undefined"){
+            setConfirming(true)
             try {
                 const response = await createParty(state.partyForm)
-                const partyId = response
-                const numberOfTicket = +state?.partyForm?.adults + +state?.partyForm?.kids?.length
-                setDisabled(false)
-                window.location.assign(`${merchantUrl}?cmd=_paynow&name_first=${state?.partyForm?.name}&receiver=${merchantId}&item_name=Noddy&amount=5.00&cancel_url=${process.env.PAYMENT_URL}/payment-failed&return_url=${process.env.PAYMENT_URL}/payment-success?data=${partyId}-${state.partyForm.eventId}-${numberOfTicket}`);
+                setConfirmed(true)
+                setPartyId(response)
+                // window.location.assign(`${merchantUrl}?cmd=_paynow&email_address=${state?.partyForm?.email}&name_first=${state?.partyForm?.name}&receiver=${merchantId}&item_name=Noddy&amount=5.00&cancel_url=${process.env.PAYMENT_URL}/payment-failed&return_url=${process.env.PAYMENT_URL}/payment-success?data=${partyId}-${state.partyForm.eventId}-${numberOfTicket}`);
             }catch(err){
                 console.log(err)
+                setConfirmError(err)
             }
+            setConfirming(false)
         }
     }
-    
     return (
         <div className="min-h-screen ml-10">
             <div className="font-semi mb-10 text-2xl underline">
@@ -104,18 +109,65 @@ const BookingReview = ({state, dispatch} : Context) => {
             <div className="mt-5 text-lg">
                 Total Price: R {price}
             </div>
-            <button
-                onClick={redirect}
-                disabled={isDisabled}
-            >
-                <img 
-                    src="https://www.payfast.co.za/images/buttons/light-small-paynow.png"
-                    width="165"
-                    height="36"
-                    alt="Pay"
-                    title="Pay Now with PayFast"
-                />
-            </button>
+            
+            <form id="payment-form" action={merchantUrl} method="post">
+                <input type="hidden" name="merchant_id" value={merchantId}/>
+                <input type="hidden" name="merchant_key" value={merchantKey}/>
+                <input type="hidden" name="amount" value={`${price}.00`}/>
+                <input type="hidden" name="item_name" value="Noddy Tickets"/>
+                <input type="hidden" name="return_url" value={`${process.env.PAYMENT_URL}/payment-success?data=${partyId}-${state.partyForm.eventId}-${numberOfTicket}`}/>
+                <input type="hidden" name="cancel_url" value={`${process.env.PAYMENT_URL}/payment-failed`}></input>
+                <input type="hidden" name="name_first" value={state?.partyForm?.name}/>
+                <input type="hidden" name="email_address" value={state?.partyForm?.email}/>
+            </form>
+            
+            {confirmError && 
+                <div                         
+                    className="m-3 text-red" 
+                >
+                    There has been an error with your confirmation
+                </div>
+            }
+
+            
+            {isConfirmed && partyId ?
+                <div>
+                    <div                         
+                        className="mt-3 text-green" 
+                    >
+                        Your details have been confirmed!
+                    </div>
+                    <button
+                        disabled={!isConfirmed}
+                        form="payment-form"
+                        type="submit"
+                    >
+                        <img 
+                            src="https://www.payfast.co.za/images/buttons/light-small-paynow.png"
+                            width="165"
+                            height="36"
+                            alt="Pay"
+                            title="Pay Now with PayFast"
+                        />
+                    </button>
+                </div>
+                :
+                isConfirming ?
+                    <div className="w-full flex items-center justify-center">
+                        <img className="h-20" src="load.svg"/>
+                        <div>Confirming...</div>
+                    </div>
+                :
+                
+                <div className="mb-5 w-full flex items-center justify-start ">
+                    <button
+                        type="button"
+                        className="min-w-md max-w-md bg-orange mt-5 text-white py-3 px-2 font-bold rounded" 
+                        onClick={confirmDetails}>
+                            Confirm Details
+                    </button>
+                </div>
+            }
         </div>
     )
 }
