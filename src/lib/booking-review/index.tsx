@@ -151,8 +151,11 @@ const BookingReview = ({state, dispatch} : Context) => {
                 <input type="hidden" name="merchant_key" value={merchantKey}/>
                 <input type="hidden" name="return_url" value={`${process.env.PAYMENT_URL}/payment-success?data=${partyId}-${state.partyForm.eventId}-${numberOfTicket}`}/>
                 <input type="hidden" name="cancel_url" value={`${process.env.PAYMENT_URL}/payment-failed`}></input>
+                <input type="hidden" name="notify_url" value=""></input>
                 <input type="hidden" name="name_first" value={state?.partyForm?.name}/>
+                <input type="hidden" name="name_last" value=""/>
                 <input type="hidden" name="email_address" value={state?.partyForm?.email}/>
+                <input type="hidden" name="m_payment_id" value=""/>
                 <input type="hidden" name="amount" value={`${price}.00`}/>
                 <input type="hidden" name="item_name" value="Noddy Tickets"/>
                 <input type="hidden" name="signature" value={signature}/> 
