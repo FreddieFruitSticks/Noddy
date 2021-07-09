@@ -1,5 +1,5 @@
 import React from 'react'
-import { ValidationRule, FieldError } from 'react-hook-form/dist/types/form';
+import { FieldError } from 'react-hook-form';
 import { DeepMap } from 'react-hook-form/dist/types/utils';
 
 interface FormInputProps {
