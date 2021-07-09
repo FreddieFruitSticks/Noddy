@@ -1,4 +1,4 @@
-import { ValidationRule } from "react-hook-form/dist/types/form"
+import { ValidationRule } from "react-hook-form"
 
 export const emailValidator : () => ValidationRule<RegExp> = () => {
     return  {
