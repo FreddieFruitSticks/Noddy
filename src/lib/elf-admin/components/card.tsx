@@ -97,7 +97,6 @@ const Card = ({dispatch, provided, snapshot, item, rowId, columnId}) => {
                     dispatch(elfAdminKidTextAction({rowId: rowId, columnId:columnId, text:event.target.value}))
                 }}
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                name={name}
                 autoFocus={false}
             />
             </div>
