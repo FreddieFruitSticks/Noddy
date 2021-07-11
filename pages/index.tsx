@@ -44,7 +44,6 @@ export interface IHomePage extends Context, IHome{}
 
 const HomePage = (props: IHomePage) => {
     const { data, error } = useSWR('acf/v3/event', fetchEvents)
-
     return (
         <div>
             <Head>
