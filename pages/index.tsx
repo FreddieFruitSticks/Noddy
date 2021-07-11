@@ -49,8 +49,8 @@ const HomePage = (props: IHomePage) => {
             <Head>
                 <title>Noddy Charity Chirstmas Party</title>
                 <link rel="preload" href="/noddy2.svg" as="image"/>
-                <link rel="preload" href='https://fonts.googleapis.com/css?family=Lobster' as="style"/>
-                <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Lobster' crossOrigin="anonymous" as="style" type='text/css'/>
+                <link rel="preload" href='https://fonts.googleapis.com/css?family=Lobster?display=swap' as="font"/>
+                <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Lobster?display=swap' crossOrigin="anonymous" as="font" type='text/css'/>
         
             </Head>
             <div className="m-5">
