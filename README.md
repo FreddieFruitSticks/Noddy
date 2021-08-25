@@ -56,7 +56,7 @@ Bookings open/closed controls the client site and makes all events unavailable a
 
 This is further down the list (if you cant see it it's because you dont have access to view this). This is to send emails to all the parents from the previous year that Noddy is open.
 
-Clicking on this takes you to a page with 1 button. Clicking this button will send a NODDY IS NOW OPEN email to EVERYONE.
+Clicking on this takes you to a page with 1 button. Clicking this button will send a NODDY IS NOW OPEN email to EVERYONE. Click it ONCE, and wait for green writing underneath. It may take some time if there are a lot of parents. DO NOT CLICK IT TWICE.
 
 ### Elf Admin (noddy.co.za/elf-admin)
 
