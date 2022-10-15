@@ -3,9 +3,9 @@
 ## How to use the site
 
 There are three main "sites": 
-1) `noddy.co.za` (the main site the client sees) (staging site: `noddy-dev.vercel.app`) 
+1) `noddy.vercel.app` (the main site the client sees) (staging site: `noddy-dev.vercel.app`) 
 2) `noddy.prod.m4v.co.za/wp-admin` (the main admin site) (staging site: `noddy.m4v.co.za/wp-admin`) 
-3) `noddy.co.za/elf-admin` (the "site" that deals with gift wrapping admin on the night of the event) (staging site: `noddy-dev.vercel.app/elf-admin`) 
+3) `noddy.vercel.app/elf-admin` (the "site" that deals with gift wrapping admin on the night of the event) (staging site: `noddy-dev.vercel.app/elf-admin`) 
 
 To use the client site is straight forward. Most of this how-to will focus on the two admin sites.
 
@@ -22,7 +22,7 @@ The 5 titles we are interested in are:
 
 #### 1. Posts
 
-This is simply for the blog. To view the blog go here https://noddy.co.za/blog. When writing a blog select the "blog post" category. For projects, select the "projects" category which can be viewed here https://noddy.co.za/projects
+This is simply for the blog. To view the blog go here https://noddy.vercel.app/blog. When writing a blog select the "blog post" category. For projects, select the "projects" category which can be viewed here https://noddy.vercel.app/projects
 
 #### 2. My Events
 
@@ -58,7 +58,7 @@ This is further down the list (if you cant see it it's because you dont have acc
 
 Clicking on this takes you to a page with 1 button. Clicking this button will send a NODDY IS NOW OPEN email to EVERYONE. Click it ONCE, and wait for green writing underneath. It may take some time if there are a lot of parents. DO NOT CLICK IT TWICE.
 
-### Elf Admin (noddy.co.za/elf-admin)
+### Elf Admin (noddy.vercel.app/elf-admin)
 
 This site is for the elves to manage parents and kids when they arrive, and to help wrap gifts. This is not mobile friendly and will need to be used on Chrome to be able to follow certain instructions.
 
@@ -74,7 +74,7 @@ Once the gift is packed move the card to the "gift packed" column. Unlike the "a
 
 Use the checkbox on the top right of the card to indicate that this party (the party that has been checked) marks the end of the santa bag. You can move the cards to be in each santa bag as you see fit.
 
-To reset the data you have to go in to the chrome dev tools (ctrl+shift+i) and click on "application" heading. Under "storage" click on "local storage" and click on "noddy.co.za" (or one of the other above urls depending on what domain you are on). On the right of that click on the item called "noddyState" and the click the "X" above it to delete it. NB! Do this only when you are done with the event. This cannot be undone.
+To reset the data you have to go in to the chrome dev tools (ctrl+shift+i) and click on "application" heading. Under "storage" click on "local storage" and click on "noddy.vercel.app" (or one of the other above urls depending on what domain you are on). On the right of that click on the item called "noddyState" and the click the "X" above it to delete it. NB! Do this only when you are done with the event. This cannot be undone.
 
 ## Developer README
 
@@ -119,9 +119,9 @@ Error logs in `/var/www/html/wordpress/wp-content`
 Noddy FE is hosted on vercel https://vercel.com/dashboard (on Freddie's personal account)
 
 Staging: noddy-dev.vercel.app. Admin noddy.m4v.co.za/wp-admin (passwords were sent out to RT members)
-Production: noddy.co.za and noddy.vercel.app. Admin noddy.prod.m4v.co.za/wp-admin (same as dev passwords)
+Production: noddy.vercel.app. Admin noddy.prod.m4v.co.za/wp-admin (same as dev passwords)
 
-The admin domains are on Maverick Labs' dnsmade easy account. `noddy.co.za`domain is with Yoan: webmaster@estart.co.za
+The admin domains are on Maverick Labs' dnsmade easy account. `noddy.vercel.app`domain is with Yoan: webmaster@estart.co.za
 
 To deploy to production simply push to master branch. To deploy to Staging push to develop branch
 
